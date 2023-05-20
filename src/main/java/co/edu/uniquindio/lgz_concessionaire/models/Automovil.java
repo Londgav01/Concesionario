@@ -8,9 +8,7 @@ import jakarta.persistence.Id;
 @Entity
 public class Automovil extends Vehiculo {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+
     private Integer numPuertas;
     private Integer numPasajeros;
     private Integer numBolsasAire;

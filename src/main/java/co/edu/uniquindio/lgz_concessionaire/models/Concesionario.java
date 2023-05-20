@@ -1,5 +1,6 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
+import co.edu.uniquindio.lgz_concessionaire.repository.PersonaRepository;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class Concesionario {
     private List<Cliente> listaClientes= new ArrayList<>();
     @OneToMany
     private List<Vehiculo> listaVehiculos= new ArrayList<>();
+    private List<Proveedor> listaProveedores= new ArrayList<>();
 
     public Concesionario(List<Empleado> listaEmpleados, List<Cliente> listaClientes, List<Vehiculo> listaVehiculos) {
         this.listaEmpleados = listaEmpleados;

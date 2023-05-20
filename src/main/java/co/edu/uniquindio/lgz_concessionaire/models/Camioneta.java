@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 @Table(schema = "vehiculos", name = "camionetas")
 public class Camioneta extends Sedaneta{
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+
     private boolean is4x4;
 
     public Camioneta(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje,
@@ -22,6 +20,7 @@ public class Camioneta extends Sedaneta{
         this.is4x4 = is4x4;
     }
 
+    public Camioneta() {}
 
 
     public boolean isIs4x4() {

@@ -18,6 +18,8 @@ public class Deportivo extends Automovil{
         this.tiempo100Km = tiempo100Km;
     }
 
+    public Deportivo() {}
+
     public Double getCaballosFuerza() {
         return caballosFuerza;
     }

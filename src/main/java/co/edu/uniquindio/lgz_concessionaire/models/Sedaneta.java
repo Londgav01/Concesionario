@@ -6,8 +6,6 @@ import jakarta.persistence.*;
 @Table(schema = "vehiculos", name = "sedanetas")
 public class Sedaneta extends StationWagon{
 
-
-
     private boolean tieneVelocidadCrucero;
     private boolean tieneSensoresColision;
     private boolean tieneSensorTraficoCruzado;

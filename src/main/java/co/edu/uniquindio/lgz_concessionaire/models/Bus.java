@@ -6,9 +6,6 @@ import jakarta.persistence.*;
 @Table(schema = "vehiculos", name = "buses")
 public class Bus extends Automovil{
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
     private Integer numEjes;
     private Integer numSalidasEmergencia;
     private boolean tieneABS;

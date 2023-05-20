@@ -6,9 +6,7 @@ import jakarta.persistence.*;
 @Table(schema = "vehiculos", name = "pickUps")
 public class PickUp extends StationWagon{
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
+
     private boolean is4x4;
     private Double capacidadCarga;
 

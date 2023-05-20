@@ -8,7 +8,6 @@ public class StationWagon extends Automovil{
     private boolean tieneAC;
     private boolean tieneCamaraReversa;
     private boolean tieneABS;
-
     public StationWagon(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                         String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                         TipoTransmision tipoTrasmision, Integer numPuertas, Integer numPasajeros, Integer numBolsasAire,
