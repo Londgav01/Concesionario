@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="523.0" prefWidth="502.0" style="-fx-background-color: #032C28; -fx-border-color: #E7B12B; -fx-border-radius: 5; -fx-background-radius: 5; -fx-border-width: 2;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Login">
+   <children>
+      <ImageView fitHeight="294.0" fitWidth="502.0" layoutX="3.0" layoutY="123.0">
+         <image>
+            <Image url="@../../../../../../WhatsApp%20Image%202023-05-20%20at%2010.57.25%20AM.jpeg" />
+         </image>
+         <effect>
+            <GaussianBlur radius="5.88" />
+         </effect>
+      </ImageView>
+      <AnchorPane layoutX="79.0" layoutY="71.0" prefHeight="397.0" prefWidth="352.0" style="-fx-border-color: #E7B12B; -fx-border-width: 1; -fx-background-color: rgba(0, 0, 0, 0.5); -fx-blend-mode: normal; -fx-focus-traversable: true; -fx-border-radius: 5; -fx-background-radius: 5;">
+         <effect>
+            <GaussianBlur radius="0.0" />
+         </effect>
+         <children>
+            <TextField layoutX="69.0" layoutY="150.0" prefHeight="30.0" prefWidth="230.0" style="-fx-background-color: rgba(231, 177, 43, 0.15);" />
+            <TextField layoutX="69.0" layoutY="224.0" prefHeight="30.0" prefWidth="230.0" style="-fx-background-color: rgba(231, 177, 43, 0.15);" />
+            <Label layoutX="137.0" layoutY="85.0" prefHeight="18.0" prefWidth="93.0" text="USER LOGIN" textFill="WHITE">
+               <font>
+                  <Font name="Cooper Black" size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
