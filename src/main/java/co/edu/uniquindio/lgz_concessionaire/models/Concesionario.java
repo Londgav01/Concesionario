@@ -1,6 +1,5 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import co.edu.uniquindio.lgz_concessionaire.repository.PersonaRepository;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -19,7 +18,6 @@ public class Concesionario {
     private List<Cliente> listaClientes= new ArrayList<>();
     @OneToMany
     private List<Vehiculo> listaVehiculos= new ArrayList<>();
-    private List<Proveedor> listaProveedores= new ArrayList<>();
 
     public Concesionario(List<Empleado> listaEmpleados, List<Cliente> listaClientes, List<Vehiculo> listaVehiculos) {
         this.listaEmpleados = listaEmpleados;
@@ -51,5 +49,51 @@ public class Concesionario {
 
     public void setListaVehiculos(List<Vehiculo> listaVehiculos) {
         this.listaVehiculos = listaVehiculos;
+    }
+
+    ////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////
+
+    public void CrearEmpleado (String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
+        Empleado empleado = new Empleado (nombre, identificacion, direccion, numeroTelefonico, idEmpleado);
+        if(verificarEmpleado(empleado)){
+            throw new EmpleadoException("El empleado ya existe");
+        }
+        listaEmpleados.add(empleado);
+    }
+
+    public Empleado buscarEmpleado (String idEmpleado) throws EmpleadoException{
+        for (Empleado empleado : listaEmpleados) {
+            if(empleado.getIdEmpleado().equals(idEmpleado)){
+                return empleado;
+            }
+        }
+        throw new EmpleadoException("El empleado no se ha encontrado");
+    }
+
+    public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
+        for (Empleado empleado : listaEmpleados) {
+            if(buscarEmpleado(idEmpleado) != null){
+                empleado.setDireccion(empleado.getDireccion());
+                empleado.setNombre(empleado.getNombre());
+                empleado.setNumeroTelefonico(empleado.getNumeroTelefonico());
+            }
+        }
+    }
+
+    public boolean verificarEmpleado(Empleado empleado){
+        return listaEmpleados.stream().anyMatch(e -> e.equals(empleado));
+    }
+
+
+    public boolean eliminarEmpleado (String idEmpleado) throws EmpleadoException{
+        boolean eliminado = false;
+        for (Empleado empleado : listaEmpleados) {
+            if(buscarEmpleado(idEmpleado).equals(empleado.getIdEmpleado())){
+                listaEmpleados.remove(empleado);
+                eliminado = true;
+            }
+        }
+        return eliminado;
     }
 }
