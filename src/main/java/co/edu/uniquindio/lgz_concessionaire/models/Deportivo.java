@@ -3,8 +3,7 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(schema = "vehiculos", name = "deportivos")
+
 public class Deportivo extends Automovil{
     private Double caballosFuerza;
     private Double tiempo100Km;

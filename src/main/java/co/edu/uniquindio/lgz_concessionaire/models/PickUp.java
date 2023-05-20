@@ -1,9 +1,5 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(schema = "vehiculos", name = "pickUps")
 public class PickUp extends StationWagon{
 
 

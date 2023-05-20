@@ -1,10 +1,5 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
-@Entity
-@Table(schema = "vehiculos", name = "sedan")
 public class Sedan extends Sedaneta{
 
     public Sedan(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje,

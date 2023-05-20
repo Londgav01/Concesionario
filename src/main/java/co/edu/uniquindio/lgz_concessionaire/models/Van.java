@@ -1,10 +1,6 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "van")
 public class Van extends StationWagon{
     public Van(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible, TipoTransmision tipoTrasmision,

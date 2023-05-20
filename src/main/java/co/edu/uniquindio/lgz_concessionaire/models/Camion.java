@@ -1,9 +1,5 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(schema = "vehiculos", name = "camiones")
 public class Camion extends Vehiculo{
 
     private double capacidadCarga;

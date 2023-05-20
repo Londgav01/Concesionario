@@ -1,9 +1,5 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.*;
-
-@Entity
-@Table(schema = "vehiculos",name = "motos")
 public class Moto extends Vehiculo{
 
     public Moto(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje,

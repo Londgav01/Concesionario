@@ -26,6 +26,8 @@ public class Transaccion {
         this.listaDetalles = listaDetalles;
     }
 
+    public Transaccion() {}
+
     public Empleado getEmpleado() {
         return empleado;
     }

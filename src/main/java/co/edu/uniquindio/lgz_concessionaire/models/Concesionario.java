@@ -1,5 +1,6 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
+import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;

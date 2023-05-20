@@ -1,8 +1,5 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.Entity;
-
-@Entity
 public class StationWagon extends Automovil{
 
     private boolean tieneAC;
