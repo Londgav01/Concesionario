@@ -1,6 +1,7 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
+import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -99,4 +100,15 @@ public class Concesionario {
     }
 
     ///////////////////////////////////////////////////////////////
+
+    public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
+        Cliente cliente = new Cliente (nombre, identificacion, direccion, numeroTelefonico);
+        if(verificarCliente(cliente.getIdentificacion())){
+            throw new UsuarioExcepction("El cliente ya existe");
+        }
+    }
+    public boolean verificarCliente(String identificacion){
+        return listaClientes.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion))
+    }
+
 }
