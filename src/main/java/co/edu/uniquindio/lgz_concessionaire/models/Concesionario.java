@@ -106,9 +106,32 @@ public class Concesionario {
         if(verificarCliente(cliente.getIdentificacion())){
             throw new UsuarioExcepction("El cliente ya existe");
         }
+        listaClientes.add(cliente);
     }
     public boolean verificarCliente(String identificacion){
         return listaClientes.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion))
     }
 
+    public void actualizarCliente(String nombre, String identificacion, String direccion,
+                                  String numTelefono)throws UsuarioExcepction{
+        if(identificacion!=null){
+            for (Cliente cliente: listaClientes) {
+                if(cliente.getIdentificacion().equals(identificacion)){
+                    cliente.setNombre(nombre);
+                    cliente.setDireccion(direccion);
+                    cliente.setNumeroTelefonico(numTelefono);
+                }
+            }
+        }
+        throw  new UsuarioExcepction("El cliente no existe, digite la identificación de nuevo")
+    }
+
+    public Cliente buscarCliente (String idCliente) throws UsuarioExcepction{
+        for (Cliente cliente : listaClientes) {
+            if(cliente.getIdentificacion().equals(idCliente)){
+                return cliente;
+            }
+        }
+        throw new UsuarioExcepction("El cliente no se ha encontrado");
+    }
 }
