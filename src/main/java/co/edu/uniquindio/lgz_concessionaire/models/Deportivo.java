@@ -1,37 +1,38 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Table;
-
-
 public class Deportivo extends Automovil{
     private Double caballosFuerza;
     private Double tiempo100Km;
 
-    public Deportivo(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje,
-                     EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible, TipoTransmision tipoTrasmision,
-                     Integer numPuertas, Integer numPasajeros, Integer numBolsasAire, Double caballosFuerza, Double tiempo100Km) {
-        super(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible,
-                tipoTrasmision, numPuertas, numPasajeros, numBolsasAire);
-        this.caballosFuerza = caballosFuerza;
-        this.tiempo100Km = tiempo100Km;
-    }
-
-    public Deportivo() {}
-
+    public Deportivo() {super();}
     public Double getCaballosFuerza() {
         return caballosFuerza;
-    }
-
-    public void setCaballosFuerza(Double caballosFuerza) {
-        this.caballosFuerza = caballosFuerza;
     }
 
     public Double getTiempo100Km() {
         return tiempo100Km;
     }
 
-    public void setTiempo100Km(Double tiempo100Km) {
-        this.tiempo100Km = tiempo100Km;
+    public static class DeportivoBuilder extends AutomovilBuilder {
+
+        private Deportivo deportivo;
+
+        public DeportivoBuilder() {
+            deportivo = new Deportivo();
+        }
+
+        public DeportivoBuilder caballosFuerza(Double caballosFuerza) {
+            deportivo.caballosFuerza = caballosFuerza;
+            return this;
+        }
+
+        public DeportivoBuilder tiempo100Km(Double tiempo100Km) {
+            deportivo.tiempo100Km = tiempo100Km;
+            return this;
+        }
+
+        public Deportivo build() {
+            return deportivo;
+        }
     }
 }

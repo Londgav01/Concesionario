@@ -21,12 +21,6 @@ public class Concesionario {
     @OneToMany
     private List<Vehiculo> listaVehiculos= new ArrayList<>();
 
-    public Concesionario(List<Empleado> listaEmpleados, List<Cliente> listaClientes, List<Vehiculo> listaVehiculos) {
-        this.listaEmpleados = listaEmpleados;
-        this.listaClientes = listaClientes;
-        this.listaVehiculos = listaVehiculos;
-    }
-
     public Concesionario() {}
 
     public List<Empleado> getListaEmpleados() {
@@ -57,7 +51,13 @@ public class Concesionario {
     ////////////////////////////////////////////////////////////////////////
 
     public void CrearEmpleado (String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
-        Empleado empleado = new Empleado (nombre, identificacion, direccion, numeroTelefonico, idEmpleado);
+        Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
+                .idEmpleado(idEmpleado)
+                .withNombre(nombre)
+                .withId(identificacion)
+                .withDireccion(direccion)
+                .withNumeroTelefonico(numeroTelefonico)
+                .build();
         if(verificarEmpleado(empleado)){
             throw new EmpleadoException("El empleado ya existe");
         }
@@ -73,7 +73,7 @@ public class Concesionario {
         throw new EmpleadoException("El empleado no se ha encontrado");
     }
 
-    public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
+    /*public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
             if(buscarEmpleado(idEmpleado) != null){
                 empleado.setDireccion(empleado.getDireccion());
@@ -81,7 +81,7 @@ public class Concesionario {
                 empleado.setNumeroTelefonico(empleado.getNumeroTelefonico());
             }
         }
-    }
+    }*/
 
     public boolean verificarEmpleado(Empleado empleado){
         return listaEmpleados.stream().anyMatch(e -> e.equals(empleado));
@@ -99,7 +99,7 @@ public class Concesionario {
         return eliminado;
     }
 
-    ///////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
         Cliente cliente = new Cliente (nombre, identificacion, direccion, numeroTelefonico);
@@ -109,7 +109,7 @@ public class Concesionario {
         listaClientes.add(cliente);
     }
     public boolean verificarCliente(String identificacion){
-        return listaClientes.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion))
+        return listaClientes.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion));
     }
 
     public void actualizarCliente(String nombre, String identificacion, String direccion,
@@ -117,13 +117,15 @@ public class Concesionario {
         if(identificacion!=null){
             for (Cliente cliente: listaClientes) {
                 if(cliente.getIdentificacion().equals(identificacion)){
-                    cliente.setNombre(nombre);
-                    cliente.setDireccion(direccion);
-                    cliente.setNumeroTelefonico(numTelefono);
+                    Persona.PersonaBuilder builder = new Persona.PersonaBuilder(cliente);
+                    builder.withNombre(nombre)
+                            .withDireccion(direccion)
+                            .withNumeroTelefonico(numTelefono)
+                            .build();
                 }
             }
         }
-        throw  new UsuarioExcepction("El cliente no existe, digite la identificación de nuevo")
+        throw  new UsuarioExcepction("El cliente no existe, digite la identificación de nuevo");
     }
 
     public Cliente buscarCliente (String idCliente) throws UsuarioExcepction{

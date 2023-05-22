@@ -1,58 +1,65 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-import jakarta.persistence.*;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(schema = "personas", name = "personas")
-public class Persona {
+ public class Persona {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    private Long id;
-    private String nombre;
-    private String identificacion;
-    private String direccion;
-    private String numeroTelefonico;
+     private String nombre;
+     private String identificacion;
+     private String direccion;
+     private String numeroTelefonico;
 
-    public Persona(String nombre, String identificacion, String direccion, String numeroTelefonico) {
-        this.nombre = nombre;
-        this.identificacion = identificacion;
-        this.direccion = direccion;
-        this.numeroTelefonico = numeroTelefonico;
-    }
+     private Persona() {}
 
-    public Persona() {}
+     public String getNombre() {
+         return nombre;
+     }
 
-    public String getNombre() {
-        return nombre;
-    }
+     public String getIdentificacion() {
+         return identificacion;
+     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+     public String getDireccion() {
+         return direccion;
+     }
 
-    public String getIdentificacion() {
-        return identificacion;
-    }
+     public String getNumeroTelefonico() {
+         return numeroTelefonico;
+     }
 
-    public void setIdentificacion(String identificacion) {
-        this.identificacion = identificacion;
-    }
+     // Clase builder
+     public static class PersonaBuilder{
+         Persona persona = new Persona();
+         public PersonaBuilder() {Persona persona = new Persona();}
+         public PersonaBuilder(Cliente cliente) {
+             persona.nombre = cliente.getNombre();
+             persona.identificacion = cliente.getIdentificacion();
+             persona.direccion = cliente.getDireccion();
+             persona.numeroTelefonico = cliente.getNumeroTelefonico();
+         }
 
-    public String getDireccion() {
-        return direccion;
-    }
+         public PersonaBuilder withNombre(String nombre) {
+             persona.nombre=nombre;
+             return this;
+         }
 
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
+         public PersonaBuilder withId(String identificacion){
+             persona.identificacion=identificacion;
+             return this;
+         }
 
-    public String getNumeroTelefonico() {
-        return numeroTelefonico;
-    }
+         public PersonaBuilder withDireccion(String direccion) {
+             persona.direccion=direccion;
+             return this;
+         }
 
-    public void setNumeroTelefonico(String numeroTelefonico) {
-        this.numeroTelefonico = numeroTelefonico;
-    }
+         public PersonaBuilder withNumeroTelefonico(String numeroTelefono) {
+             persona.numeroTelefonico=numeroTelefono;
+             return this;
+         }
+
+         public Persona build() {
+             return persona;
+         }
+     }
 }
+

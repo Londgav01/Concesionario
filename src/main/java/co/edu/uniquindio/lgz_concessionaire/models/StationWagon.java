@@ -5,40 +5,45 @@ public class StationWagon extends Automovil{
     private boolean tieneAC;
     private boolean tieneCamaraReversa;
     private boolean tieneABS;
-    public StationWagon(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
-                        String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
-                        TipoTransmision tipoTrasmision, Integer numPuertas, Integer numPasajeros, Integer numBolsasAire,
-                        boolean tieneAC, boolean tieneCamaraReversa, boolean tieneABS) {
-        super(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible,
-                tipoTrasmision, numPuertas, numPasajeros, numBolsasAire);
-        this.tieneAC = tieneAC;
-        this.tieneCamaraReversa = tieneCamaraReversa;
-        this.tieneABS = tieneABS;
-    }
 
-    public StationWagon() {}
+    public StationWagon() {super();}
 
     public boolean isTieneAC() {
         return tieneAC;
-    }
-
-    public void setTieneAC(boolean tieneAC) {
-        this.tieneAC = tieneAC;
     }
 
     public boolean isTieneCamaraReversa() {
         return tieneCamaraReversa;
     }
 
-    public void setTieneCamaraReversa(boolean tieneCamaraReversa) {
-        this.tieneCamaraReversa = tieneCamaraReversa;
-    }
-
     public boolean isTieneABS() {
         return tieneABS;
     }
 
-    public void setTieneABS(boolean tieneABS) {
-        this.tieneABS = tieneABS;
+    public static class StationWagonBuilder extends AutomovilBuilder {
+        private StationWagon stationWagon;
+
+        public StationWagonBuilder() {
+            stationWagon = new StationWagon();
+        }
+
+        public StationWagonBuilder tieneAC(boolean tieneAC) {
+            stationWagon.tieneAC = tieneAC;
+            return this;
+        }
+
+        public StationWagonBuilder tieneCamaraReversa(boolean tieneCamaraReversa) {
+            stationWagon.tieneCamaraReversa = tieneCamaraReversa;
+            return this;
+        }
+
+        public StationWagonBuilder tieneABS(boolean tieneABS) {
+            stationWagon.tieneABS = tieneABS;
+            return this;
+        }
+
+        public StationWagon build() {
+            return stationWagon;
+        }
     }
 }

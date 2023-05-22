@@ -2,45 +2,51 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 
 public class Automovil extends Vehiculo {
 
-
     private Integer numPuertas;
     private Integer numPasajeros;
     private Integer numBolsasAire;
 
-    public Automovil(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje,
-                     EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible, TipoTransmision tipoTrasmision, Integer numPuertas,
-                     Integer numPasajeros, Integer numBolsasAire) {
-        super(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision);
-        this.numPuertas = numPuertas;
-        this.numPasajeros = numPasajeros;
-        this.numBolsasAire = numBolsasAire;
-    }
-
     public Automovil() {
-
+        super();
     }
 
     public Integer getNumPuertas() {
         return numPuertas;
     }
 
-    public void setNumPuertas(Integer numPuertas) {
-        this.numPuertas = numPuertas;
-    }
-
     public Integer getNumPasajeros() {
         return numPasajeros;
-    }
-
-    public void setNumPasajeros(Integer numPasajeros) {
-        this.numPasajeros = numPasajeros;
     }
 
     public Integer getNumBolsasAire() {
         return numBolsasAire;
     }
 
-    public void setNumBolsasAire(Integer numBolsasAire) {
-        this.numBolsasAire = numBolsasAire;
+    // Clase interna AutomovilBuilder
+    public static class AutomovilBuilder extends VehiculoBuilder {
+        private Automovil automovil;
+
+        public AutomovilBuilder() {
+            automovil = new Automovil();
+        }
+
+        public AutomovilBuilder numPuertas(Integer numPuertas) {
+            automovil.numPuertas = numPuertas;
+            return this;
+        }
+
+        public AutomovilBuilder numPasajeros(Integer numPasajeros) {
+            automovil.numPasajeros = numPasajeros;
+            return this;
+        }
+
+        public AutomovilBuilder numBolsasAire(Integer numBolsasAire) {
+            automovil.numBolsasAire = numBolsasAire;
+            return this;
+        }
+
+        public Automovil build() {
+            return automovil;
+        }
     }
 }

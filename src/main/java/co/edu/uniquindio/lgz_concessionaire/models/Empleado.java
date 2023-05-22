@@ -12,11 +12,6 @@ public class Empleado extends Persona{
 
     private String idEmpleado;
 
-    public Empleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) {
-        super(nombre, identificacion, direccion, numeroTelefonico);
-        this.idEmpleado = idEmpleado;
-    }
-
     public Empleado() {super();}
 
     public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono){
@@ -28,7 +23,21 @@ public class Empleado extends Persona{
         return idEmpleado;
     }
 
-    public void setIdEmpleado(String idEmpleado) {
-        this.idEmpleado = idEmpleado;
+    public static class EmpleadoBuilder extends PersonaBuilder{
+        Empleado empleado= new Empleado();
+
+        public EmpleadoBuilder idEmpleado(String id) {
+            empleado.idEmpleado= id;
+            return this;
+        }
+
+        public EmpleadoBuilder () {
+            Empleado empleado= new Empleado();
+        }
+
+        public Empleado build() {
+            return empleado;
+        }
     }
+
 }

@@ -1,36 +1,44 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-public class PickUp extends StationWagon{
-
-
+public class PickUp extends StationWagon {
     private boolean is4x4;
     private Double capacidadCarga;
 
-    public PickUp(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje,
-                  EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible, TipoTransmision tipoTrasmision,
-                  Integer numPuertas, Integer numPasajeros, Integer numBolsasAire, boolean tieneAC, boolean tieneCamaraReversa,
-                  boolean tieneABS, boolean is4x4, Double capacidadCarga) {
-        super(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible,
-                tipoTrasmision, numPuertas, numPasajeros, numBolsasAire, tieneAC, tieneCamaraReversa, tieneABS);
-        this.is4x4 = is4x4;
-        this.capacidadCarga = capacidadCarga;
+    private PickUp() {
+        super();
     }
 
-    public PickUp() {super();}
+    // Getters para los atributos
 
-    public boolean isIs4x4() {
+    public boolean is4x4() {
         return is4x4;
-    }
-
-    public void setIs4x4(boolean is4x4) {
-        this.is4x4 = is4x4;
     }
 
     public Double getCapacidadCarga() {
         return capacidadCarga;
     }
 
-    public void setCapacidadCarga(Double capacidadCarga) {
-        this.capacidadCarga = capacidadCarga;
+    public static class PickUpBuilder extends StationWagonBuilder {
+
+        PickUp pickUp= new PickUp();
+
+        public PickUpBuilder() {
+            PickUp pickUp= new PickUp();
+        }
+
+        public PickUpBuilder is4x4(boolean is4x4) {
+            pickUp.is4x4 = is4x4;
+            return this;
+        }
+
+        public PickUpBuilder capacidadCarga(Double capacidadCarga) {
+            pickUp.capacidadCarga = capacidadCarga;
+            return this;
+        }
+
+        @Override
+        public PickUp build() {
+            return pickUp;
+        }
     }
 }

@@ -4,8 +4,8 @@ public class Administrador extends Empleado {
 
     private String idAdministrador;
 
-    public Administrador(String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado, String idAdministrador) {
-        super(nombre, identificacion, direccion, numeroTelefonico, idEmpleado);
+    public Administrador(String idAdministrador) {
+        super();
         this.idAdministrador = idAdministrador;
     }
 

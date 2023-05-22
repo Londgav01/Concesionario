@@ -9,66 +9,72 @@ public class Camion extends Vehiculo{
     private String tipoCamion;
     private boolean tieneAC;
 
-    public Camion(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje,
-                  EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible, TipoTransmision tipoTrasmision,
-                  double capacidadCarga, boolean tieneFrenosAire, int numeroEjes, boolean tieneABS, String tipoCamion,
-                  boolean tieneAC) {
-        super(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision);
-        this.capacidadCarga = capacidadCarga;
-        this.tieneFrenosAire = tieneFrenosAire;
-        this.numeroEjes = numeroEjes;
-        this.tieneABS = tieneABS;
-        this.tipoCamion = tipoCamion;
-        this.tieneAC = tieneAC;
+    private Camion() {
+        super();
     }
 
-    public Camion() {}
 
     public double getCapacidadCarga() {
         return capacidadCarga;
-    }
-
-    public void setCapacidadCarga(double capacidadCarga) {
-        this.capacidadCarga = capacidadCarga;
     }
 
     public boolean isTieneFrenosAire() {
         return tieneFrenosAire;
     }
 
-    public void setTieneFrenosAire(boolean tieneFrenosAire) {
-        this.tieneFrenosAire = tieneFrenosAire;
-    }
-
     public int getNumeroEjes() {
         return numeroEjes;
-    }
-
-    public void setNumeroEjes(int numeroEjes) {
-        this.numeroEjes = numeroEjes;
     }
 
     public boolean isTieneABS() {
         return tieneABS;
     }
 
-    public void setTieneABS(boolean tieneABS) {
-        this.tieneABS = tieneABS;
-    }
-
     public String getTipoCamion() {
         return tipoCamion;
-    }
-
-    public void setTipoCamion(String tipoCamion) {
-        this.tipoCamion = tipoCamion;
     }
 
     public boolean isTieneAC() {
         return tieneAC;
     }
 
-    public void setTieneAC(boolean tieneAC) {
-        this.tieneAC = tieneAC;
+    public static class CamionBuilder extends Vehiculo.VehiculoBuilder {
+
+        Camion camion = new Camion();
+
+        public CamionBuilder capacidadCarga(double capacidadCarga) {
+            camion.capacidadCarga = capacidadCarga;
+            return this;
+        }
+
+        public CamionBuilder tieneFrenosAire(boolean tieneFrenosAire) {
+            camion.tieneFrenosAire = tieneFrenosAire;
+            return this;
+        }
+
+        public CamionBuilder numeroEjes(int numeroEjes) {
+            camion.numeroEjes = numeroEjes;
+            return this;
+        }
+
+        public CamionBuilder tieneABS(boolean tieneABS) {
+            camion.tieneABS = tieneABS;
+            return this;
+        }
+
+        public CamionBuilder tipoCamion(String tipoCamion) {
+            camion.tipoCamion = tipoCamion;
+            return this;
+        }
+
+        public CamionBuilder tieneAC(boolean tieneAC) {
+            camion.tieneAC = tieneAC;
+            return this;
+        }
+
+        @Override
+        public Camion build() {
+            return camion;
+        }
     }
 }

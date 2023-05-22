@@ -25,9 +25,9 @@
          <children>
             <TextField layoutX="69.0" layoutY="150.0" prefHeight="30.0" prefWidth="230.0" style="-fx-background-color: rgba(231, 177, 43, 0.15);" />
             <TextField layoutX="69.0" layoutY="224.0" prefHeight="30.0" prefWidth="230.0" style="-fx-background-color: rgba(231, 177, 43, 0.15);" />
-            <Label layoutX="137.0" layoutY="85.0" prefHeight="18.0" prefWidth="93.0" text="USER LOGIN" textFill="WHITE">
+            <Label layoutX="83.0" layoutY="85.0" prefHeight="34.0" prefWidth="201.0" text="USER LOGIN" textFill="WHITE">
                <font>
-                  <Font name="Cooper Black" size="12.0" />
+                  <Font name="Cooper Black" size="29.0" />
                </font>
             </Label>
          </children>
