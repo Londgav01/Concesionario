@@ -12,7 +12,4 @@ public class Cliente extends Persona{
         super(nombre, identificacion, direccion, numeroTelefonico);
     }
 
-    public Cliente() {
-        super();
-    }
 }

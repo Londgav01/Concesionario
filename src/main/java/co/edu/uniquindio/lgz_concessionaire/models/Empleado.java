@@ -23,6 +23,7 @@ public class Empleado extends Persona{
         return idEmpleado;
     }
 
+
     public static class EmpleadoBuilder extends PersonaBuilder{
         Empleado empleado= new Empleado();
 
@@ -40,4 +41,11 @@ public class Empleado extends Persona{
         }
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 }

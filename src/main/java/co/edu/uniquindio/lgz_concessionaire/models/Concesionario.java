@@ -20,7 +20,12 @@ public class Concesionario {
     private List<Cliente> listaClientes= new ArrayList<>();
     @OneToMany
     private List<Vehiculo> listaVehiculos= new ArrayList<>();
+    @OneToMany
+    private List<Proveedor> listaProveedores = new ArrayList<>();
 
+    /**
+     *  Constructor y metodo getter and setter
+     */
     public Concesionario() {}
 
     public List<Empleado> getListaEmpleados() {
@@ -35,6 +40,9 @@ public class Concesionario {
         return listaClientes;
     }
 
+    public List<Proveedor> getListaProveedores(){
+        return listaProveedores;
+
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
     }
@@ -47,8 +55,12 @@ public class Concesionario {
         this.listaVehiculos = listaVehiculos;
     }
 
+    public void seListaProveedores(List<Proveedor> listaProveedores) {
+        this.listaProveedores = listaProveedores;
+    }
+
     ////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////
+    //Metodo CRUD empleado
 
     public void CrearEmpleado (String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
         Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
@@ -73,15 +85,18 @@ public class Concesionario {
         throw new EmpleadoException("El empleado no se ha encontrado");
     }
 
-    /*public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
-        for (Empleado empleado : listaEmpleados) {
-            if(buscarEmpleado(idEmpleado) != null){
-                empleado.setDireccion(empleado.getDireccion());
-                empleado.setNombre(empleado.getNombre());
-                empleado.setNumeroTelefonico(empleado.getNumeroTelefonico());
+    public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
+        if(buscarEmpleado(idEmpleado) != null) {
+            for (Empleado empleado : listaEmpleados) {
+                if (empleado.getId().equals(idEmpleado))
+                    empleado.setDireccion(direccion);
+                    empleado.setNombre(nombre);
+                    empleado.setNumeroTelefonico(numeroTelefonico);
+                    break;
+                }
             }
         }
-    }*/
+    }
 
     public boolean verificarEmpleado(Empleado empleado){
         return listaEmpleados.stream().anyMatch(e -> e.equals(empleado));
@@ -100,8 +115,8 @@ public class Concesionario {
     }
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-    public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
+    //Meotodos CRUD Cliente
+    public void crearProveedor(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
         Cliente cliente = new Cliente (nombre, identificacion, direccion, numeroTelefonico);
         if(verificarCliente(cliente.getIdentificacion())){
             throw new UsuarioExcepction("El cliente ya existe");
@@ -135,5 +150,44 @@ public class Concesionario {
             }
         }
         throw new UsuarioExcepction("El cliente no se ha encontrado");
+    }
+
+    //////////////////////////////////////////////////////////////////
+    //Metodos CRUD proveedor
+
+    public void crearProveedor(String nombre, String identificacion, String direccion, String num) throws UsuarioExcepction {
+        Proveedor proveedor = new Proveedor (nombre, identificacion, direccion, num);
+        if(verificarProveedor(proveedor.getIdentificacion())){
+            throw new UsuarioExcepction("El proveedor ya existe");
+        }
+        listaProveedores.add(proveedor);
+    }
+    public boolean verificarProveedor(String identificacion){
+        return listaProveedores.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion));
+    }
+
+    public void actualizarProveedor(String nombre, String identificacion, String direccion,
+                                  String numTelefono)throws UsuarioExcepction{
+        if(identificacion!=null){
+            for (Proveedor proveedor: listaProveedores) {
+                if(proveedor.getIdentificacion().equals(identificacion)){
+                    Persona.PersonaBuilder builder = new Persona.PersonaBuilder(proveedor);
+                    builder.withNombre(nombre)
+                            .withDireccion(direccion)
+                            .withNumeroTelefonico(numTelefono)
+                            .build();
+                }
+            }
+        }
+        throw  new UsuarioExcepction("El cliente no existe, digite la identificación de nuevo");
+    }
+
+    public Proveedor buscarProveedor (String idProveedor) throws UsuarioExcepction{
+        for (Proveedor proveedor : listaProveedores) {
+            if(proveedor.getIdentificacion().equals(idProveedor)){
+                return proveedor;
+            }
+        }
+        throw new UsuarioExcepction("El proveedor no se ha encontrado");
     }
 }

@@ -10,6 +10,13 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 
      private Persona() {}
 
+     public Persona(String nombre, String identificacion, String direccion, String num){
+         this.nombre = nombre;
+         this.identificacion = identificacion;
+         this.direccion = direccion;
+         this.numeroTelefonico = num;
+     }
+
      public String getNombre() {
          return nombre;
      }
@@ -24,6 +31,22 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 
      public String getNumeroTelefonico() {
          return numeroTelefonico;
+     }
+
+     public void setNombre(String nombre) {
+         this.nombre = nombre;
+     }
+
+     public void setIdentificacion(String identificacion) {
+         this.identificacion = identificacion;
+     }
+
+     public void setDireccion(String direccion) {
+         this.direccion = direccion;
+     }
+
+     public void setNumeroTelefonico(String numeroTelefonico) {
+         this.numeroTelefonico = numeroTelefonico;
      }
 
      // Clase builder
