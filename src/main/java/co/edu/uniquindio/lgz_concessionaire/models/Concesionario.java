@@ -99,6 +99,7 @@ public class Concesionario {
     }
 
     public boolean verificarEmpleado(Empleado empleado){
+
         return listaEmpleados.stream().anyMatch(e -> e.equals(empleado));
     }
 
