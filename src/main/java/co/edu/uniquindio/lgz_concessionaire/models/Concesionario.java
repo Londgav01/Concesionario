@@ -20,7 +20,6 @@ public class Concesionario {
     private List<Cliente> listaClientes= new ArrayList<>();
     @OneToMany
     private List<Vehiculo> listaVehiculos= new ArrayList<>();
-    @OneToMany
     private List<Proveedor> listaProveedores = new ArrayList<>();
 
     /**
@@ -40,8 +39,9 @@ public class Concesionario {
         return listaClientes;
     }
 
-    public List<Proveedor> getListaProveedores(){
+    public List<Proveedor> getListaProveedores() {
         return listaProveedores;
+    }
 
     public void setListaClientes(List<Cliente> listaClientes) {
         this.listaClientes = listaClientes;
@@ -62,7 +62,7 @@ public class Concesionario {
     ////////////////////////////////////////////////////////////////////////
     //Metodo CRUD empleado
 
-    public void CrearEmpleado (String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
+    public void crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
         Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
                 .idEmpleado(idEmpleado)
                 .withNombre(nombre)
@@ -76,7 +76,7 @@ public class Concesionario {
         listaEmpleados.add(empleado);
     }
 
-    public Empleado buscarEmpleado (String idEmpleado) throws EmpleadoException{
+    public Empleado buscarEmpleado(String idEmpleado) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
             if(empleado.getIdEmpleado().equals(idEmpleado)){
                 return empleado;
@@ -88,7 +88,7 @@ public class Concesionario {
     public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
         if(buscarEmpleado(idEmpleado) != null) {
             for (Empleado empleado : listaEmpleados) {
-                if (empleado.getId().equals(idEmpleado))
+                if (empleado.getId().equals(idEmpleado)){
                     empleado.setDireccion(direccion);
                     empleado.setNombre(nombre);
                     empleado.setNumeroTelefonico(numeroTelefonico);
@@ -116,7 +116,7 @@ public class Concesionario {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Meotodos CRUD Cliente
-    public void crearProveedor(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
+    public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
         Cliente cliente = new Cliente (nombre, identificacion, direccion, numeroTelefonico);
         if(verificarCliente(cliente.getIdentificacion())){
             throw new UsuarioExcepction("El cliente ya existe");
@@ -149,6 +149,8 @@ public class Concesionario {
                 return cliente;
             }
         }
+
+
         throw new UsuarioExcepction("El cliente no se ha encontrado");
     }
 
