@@ -8,8 +8,5 @@ public class Cliente extends Persona{
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    public Cliente(String nombre, String identificacion, String direccion, String numeroTelefonico) {
-        super(nombre, identificacion, direccion, numeroTelefonico);
-    }
 
 }

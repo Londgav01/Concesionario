@@ -14,12 +14,17 @@ public class Concesionario {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    @OneToMany
+
+    @OneToMany(mappedBy = "concesionario")
     private List<Empleado> listaEmpleados= new ArrayList<>();
-    @OneToMany(mappedBy = "")
+
+    @OneToMany(mappedBy = "concesionario")
     private List<Cliente> listaClientes= new ArrayList<>();
-    @OneToMany
+
+    @OneToMany(mappedBy = "concesionario")
     private List<Vehiculo> listaVehiculos= new ArrayList<>();
+
+    @OneToMany(mappedBy = "concesionario")
     private List<Proveedor> listaProveedores = new ArrayList<>();
 
     /**
@@ -99,7 +104,6 @@ public class Concesionario {
     }
 
     public boolean verificarEmpleado(Empleado empleado){
-
         return listaEmpleados.stream().anyMatch(e -> e.equals(empleado));
     }
 
@@ -118,11 +122,16 @@ public class Concesionario {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //Meotodos CRUD Cliente
     public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
-        Cliente cliente = new Cliente (nombre, identificacion, direccion, numeroTelefonico);
+        Persona cliente= new Persona.PersonaBuilder()
+                .withNombre(nombre)
+                .withDireccion(direccion)
+                .withNumeroTelefonico(numeroTelefonico)
+                .withId(identificacion)
+                .build();
         if(verificarCliente(cliente.getIdentificacion())){
             throw new UsuarioExcepction("El cliente ya existe");
         }
-        listaClientes.add(cliente);
+        listaClientes.add((Cliente) cliente);
     }
     public boolean verificarCliente(String identificacion){
         return listaClientes.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion));

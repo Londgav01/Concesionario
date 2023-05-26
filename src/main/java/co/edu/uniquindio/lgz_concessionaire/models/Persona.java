@@ -8,7 +8,7 @@ package co.edu.uniquindio.lgz_concessionaire.models;
      private String direccion;
      private String numeroTelefonico;
 
-     private Persona() {}
+     Persona() {}
 
      public Persona(String nombre, String identificacion, String direccion, String num){
          this.nombre = nombre;
@@ -53,11 +53,12 @@ package co.edu.uniquindio.lgz_concessionaire.models;
      public static class PersonaBuilder{
          Persona persona = new Persona();
          public PersonaBuilder() {Persona persona = new Persona();}
-         public PersonaBuilder(Cliente cliente) {
-             persona.nombre = cliente.getNombre();
-             persona.identificacion = cliente.getIdentificacion();
-             persona.direccion = cliente.getDireccion();
-             persona.numeroTelefonico = cliente.getNumeroTelefonico();
+
+         public PersonaBuilder(Persona persona) {
+             persona.nombre = persona.getNombre();
+             persona.identificacion = persona.getIdentificacion();
+             persona.direccion = persona.getDireccion();
+             persona.numeroTelefonico = persona.getNumeroTelefonico();
          }
 
          public PersonaBuilder withNombre(String nombre) {
@@ -83,6 +84,7 @@ package co.edu.uniquindio.lgz_concessionaire.models;
          public Persona build() {
              return persona;
          }
+
      }
 }
 
