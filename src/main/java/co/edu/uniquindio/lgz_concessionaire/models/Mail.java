@@ -9,13 +9,13 @@ import java.util.Properties;
 import java.util.Random;
 
 public class Mail {
-    public static String enviarMail(String asunto,String cuerpo, String destino) throws Exception {
+    public static void mail(String asunto, String introduccionCuerpo, String finalCuerpo, String destino) throws Exception {
         // Configuración del servidor de correo
         String host = "smtp.office365.com";
         String port = "587";
         String username = "LGZConcessionaire@hotmail.com";
         String password = "RobinsonMiAmor1";
-        String imagenUrl = "https://drive.google.com/file/d/1i74IK4BKane5ZJ6teYA63J9U7Mjt3r53/view?usp=sharing";
+        String imagenUrl = "https://i.ibb.co/cF2Vp5L/Logo-concesionario.png";
 
         try {
             // Propiedades de la conexión
@@ -42,11 +42,15 @@ public class Mail {
             String codigo = generarCodigoAleatorio();
 
             // Cuerpo del correo con una imagen en línea y el código de verificación
-            String htmlBody = "<h1>Codigo de verificacion</h1>"
-                    + "<img src=\"" + imagenUrl + "\">"
-                    + "<p>El código de verificación es:</p>";
-            htmlBody += generarContenidoHTML(codigo);
-
+            String htmlBody ="<p style=\"text-align: center;\">"
+                    + "<img src=\"" + imagenUrl + "\" width=\"300\">"
+                    + "<h2>Estimado Usuario,</h2>"
+                    + introduccionCuerpo+ generarContenidoHTML(codigo) + "</p>"
+                    + finalCuerpo
+                    + "<p>Si necesita asistencia adicional o tiene alguna pregunta, no dude en contactarnos a trav&eacutes de LGZConcessionaire@hotmail.com</p>"
+                    + "<p>Atentamente,</p>"
+                    + "<p>Equipo Londo&ntildeo, Garc&iacutea, Z&uacute&ntildeiga</p>"
+                    + "<p>LGZConcessionaire</p>";
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress(username));
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(destino));
@@ -64,9 +68,9 @@ public class Mail {
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
             JOptionPane.showMessageDialog(null, "El mensaje se ha enviado exitosamente");
-            return codigo;
+
         }catch(Exception e) {
-            throw new Exception("Error al enviar correo");
+            e.printStackTrace();
         }
     }
 
@@ -87,12 +91,15 @@ public class Mail {
 
     private static String generarContenidoHTML(String codigo) {
         StringBuilder htmlBuilder = new StringBuilder();
+        htmlBuilder.append("<div style=\"display: flex;\">");
 
         for (int i = 0; i < codigo.length(); i++) {
-            htmlBuilder.append("<div style=\"border: 1px solid black; width: 40px; height: 40px; text-align: center; font-size: 20px;\">");
+            htmlBuilder.append("<div style=\"border: 1px solid black; width: 40px; height: 40px; text-align: center; font-size: 20px; margin-right: 10px;\">");
             htmlBuilder.append(codigo.charAt(i));
             htmlBuilder.append("</div>");
         }
+
+        htmlBuilder.append("</div>");
 
         return htmlBuilder.toString();
     }
