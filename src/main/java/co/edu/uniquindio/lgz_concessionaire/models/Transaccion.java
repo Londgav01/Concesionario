@@ -2,15 +2,16 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(name = "transactions")
-public class Transaccion {
+//@Entity
+//@Table(name = "TRANSACCIONES")
+public class Transaccion implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    //@Id
+    //@GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private Empleado empleado;
     private String code;

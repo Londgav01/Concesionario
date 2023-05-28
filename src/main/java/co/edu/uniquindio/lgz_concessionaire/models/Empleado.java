@@ -1,11 +1,15 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
 import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+
+import java.io.Serializable;
 
 @Entity
-@Table(schema = "personas",name = "empleados")
-public class Empleado extends Persona{
+@Table(name = "EMPLEADO")
+public class Empleado extends Persona implements Serializable {
 
+    @jakarta.persistence.Id
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -14,10 +18,10 @@ public class Empleado extends Persona{
 
     public Empleado() {super();}
 
-    public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono){
+    /*public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono){
         Cliente nuevoCliente = new Cliente(nombre, id, direccion, numTelefono);
         return nuevoCliente;
-    }
+    }*/
 
     public String getIdEmpleado() {
         return idEmpleado;

@@ -2,11 +2,12 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(schema = "vehiculos", name = "Vehiculos")
-public class Vehiculo {
+@Table(name = "VEHICULOS")
+public class Vehiculo implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -18,12 +19,12 @@ public class Vehiculo {
     private double velocidadMaxima;
     private String cilindraje;
     private EstadoVehiculo estadoVehiculo;
-    private TipoCombustible tipoCombustible;
+    //private TipoCombustible tipoCombustible;
     private TipoTransmision tipoTrasmision;
 
     public Vehiculo(VehiculoBuilder builder){
         this.id= builder.id;
-        this.tipoCombustible= builder.tipoCombustible;
+        //this.tipoCombustible= builder.tipoCombustible;
         this.estadoVehiculo= builder.estadoVehiculo;
         this.marca= builder.marca;
         this.placa= builder.placa;
@@ -72,7 +73,7 @@ public class Vehiculo {
         private double velocidadMaxima;
         private String cilindraje;
         private EstadoVehiculo estadoVehiculo;
-        private TipoCombustible tipoCombustible;
+        //private TipoCombustible tipoCombustible;
         private TipoTransmision tipoTransmision;
 
         public VehiculoBuilder setId(Long id) {
@@ -115,10 +116,10 @@ public class Vehiculo {
             return this;
         }
 
-        public VehiculoBuilder setTipoCombustible(TipoCombustible tipoCombustible) {
+        /*public VehiculoBuilder setTipoCombustible(TipoCombustible tipoCombustible) {
             this.tipoCombustible = tipoCombustible;
             return this;
-        }
+        }*/
 
         public VehiculoBuilder setTipoTransmision(TipoTransmision tipoTransmision) {
             this.tipoTransmision = tipoTransmision;

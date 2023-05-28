@@ -28,7 +28,7 @@
             <GaussianBlur radius="0.0" />
          </effect>
          <children>
-            <TextField fx:id="userLogin" layoutX="69.0" layoutY="150.0" prefHeight="30.0" prefWidth="230.0" style="-fx-background-color: rgba(231, 177, 43, 0.15);" />
+            <TextField fx:id="userLogin" layoutX="69.0" layoutY="150.0" prefHeight="26.0" prefWidth="230.0" style="-fx-background-color: rgba(231, 177, 43, 0.15);" />
             <Label layoutX="75.0" layoutY="59.0" prefHeight="34.0" prefWidth="201.0" text="USER LOGIN" textFill="WHITE">
                <font>
                   <Font name="Cooper Black" size="29.0" />

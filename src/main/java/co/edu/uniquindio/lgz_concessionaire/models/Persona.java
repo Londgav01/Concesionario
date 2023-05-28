@@ -1,26 +1,31 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
+import jakarta.persistence.*;
 
- public class Persona {
+import java.io.Serializable;
 
-     private String nombre;
-     private String identificacion;
-     private String direccion;
-     private String numeroTelefonico;
 
-     Persona() {}
+public class Persona implements Serializable {
 
-     public Persona(String nombre, String identificacion, String direccion, String num){
-         this.nombre = nombre;
-         this.identificacion = identificacion;
-         this.direccion = direccion;
-         this.numeroTelefonico = num;
-     }
 
-     public String getNombre() {
+    private Long id;
+    private String nombre;
+    private String identificacion;
+    private String direccion;
+    private String numeroTelefonico;
+
+    public Persona(String nombre, String identificacion, String direccion, String num){
+        this.nombre = nombre;
+        this.identificacion = identificacion;
+        this.direccion = direccion;
+        this.numeroTelefonico = num;
+    }
+
+    public Persona() {}
+
+    public String getNombre() {
          return nombre;
      }
-
      public String getIdentificacion() {
          return identificacion;
      }
