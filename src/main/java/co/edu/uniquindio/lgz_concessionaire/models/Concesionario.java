@@ -27,10 +27,16 @@ public class Concesionario {
     //@OneToMany(mappedBy = "concesionario")
     private List<Proveedor> listaProveedores = new ArrayList<>();
 
+    private String name;
+
     /**
-     *  Constructor y metodo getter and setter
+     *  Constructor y methods getter and setter
      */
     public Concesionario() {}
+
+    public Concesionario(String name) {
+        this.name = name;
+    }
 
     public List<Empleado> getListaEmpleados() {
         return listaEmpleados;
@@ -64,10 +70,22 @@ public class Concesionario {
         this.listaProveedores = listaProveedores;
     }
 
+    public void setListaProveedores(List<Proveedor> listaProveedores) {
+        this.listaProveedores = listaProveedores;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     ////////////////////////////////////////////////////////////////////////
     //Metodo CRUD empleado
 
-    public void crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
+    public Empleado crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
         Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
                 .idEmpleado(idEmpleado)
                 .withNombre(nombre)
@@ -79,6 +97,7 @@ public class Concesionario {
             throw new EmpleadoException("El empleado ya existe");
         }
         listaEmpleados.add(empleado);
+        return empleado;
     }
 
     public Empleado buscarEmpleado(String idEmpleado) throws EmpleadoException{
@@ -109,18 +128,17 @@ public class Concesionario {
 
 
     public boolean eliminarEmpleado (String idEmpleado) throws EmpleadoException{
-        boolean eliminado = false;
         for (Empleado empleado : listaEmpleados) {
             if(buscarEmpleado(idEmpleado).equals(empleado.getIdEmpleado())){
                 listaEmpleados.remove(empleado);
-                eliminado = true;
+                return true;
             }
         }
-        return eliminado;
+        return false;
     }
 
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //Meotodos CRUD Cliente
+    /////////////////////////////////////////////////Métodos CRUD Cliente//////////////////////////////////////////////////////////
+
     public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
         Persona cliente= new Persona.PersonaBuilder()
                 .withNombre(nombre)
@@ -133,6 +151,7 @@ public class Concesionario {
         }
         listaClientes.add((Cliente) cliente);
     }
+
     public boolean verificarCliente(String identificacion){
         return listaClientes.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion));
     }

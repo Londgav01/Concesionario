@@ -18,10 +18,14 @@ public class Empleado extends Persona implements Serializable {
 
     public Empleado() {super();}
 
-    /*public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono){
-        Cliente nuevoCliente = new Cliente(nombre, id, direccion, numTelefono);
-        return nuevoCliente;
-    }*/
+    public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono){
+        return (Cliente) new PersonaBuilder()
+                .withNombre(nombre)
+                .withId(id)
+                .withDireccion(direccion)
+                .withNumeroTelefonico(numTelefono)
+                .build();
+    }
 
     public String getIdEmpleado() {
         return idEmpleado;
@@ -52,4 +56,5 @@ public class Empleado extends Persona implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
 }

@@ -56,7 +56,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Hyperlink fx:id="olividoContrasena" layoutX="187.0" layoutY="261.0" onAction="#recuperarContrasena" text="Olvidé mi contraseña" textFill="WHITE">
+            <Hyperlink fx:id="olividoContrasena" layoutX="187.0" layoutY="261.0" onAction="#abrirVentanaRecuperarContrasena" text="Olvidé mi contraseña" textFill="WHITE">
                <font>
                   <Font size="11.0" />
                </font>

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="517.0" prefWidth="671.0" style="-fx-background-color: #032C28; -fx-background-radius: 5; -fx-border-color: #E7B12B; -fx-border-radius: 5; -fx-border-width: 3;" stylesheets="@Styles/tabStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.lgz_concessionaire.controllers.RecuperacionController">
+   <children>
+      <TabPane layoutX="50.0" layoutY="32.0" prefHeight="449.0" prefWidth="578.0" style="-fx-focus-traversable: normal; -fx-background-color: #021614;" stylesheets="@Styles/tabStyle.css" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="correo" style="-fx-background-color: #021614;" text="Correo">
+            <content>
+              <AnchorPane fx:id="mailTab" minHeight="0.0" minWidth="0.0" prefHeight="429.0" prefWidth="578.0" style="-fx-background-color: #021614; -fx-border-color: #E7B12B;" stylesheets="@Styles/tabStyle.css">
+                     <children>
+                        <ImageView fitHeight="411.0" fitWidth="756.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/img_1.png" />
+                           </image>
+                           <effect>
+                              <GaussianBlur />
+                           </effect>
+                        </ImageView>
+                        <Label layoutX="81.0" layoutY="14.0" prefHeight="85.0" prefWidth="438.0" text="ENTER THE REGISTERED MAIL AND ID" textAlignment="CENTER" textFill="#beff9b" wrapText="true">
+                           <font>
+                              <Font name="Cooper Black" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="113.0" layoutY="183.0" text="MAIL: " textFill="#beff9b">
+                           <font>
+                              <Font name="Cooper Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="botonEnviarMail" layoutX="247.0" layoutY="275.0" mnemonicParsing="false" onAction="#enviarMail" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK; -fx-background-radius: 5; -fx-border-radius: 5;" text="SEND" textFill="#beff9b">
+                           <font>
+                              <Font name="Cooper Black" size="19.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="id" layoutX="113.0" layoutY="118.0" prefHeight="53.0" prefWidth="352.0" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK;" />
+                        <Separator layoutX="113.0" layoutY="251.0" prefHeight="6.0" prefWidth="352.0" style="-fx-background-color: #beff9b;" />
+                        <Label fx:id="msjEnvio" layoutX="117.0" layoutY="336.0" prefHeight="50.0" prefWidth="366.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+                           <font>
+                              <Font name="Cooper Black" size="16.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="mail" layoutX="113.0" layoutY="199.0" prefHeight="53.0" prefWidth="352.0" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK;" />
+                        <Label layoutX="113.0" layoutY="100.0" text="ID: " textFill="#beff9b">
+                           <font>
+                              <Font name="Cooper Black" size="13.0" />
+                           </font>
+                        </Label>
+                        <Separator layoutX="113.0" layoutY="170.0" prefHeight="4.0" prefWidth="352.0" style="-fx-background-color: #beff9b;" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab fx:id="registro" style="-fx-background-color: #021614;" text="Cambiar Contraseña">
+            <content>
+              <AnchorPane fx:id="cambiarContrasenaTab" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-border-color: #E7B12B;">
+                     <children>
+                        <ImageView fitHeight="434.0" fitWidth="735.0" layoutX="-9.0" layoutY="2.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/img_1.png" />
+                           </image>
+                           <effect>
+                              <GaussianBlur />
+                           </effect>
+                        </ImageView>
+                        <Label layoutX="202.0" layoutY="59.0" prefHeight="24.0" prefWidth="203.0" text="ENTER THE CODE" textFill="#beff9b">
+                           <font>
+                              <Font name="Cooper Black" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="154.0" layoutY="155.0" text="ENTER A NEW PASSWORD" textFill="#beff9b">
+                           <font>
+                              <Font name="Cooper Black" size="20.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="102.0" layoutY="263.0" text="ENTER AGAIN THE NEW PASSWORD" textFill="#beff9b" wrapText="true">
+                           <font>
+                              <Font name="Cooper Black" size="20.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="botonCambiar" layoutX="250.0" layoutY="362.0" mnemonicParsing="false" onAction="#cambiarContrasena" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK;" text="INGRESAR" textFill="#beff9b">
+                           <font>
+                              <Font name="Cooper Black" size="15.0" />
+                           </font>
+                        </Button>
+                        <TextField fx:id="code" layoutX="153.0" layoutY="91.0" prefHeight="34.0" prefWidth="282.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" />
+                        <TextField fx:id="newPassword" layoutX="154.0" layoutY="191.0" prefHeight="35.0" prefWidth="282.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" />
+                        <TextField fx:id="newPassword2" layoutX="153.0" layoutY="301.0" prefHeight="34.0" prefWidth="285.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" />
+                        <Separator layoutX="154.0" layoutY="126.0" prefHeight="0.0" prefWidth="281.0" style="-fx-background-color: #beff9b;" />
+                        <Separator layoutX="154.0" layoutY="228.0" prefHeight="1.0" prefWidth="284.0" style="-fx-background-color: #beff9b;" />
+                        <Separator layoutX="153.0" layoutY="336.0" prefHeight="0.0" prefWidth="284.0" style="-fx-background-color: #beff9b;" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Button fx:id="buttomBack" layoutX="14.0" layoutY="482.0" mnemonicParsing="false" onAction="#backToLogin" style="-fx-background-color: rgba(2, 22, 20, 0.15);" text="Back" textFill="#beff9b" />
+   </children>
+   <styleClass>
+      <String fx:value="tab-header-area" />
+      <String fx:value="tab-header-background" />
+      <String fx:value="tab-pane" />
+      <String fx:value="tab-label" />
+   </styleClass>
+</AnchorPane>

@@ -1,6 +1,12 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
+import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 import javafx.event.ActionEvent;
@@ -15,6 +21,9 @@ import java.util.ResourceBundle;
 
 @Component
 public class LoginController implements Initializable {
+
+    private Stage stage2= new Stage();
+    private RecuperacionController recuperacionController;
 
     @FXML
     private Button botonLogin;
@@ -31,14 +40,32 @@ public class LoginController implements Initializable {
     @FXML
     private TextField userLogin;
 
+    public LoginController() {
+    }
+
     @FXML
     void login(ActionEvent event) {
 
     }
 
     @FXML
-    void recuperarContrasena(ActionEvent event) {
+    void abrirVentanaRecuperarContrasena(ActionEvent event) {
+        LgzConcessionaireApplication.getPrimaryStage().close();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LgzConcessionaireApplication.class.getResource("/VentanaRecuperacion.fxml"));
+            AnchorPane rootLayout = (AnchorPane)loader.load();
+            Scene scene = new Scene(rootLayout);
 
+            this.stage2.setTitle("Recuperación de Contraseñas");
+            this.stage2.setScene(scene);
+            olividoContrasena.getScene().getWindow().hide();
+            this.stage2.show();
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        };
     }
 
     @FXML
@@ -50,4 +77,5 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
     }
+
 }
