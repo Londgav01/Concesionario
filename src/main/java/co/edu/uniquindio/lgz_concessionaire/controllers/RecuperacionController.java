@@ -1,6 +1,7 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
 import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
+import co.edu.uniquindio.lgz_concessionaire.models.Mail;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +20,7 @@ import java.util.ResourceBundle;
 @Component
 public class RecuperacionController implements Initializable {
 
+    private String codigo = "";
     private LoginController loginController=new LoginController();
 
     @FXML
@@ -71,14 +73,29 @@ public class RecuperacionController implements Initializable {
 
     @FXML
     void cambiarContrasena(ActionEvent event) {
-        //if() aquí va la condicion de si el codifo introducido es el mismo enviado
+        if(code.getText().equals(codigo)) {//aquí va la condicion de si el codifo introducido es el mismo enviado
 
+        }
 
     }
 
     @FXML
-    void enviarMail(ActionEvent event) {
+    void enviarMail(ActionEvent event) throws Exception {
+        codigo = mandarCodigoMail();
+    }
 
+    public String mandarCodigoMail() throws Exception{
+        String introCuerpo = "<h2>Estimado Usuario,</h2>"
+                + "<p>Hemos recibido una solicitud de recuperaci&oacuten de contrase&ntildea para su cuenta en LGZ Concessionaire. "
+                + "Para asegurarnos de que sea usted quien realiza esta solicitud, hemos generado un c&oacutedigo de verificaci&oacuten &uacutenico.</p>"
+                + "<p>Por favor, utilice el siguiente c&oacutedigo de verificaci&oacuten para restablecer su contrase&ntildea:</p>"
+                + "<p><strong>C&oacutedigo de verificaci&oacuten:</strong> ";
+
+        String finalCuerpo = "<p>Le recomendamos que copie y pegue el c&oacutedigo de verificaci&oacuten en el formulario de recuperaci&oacuten de contrase&ntildea "
+                + "para evitar errores de escritura.</p>"
+                + "<p>Si usted no solicit&oacute esta recuperaci&oacuten de contrase&ntildea, puede ignorar este correo electr&oacutenico. No se realizar&aacuten cambios en su cuenta.</p>"
+                + "<p>Por motivos de seguridad, le sugerimos que una vez que haya restablecido su contrase&ntildea, la modifique por una nueva y segura.</p>";
+        return Mail.mail("recuperarContraseña", introCuerpo, finalCuerpo, mail.getText());
     }
 
     @Override

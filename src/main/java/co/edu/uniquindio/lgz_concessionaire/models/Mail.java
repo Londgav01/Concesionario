@@ -9,7 +9,7 @@ import java.util.Properties;
 import java.util.Random;
 
 public class Mail {
-    public static void mail(String asunto, String introduccionCuerpo, String finalCuerpo, String destino) throws Exception {
+    public static String mail(String asunto, String introduccionCuerpo, String finalCuerpo, String destino) throws Exception {
         // Configuración del servidor de correo
         String host = "smtp.office365.com";
         String port = "587";
@@ -40,6 +40,7 @@ public class Mail {
 
             // Generar un código aleatorio de 5 letras
             String codigo = generarCodigoAleatorio();
+            String codigoAux = codigo;
 
             // Cuerpo del correo con una imagen en línea y el código de verificación
             String htmlBody ="<p style=\"text-align: center;\">"
@@ -68,7 +69,7 @@ public class Mail {
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
             JOptionPane.showMessageDialog(null, "El mensaje se ha enviado exitosamente");
-
+            return codigoAux;
         }catch(Exception e) {
             e.printStackTrace();
         }
