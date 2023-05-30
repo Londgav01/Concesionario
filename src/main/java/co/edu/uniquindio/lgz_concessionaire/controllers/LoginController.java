@@ -59,28 +59,22 @@ public class LoginController implements Initializable {
 
     public LoginController() {
     }
+    private Stage stage;
 
     @FXML
     void login(ActionEvent event) throws EmpleadoException {
-        String identificacion = userLogin.getText();
-        String contrasenia = contraLogin.getText();
-        if(ModelFactoryController.getInstance().buscarEmpleado(identificacion, contrasenia) != null){
-            LgzConcessionaireApplication.getPrimaryStage().close();
-            try {
-                FXMLLoader loader = new FXMLLoader();
-                loader.setLocation(LgzConcessionaireApplication.class.getResource("/Concesionario.fxml"));
-                AnchorPane rootLayout = (AnchorPane)loader.load();
-                Scene scene = new Scene(rootLayout);
-
-                this.stage2.setTitle("LGZ Concessionaire");
-                this.stage2.setScene(scene);
-                olividoContrasena.getScene().getWindow().hide();
-                this.stage2.show();
-
-            } catch (Exception e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Concesionario.fxml"));
+            Parent root = loader.load();
+            ConcesionarioController concesionarioController = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            concesionarioController.init(stage, this);
+            stage.show();
+            this.stage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

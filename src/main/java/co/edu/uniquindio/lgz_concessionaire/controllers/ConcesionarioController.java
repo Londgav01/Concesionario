@@ -70,6 +70,21 @@ public class ConcesionarioController {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
+    }
+
+    public void show() {
+        this.stage.show();
+    }
+    private LoginController loginController;
+
+
+
+    public void init(Stage stage, LoginController loginController) {
+        this.loginController = loginController;
+        this.stage = stage;
+
     }
 
 }

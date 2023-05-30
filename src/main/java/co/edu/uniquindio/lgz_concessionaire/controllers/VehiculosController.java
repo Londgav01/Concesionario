@@ -14,6 +14,9 @@ public class VehiculosController {
     private Button camion;
 
     @FXML
+    private Button btnVolver;
+
+    @FXML
     private Button camioneta;
 
     @FXML
@@ -79,6 +82,11 @@ public class VehiculosController {
 
     }
 
+    @FXML
+    void volverEvent(ActionEvent event) {
+        concesionarioController.show();
+        this.stage.close();
+    }
 
     private ConcesionarioController concesionarioController;
     private Stage stage;

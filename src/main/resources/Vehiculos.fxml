@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="671.0" prefWidth="761.0" style="-fx-background-color: #032C28; -fx-border-color: #E7B12B;" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.lgz_concessionaire.controllers.VehiculosController">
    <children>
       <Pane layoutX="28.0" layoutY="28.0" prefHeight="614.0" prefWidth="706.0" style="-fx-background-color: #021614; -fx-border-color: #E7B12B; -fx-border-width: 2;" stylesheets="@Styles/RegisterStyle.css">
@@ -113,6 +112,7 @@
                </font>
             </Label>
             <Separator layoutY="95.0" prefHeight="12.0" prefWidth="706.0" style="-fx-background-color: #E7B12B;" />
+            <Button fx:id="btnVolver" layoutX="34.0" layoutY="52.0" mnemonicParsing="false" onAction="#volverEvent" style="-fx-background-color: withe;" text="Menu principal" textFill="#8a5757" />
          </children>
       </Pane>
    </children>
