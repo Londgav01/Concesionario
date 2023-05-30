@@ -65,7 +65,22 @@ public class LoginController implements Initializable {
         String identificacion = userLogin.getText();
         String contrasenia = contraLogin.getText();
         if(ModelFactoryController.getInstance().buscarEmpleado(identificacion, contrasenia) != null){
+            LgzConcessionaireApplication.getPrimaryStage().close();
+            try {
+                FXMLLoader loader = new FXMLLoader();
+                loader.setLocation(LgzConcessionaireApplication.class.getResource("/Concesionario.fxml"));
+                AnchorPane rootLayout = (AnchorPane)loader.load();
+                Scene scene = new Scene(rootLayout);
 
+                this.stage2.setTitle("LGZ Concessionaire");
+                this.stage2.setScene(scene);
+                olividoContrasena.getScene().getWindow().hide();
+                this.stage2.show();
+
+            } catch (Exception e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
     }
 
