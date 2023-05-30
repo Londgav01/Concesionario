@@ -305,7 +305,7 @@ public class Concesionario {
                 tipoTrasmision,  capacidadCarga,  tieneFrenosAire,  numeroEjes,  tieneABS,  tipoCamion,  tieneAC);
         return camion;
 
-
+        //holaaaaaaaaaaaaaaaaaaaaaaa
 
     }
 
