@@ -25,6 +25,18 @@ public class Transaccion implements Serializable {
     @OneToMany(mappedBy = "transaccion", orphanRemoval = true)
     private List<DetalleTransaccion> listaDetalleTransaccion = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "concesionario_id")
+    private Concesionario concesionario;
+
+    public Concesionario getConcesionario() {
+        return concesionario;
+    }
+
+    public void setConcesionario(Concesionario concesionario) {
+        this.concesionario = concesionario;
+    }
+
     public Transaccion(Empleado empleado, String code, Double valorTotal, Cliente cliente,  List<DetalleTransaccion> listaDetalles) {
         this.empleado = empleado;
         this.code = code;

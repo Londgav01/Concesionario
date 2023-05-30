@@ -34,6 +34,8 @@ public class Concesionario implements Serializable {
     @JoinColumn(name = "administrador_id")
     private Administrador administrador;
 
+    @OneToMany(mappedBy = "concesionario", orphanRemoval = true)
+    private List<Transaccion> listaTransacciones = new ArrayList<>();
 
     /**
      *  Constructor y methods getter and setter
@@ -86,6 +88,14 @@ public class Concesionario implements Serializable {
 
     public void setListaProveedores(List<Proveedor> listaProveedores) {
         this.listaProveedores = listaProveedores;
+    }
+
+    public List<Transaccion> getListaTransacciones() {
+        return listaTransacciones;
+    }
+
+    public void setListaTransacciones(List<Transaccion> listaTransacciones) {
+        this.listaTransacciones = listaTransacciones;
     }
 
     public String getName() {
