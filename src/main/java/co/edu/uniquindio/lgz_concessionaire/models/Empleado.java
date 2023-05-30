@@ -16,6 +16,18 @@ public class Empleado extends Persona implements Serializable {
 
     private String contrasenia;
 
+    @ManyToOne
+    @JoinColumn(name = "concesionario_id")
+    private Concesionario concesionario;
+
+    public Concesionario getConcesionario() {
+        return concesionario;
+    }
+
+    public void setConcesionario(Concesionario concesionario) {
+        this.concesionario = concesionario;
+    }
+
     public Empleado() {super();}
 
     public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono){

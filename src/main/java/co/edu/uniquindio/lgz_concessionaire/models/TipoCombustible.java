@@ -1,4 +1,5 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-class TipoCombustible {
+enum TipoCombustible {
+    HIBRIDO, ELECTRICO, DIESEL, GASOLINA
 }

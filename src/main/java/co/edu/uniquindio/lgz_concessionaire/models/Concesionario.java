@@ -7,27 +7,28 @@ import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
-//@Table(name = "concesionario")
+@Entity
+@Table(name = "concesionario")
 public class Concesionario {
 
-   // @Id
-    //@GeneratedValue(strategy= GenerationType.AUTO)
-    //private Long id;
-
-    //@OneToMany(mappedBy = "concesionario")
-    private List<Empleado> listaEmpleados= new ArrayList<>();
-
-    //@OneToMany(mappedBy = "concesionario")
-    private List<Cliente> listaClientes= new ArrayList<>();
-
-    //@OneToMany(mappedBy = "concesionario")
-    private List<Vehiculo> listaVehiculos= new ArrayList<>();
-
-    //@OneToMany(mappedBy = "concesionario")
-    private List<Proveedor> listaProveedores = new ArrayList<>();
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
+    private Long id;
 
     private String name;
+
+    @OneToMany(mappedBy = "concesionario", orphanRemoval = true)
+    private List<Cliente> listaClientes = new ArrayList<>();
+
+    @OneToMany(mappedBy = "concesionario", orphanRemoval = true)
+    private List<Proveedor> listaProveedores = new ArrayList<>();
+
+    @OneToMany(mappedBy = "concesionario", orphanRemoval = true)
+    private List<Vehiculo> listaVehiculos = new ArrayList<>();
+
+    @OneToMany(mappedBy = "concesionario", orphanRemoval = true)
+    private List<Empleado> listaEmpleados = new ArrayList<>();
+
 
     /**
      *  Constructor y methods getter and setter

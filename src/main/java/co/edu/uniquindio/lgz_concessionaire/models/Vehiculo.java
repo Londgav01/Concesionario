@@ -19,8 +19,20 @@ public class Vehiculo implements Serializable {
     private double velocidadMaxima;
     private String cilindraje;
     private EstadoVehiculo estadoVehiculo;
-    //private TipoCombustible tipoCombustible;
+    private TipoCombustible tipoCombustible;
     private TipoTransmision tipoTrasmision;
+
+    @ManyToOne
+    @JoinColumn(name = "concesionario_id")
+    private Concesionario concesionario;
+
+    public Concesionario getConcesionario() {
+        return concesionario;
+    }
+
+    public void setConcesionario(Concesionario concesionario) {
+        this.concesionario = concesionario;
+    }
 
     public Vehiculo(VehiculoBuilder builder){
         this.id= builder.id;

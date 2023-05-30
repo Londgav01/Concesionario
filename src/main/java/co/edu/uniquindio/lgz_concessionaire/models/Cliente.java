@@ -11,11 +11,16 @@ public class Cliente extends Persona implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    public Long getId() {
-        return id;
+
+    @ManyToOne
+    @JoinColumn(name = "concesionario_id")
+    private Concesionario concesionario;
+
+    public Concesionario getConcesionario() {
+        return concesionario;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setConcesionario(Concesionario concesionario) {
+        this.concesionario = concesionario;
     }
 }

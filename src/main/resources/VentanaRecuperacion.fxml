@@ -44,14 +44,14 @@
                               <Font name="Cooper Black" size="19.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="id" layoutX="113.0" layoutY="118.0" prefHeight="53.0" prefWidth="352.0" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK;" />
+                        <TextField fx:id="id" layoutX="113.0" layoutY="118.0" prefHeight="53.0" prefWidth="352.0" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK;" styleClass="text-field" />
                         <Separator layoutX="113.0" layoutY="251.0" prefHeight="6.0" prefWidth="352.0" style="-fx-background-color: #beff9b;" />
                         <Label fx:id="msjEnvio" layoutX="117.0" layoutY="336.0" prefHeight="50.0" prefWidth="366.0" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                            <font>
                               <Font name="Cooper Black" size="16.0" />
                            </font>
                         </Label>
-                        <TextField fx:id="mail" layoutX="113.0" layoutY="199.0" prefHeight="53.0" prefWidth="352.0" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK;" />
+                        <TextField fx:id="mail" layoutX="113.0" layoutY="199.0" prefHeight="53.0" prefWidth="352.0" style="-fx-background-color: rgba(2, 22, 20, 0.15); -fx-border-color: BLACK;" styleClass="text-field" />
                         <Label layoutX="113.0" layoutY="100.0" text="ID: " textFill="#beff9b">
                            <font>
                               <Font name="Cooper Black" size="13.0" />
@@ -94,9 +94,9 @@
                               <Font name="Cooper Black" size="15.0" />
                            </font>
                         </Button>
-                        <TextField fx:id="code" layoutX="153.0" layoutY="91.0" prefHeight="34.0" prefWidth="282.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" />
-                        <TextField fx:id="newPassword" layoutX="154.0" layoutY="191.0" prefHeight="35.0" prefWidth="282.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" />
-                        <TextField fx:id="newPassword2" layoutX="153.0" layoutY="301.0" prefHeight="34.0" prefWidth="285.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" />
+                        <TextField fx:id="code" layoutX="153.0" layoutY="91.0" prefHeight="34.0" prefWidth="282.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" styleClass="text-field" />
+                        <TextField fx:id="newPassword" layoutX="154.0" layoutY="191.0" prefHeight="35.0" prefWidth="282.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" styleClass="text-field" />
+                        <TextField fx:id="newPassword2" layoutX="153.0" layoutY="301.0" prefHeight="34.0" prefWidth="285.0" style="-fx-background-color: rgba(2, 22, 20, 0.15);" styleClass="text-field" />
                         <Separator layoutX="154.0" layoutY="126.0" prefHeight="0.0" prefWidth="281.0" style="-fx-background-color: #beff9b;" />
                         <Separator layoutX="154.0" layoutY="228.0" prefHeight="1.0" prefWidth="284.0" style="-fx-background-color: #beff9b;" />
                         <Separator layoutX="153.0" layoutY="336.0" prefHeight="0.0" prefWidth="284.0" style="-fx-background-color: #beff9b;" />

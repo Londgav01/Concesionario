@@ -17,13 +17,15 @@ public class Transaccion implements Serializable {
     private String code;
     private Double valorTotal;
     private Cliente cliente;
+    private TipoCombustible tipoCombustible;
     private List<DetalleTransaccion> listaDetalles=new ArrayList<>();
 
-    public Transaccion(Empleado empleado, String code, Double valorTotal, Cliente cliente, List<DetalleTransaccion> listaDetalles) {
+    public Transaccion(Empleado empleado, String code, Double valorTotal, Cliente cliente, TipoCombustible tipoCombustible, List<DetalleTransaccion> listaDetalles) {
         this.empleado = empleado;
         this.code = code;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
+        this.tipoCombustible = tipoCombustible;
         this.listaDetalles = listaDetalles;
     }
 
