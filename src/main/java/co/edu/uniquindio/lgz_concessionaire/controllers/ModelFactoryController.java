@@ -5,8 +5,9 @@ import java.util.List;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
 import co.edu.uniquindio.lgz_concessionaire.models.Concesionario;
 import co.edu.uniquindio.lgz_concessionaire.models.Empleado;
+import org.springframework.stereotype.Component;
 
-
+@Component
 public class ModelFactoryController {
 	Concesionario concesionario = null;
 

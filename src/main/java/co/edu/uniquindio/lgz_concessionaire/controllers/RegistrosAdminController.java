@@ -3,13 +3,28 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import org.springframework.stereotype.Component;
 
+@Component
 public class RegistrosAdminController {
 
     @FXML
     private Hyperlink backToPrincipal;
+
+    @FXML
+    private Button botonActualizarAdmin;
+
+    @FXML
+    private Button botonActualizarCliente;
+
+    @FXML
+    private Button botonActualizarEmpleado;
+
+    @FXML
+    private Button botonEliminar;
 
     @FXML
     private Button botonRegistrarAdmin;
@@ -25,6 +40,9 @@ public class RegistrosAdminController {
 
     @FXML
     private TextField direccionNuevoCliente;
+
+    @FXML
+    private TextField idEliminar;
 
     @FXML
     private TextField idNuevoAdmin;
@@ -51,10 +69,33 @@ public class RegistrosAdminController {
     private TextField nuevoTelefonoEmpleado;
 
     @FXML
+    private ChoiceBox<?> opciones;
+
+    @FXML
     private TextField telefonoNuevoAdmin;
 
     @FXML
     private TextField telefonoNuevoCliente;
+
+    @FXML
+    void actualizarAdmin(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actualizarCliente(ActionEvent event) {
+
+    }
+
+    @FXML
+    void actualizarEmpleado(ActionEvent event) {
+
+    }
+
+    @FXML
+    void eliminar(ActionEvent event) {
+
+    }
 
     @FXML
     void registrarCliente(ActionEvent event) {

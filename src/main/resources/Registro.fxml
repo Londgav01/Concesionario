@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
@@ -63,7 +64,7 @@
                         <TextField fx:id="nuevoTelefonoEmpleado" layoutX="340.0" layoutY="296.0" prefHeight="34.0" prefWidth="210.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" />
                         <TextField fx:id="nuevoNombreEmpleado" layoutX="58.0" layoutY="187.0" prefHeight="34.0" prefWidth="210.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" />
                         <TextField fx:id="nuevoIdEmpleado" layoutX="340.0" layoutY="187.0" prefHeight="34.0" prefWidth="210.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" />
-                        <Button fx:id="botonActualizarEmpleado" layoutX="90.0" layoutY="384.0" mnemonicParsing="false" onAction="#registrarNuevoEmpleado" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="botonActualizarEmpleado" layoutX="90.0" layoutY="384.0" mnemonicParsing="false" onAction="#actualizarEmpleado" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font name="Cooper Black" size="18.0" />
                            </font>
@@ -118,7 +119,7 @@
                               <Font name="Cooper Black" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="botonActualizarCliente" layoutX="90.0" layoutY="395.0" mnemonicParsing="false" onAction="#registrarCliente" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="botonActualizarCliente" layoutX="90.0" layoutY="395.0" mnemonicParsing="false" onAction="#actualizarCliente" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" text="Actualizar" textFill="WHITE">
                            <font>
                               <Font name="Cooper Black" size="18.0" />
                            </font>
@@ -173,7 +174,45 @@
                               <Font name="Cooper Black" size="18.0" />
                            </font>
                         </Button>
-                        <Button fx:id="botonActualizarAdmin" layoutX="105.0" layoutY="381.0" mnemonicParsing="false" onAction="#registrarNuevoAdmin" prefHeight="36.0" prefWidth="123.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" text="Actualizar" textFill="WHITE">
+                        <Button fx:id="botonActualizarAdmin" layoutX="105.0" layoutY="381.0" mnemonicParsing="false" onAction="#actualizarAdmin" prefHeight="36.0" prefWidth="123.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" text="Actualizar" textFill="WHITE">
+                           <font>
+                              <Font name="Cooper Black" size="18.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </Tab>
+            <Tab style="-fx-background-color: #021614;" text="Eliminar">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <ImageView fitHeight="372.0" fitWidth="652.0" layoutX="-30.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@images/img_3.png" />
+                           </image>
+                           <effect>
+                              <GaussianBlur />
+                           </effect>
+                        </ImageView>
+                        <Label layoutX="107.0" layoutY="48.0" text="Eliminar Empleado o Cliente" textFill="WHITE">
+                           <font>
+                              <Font name="Cooper Black" size="26.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="idEliminar" layoutX="38.0" layoutY="196.0" prefHeight="34.0" prefWidth="210.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" />
+                        <Label layoutX="38.0" layoutY="160.0" text="Ingrese ID:" textFill="WHITE">
+                           <font>
+                              <Font name="Cooper Black" size="21.0" />
+                           </font>
+                        </Label>
+                        <ChoiceBox fx:id="opciones" layoutX="333.0" layoutY="196.0" prefHeight="34.0" prefWidth="214.0" />
+                        <Label layoutX="333.0" layoutY="160.0" text="Elija Opcion:" textFill="WHITE">
+                           <font>
+                              <Font name="Cooper Black" size="21.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="botonEliminar" layoutX="232.0" layoutY="312.0" mnemonicParsing="false" onAction="#eliminar" prefHeight="36.0" prefWidth="128.0" style="-fx-background-color: rgba(255, 255, 255, 0.2); -fx-border-color: black;" text="Eliminar" textFill="WHITE">
                            <font>
                               <Font name="Cooper Black" size="18.0" />
                            </font>

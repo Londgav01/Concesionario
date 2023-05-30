@@ -14,3 +14,7 @@
     -fx-background-color: rgba(255, 255, 255, 0.2);
     -fx-border-color: black;
 }
+
+.label-verde-oscuro {
+    -fx-text-fill: darkgreen;
+}

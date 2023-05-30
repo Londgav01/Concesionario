@@ -1,6 +1,7 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
 import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
+import co.edu.uniquindio.lgz_concessionaire.repository.ClienteRepository;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -24,6 +25,9 @@ public class LoginController implements Initializable {
 
     private Stage stage2= new Stage();
     private RecuperacionController recuperacionController;
+    private ClienteRepository clienteRepository;
+
+
 
     @FXML
     private Button botonLogin;

@@ -6,27 +6,31 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-//@Entity
-//@Table(name = "TRANSACCIONES")
+@Entity
+@Table(name = "TRANSACCIONES")
 public class Transaccion implements Serializable {
-
-    //@Id
-    //@GeneratedValue(strategy= GenerationType.AUTO)
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
-    private Empleado empleado;
+
     private String code;
     private Double valorTotal;
+    @ManyToOne
+    @JoinColumn(name = "empleado_id")
+    private Empleado empleado;
+    @ManyToOne
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
-    private TipoCombustible tipoCombustible;
-    private List<DetalleTransaccion> listaDetalles=new ArrayList<>();
 
-    public Transaccion(Empleado empleado, String code, Double valorTotal, Cliente cliente, TipoCombustible tipoCombustible, List<DetalleTransaccion> listaDetalles) {
+    @OneToMany(mappedBy = "transaccion", orphanRemoval = true)
+    private List<DetalleTransaccion> listaDetalleTransaccion = new ArrayList<>();
+
+    public Transaccion(Empleado empleado, String code, Double valorTotal, Cliente cliente,  List<DetalleTransaccion> listaDetalles) {
         this.empleado = empleado;
         this.code = code;
         this.valorTotal = valorTotal;
         this.cliente = cliente;
-        this.tipoCombustible = tipoCombustible;
-        this.listaDetalles = listaDetalles;
+        this.listaDetalleTransaccion = listaDetalles;
     }
 
     public Transaccion() {}
@@ -63,11 +67,12 @@ public class Transaccion implements Serializable {
         this.cliente = cliente;
     }
 
-    public List<DetalleTransaccion> getListaDetalles() {
-        return listaDetalles;
+    public List<DetalleTransaccion> getListaDetalleTransaccion() {
+        return listaDetalleTransaccion;
     }
 
-    public void setListaDetalles(List<DetalleTransaccion> listaDetalles) {
-        this.listaDetalles = listaDetalles;
+    public void setListaDetalleTransaccion(List<DetalleTransaccion> listaDetalleTransaccion) {
+        this.listaDetalleTransaccion = listaDetalleTransaccion;
     }
+
 }

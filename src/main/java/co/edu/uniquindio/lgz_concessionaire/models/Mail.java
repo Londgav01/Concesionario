@@ -3,8 +3,10 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.sound.midi.Soundbank;
 import javax.swing.JOptionPane;
 
+import java.sql.SQLOutput;
 import java.util.Properties;
 import java.util.Random;
 
@@ -68,11 +70,12 @@ public class Mail {
             transport.connect(username, password);
             transport.sendMessage(message, message.getAllRecipients());
             transport.close();
-            JOptionPane.showMessageDialog(null, "El mensaje se ha enviado exitosamente");
+            System.out.println("Mensaje enviado");
             return codigoAux;
         }catch(Exception e) {
             e.printStackTrace();
         }
+        return "";
     }
 
 

@@ -13,3 +13,12 @@
 .text-field .text-input {
     -fx-text-fill: #beff9b;
 }
+
+.choice-box {
+    -fx-background-color: rgba(255, 255, 255, 0.2);
+    -fx-border-color: black;
+}
+
+.choice-box .label {
+    -fx-text-fill: white;
+}
