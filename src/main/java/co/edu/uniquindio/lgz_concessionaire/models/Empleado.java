@@ -14,7 +14,7 @@ public class Empleado extends Persona implements Serializable {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
 
-    private String idEmpleado;
+    private String contrasenia;
 
     public Empleado() {super();}
 
@@ -27,16 +27,16 @@ public class Empleado extends Persona implements Serializable {
                 .build();
     }
 
-    public String getIdEmpleado() {
-        return idEmpleado;
+    public String getContrasenia() {
+        return contrasenia;
     }
 
 
     public static class EmpleadoBuilder extends PersonaBuilder{
         Empleado empleado= new Empleado();
 
-        public EmpleadoBuilder idEmpleado(String id) {
-            empleado.idEmpleado= id;
+        public EmpleadoBuilder idEmpleado(String contrasenia) {
+            empleado.contrasenia= contrasenia;
             return this;
         }
 

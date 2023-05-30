@@ -74,7 +74,9 @@ public class RecuperacionController implements Initializable {
     @FXML
     void cambiarContrasena(ActionEvent event) {
         if(code.getText().equals(codigo)) {//aquí va la condicion de si el codifo introducido es el mismo enviado
+            if(verificarContrasenia()){
 
+            }
         }
 
     }
@@ -96,6 +98,16 @@ public class RecuperacionController implements Initializable {
                 + "<p>Si usted no solicit&oacute esta recuperaci&oacuten de contrase&ntildea, puede ignorar este correo electr&oacutenico. No se realizar&aacuten cambios en su cuenta.</p>"
                 + "<p>Por motivos de seguridad, le sugerimos que una vez que haya restablecido su contrase&ntildea, la modifique por una nueva y segura.</p>";
         return Mail.mail("recuperarContraseña", introCuerpo, finalCuerpo, mail.getText());
+    }
+
+    /*
+
+     */
+    public boolean verificarContrasenia(){
+        if(newPassword.getText().equals(newPassword2.getText())){
+            return true;
+        }
+        return false;
     }
 
     @Override

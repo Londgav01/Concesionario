@@ -85,9 +85,9 @@ public class Concesionario {
     ////////////////////////////////////////////////////////////////////////
     //Metodo CRUD empleado
 
-    public Empleado crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
+    public Empleado crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String contrasenia) throws EmpleadoException{
         Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
-                .idEmpleado(idEmpleado)
+                .idEmpleado(contrasenia)
                 .withNombre(nombre)
                 .withId(identificacion)
                 .withDireccion(direccion)
@@ -100,9 +100,9 @@ public class Concesionario {
         return empleado;
     }
 
-    public Empleado buscarEmpleado(String idEmpleado) throws EmpleadoException{
+    public Empleado buscarEmpleado(String identificacion) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
-            if(empleado.getIdEmpleado().equals(idEmpleado)){
+            if(empleado.getIdentificacion().equals(identificacion)){
                 return empleado;
             }
         }
@@ -129,7 +129,7 @@ public class Concesionario {
 
     public boolean eliminarEmpleado (String idEmpleado) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
-            if(buscarEmpleado(idEmpleado).equals(empleado.getIdEmpleado())){
+            if(buscarEmpleado(idEmpleado).equals(empleado.getIdentificacion())){
                 listaEmpleados.remove(empleado);
                 return true;
             }
