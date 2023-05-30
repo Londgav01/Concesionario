@@ -15,6 +15,8 @@ public class TransaccionesControlle {
 
     @FXML
     private Button botonRegistrarDevolucion;
+    @FXML
+    private Button volver;
 
     @FXML
     private Button botonRegistrarVenta;
@@ -93,6 +95,12 @@ public class TransaccionesControlle {
 
     }
 
+
+    @FXML
+    void volverEvent(ActionEvent event) {
+        concesionarioController.show();
+        this.stage.close();
+    }
     private ConcesionarioController concesionarioController;
     private Stage stage;
 

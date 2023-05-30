@@ -78,7 +78,7 @@ public class ConcesionarioController implements Initializable {
             stage.setScene(scene);
             transaccionesControlle.init(stage, this);
             stage.show();
-            this.stage.close();
+            this.stage.hide();
         } catch (Exception e) {
             e.printStackTrace();
         }

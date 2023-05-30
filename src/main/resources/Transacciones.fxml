@@ -12,7 +12,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="598.0" prefWidth="740.0" style="-fx-background-color: #032C28; -fx-border-color: #E7B12B; -fx-border-width: 5;" stylesheets="@Styles/RegisterStyle.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="co.edu.uniquindio.lgz_concessionaire.controllers.TransaccionesControlle">
    <children>
       <TabPane layoutX="53.0" layoutY="59.0" prefHeight="476.0" prefWidth="629.0" stylesheets="@Styles/RecupStyle.css" tabClosingPolicy="UNAVAILABLE">
@@ -140,5 +139,6 @@
             </Tab>
         </tabs>
       </TabPane>
+      <Button fx:id="btnVolver" layoutX="53.0" layoutY="25.0" mnemonicParsing="false" onAction="#volverEvent" text="Menu principal" />
    </children>
 </AnchorPane>
