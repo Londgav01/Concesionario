@@ -39,8 +39,8 @@ public class ModelFactoryController {
 		this.concesionario = concesionario;
 	}
 
-	public Empleado buscarEmpleado (String idEmpleado) throws EmpleadoException {
-		Empleado empleado = (concesionario.buscarEmpleado(idEmpleado));
+	public Empleado buscarEmpleado (String idEmpleado, String contrasenia) throws EmpleadoException {
+		Empleado empleado = (concesionario.buscarEmpleado(idEmpleado, contrasenia));
 		return empleado;
 	}
 

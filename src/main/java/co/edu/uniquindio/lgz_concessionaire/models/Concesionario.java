@@ -101,22 +101,23 @@ public class Concesionario {
         return empleado;
     }
 
-    public Empleado buscarEmpleado(String identificacion) throws EmpleadoException{
+    public Empleado buscarEmpleado(String identificacion, String contrasenia) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
-            if(empleado.getIdentificacion().equals(identificacion)){
+            if(empleado.getIdentificacion().equals(identificacion) && empleado.getContrasenia().equals(contrasenia)){
                 return empleado;
             }
         }
         throw new EmpleadoException("El empleado no se ha encontrado");
     }
 
-    public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException{
-        if(buscarEmpleado(idEmpleado) != null) {
+    public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado, String contrasenia) throws EmpleadoException{
+        if(buscarEmpleado(idEmpleado, contrasenia) != null) {
             for (Empleado empleado : listaEmpleados) {
                 if (empleado.getId().equals(idEmpleado)){
                     empleado.setDireccion(direccion);
                     empleado.setNombre(nombre);
                     empleado.setNumeroTelefonico(numeroTelefonico);
+                    empleado.setContrasenia(contrasenia);
                     break;
                 }
             }
@@ -128,9 +129,9 @@ public class Concesionario {
     }
 
 
-    public boolean eliminarEmpleado (String idEmpleado) throws EmpleadoException{
+    public boolean eliminarEmpleado (String idEmpleado, String contrasenia) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
-            if(buscarEmpleado(idEmpleado).equals(empleado.getIdentificacion())){
+            if(empleado.getIdentificacion().equals(idEmpleado) && empleado.getContrasenia().equals(contrasenia)){
                 listaEmpleados.remove(empleado);
                 return true;
             }
