@@ -4,7 +4,11 @@ public class Deportivo extends Automovil{
     private Double caballosFuerza;
     private Double tiempo100Km;
 
-    public Deportivo() {super();}
+    public Deportivo(DeportivoBuilder deportivoBuilder) {
+        super(deportivoBuilder);
+        this.tiempo100Km= deportivoBuilder.tiempo100Km;
+        this.caballosFuerza= deportivoBuilder.caballosFuerza;
+    }
     public Double getCaballosFuerza() {
         return caballosFuerza;
     }
@@ -15,24 +19,22 @@ public class Deportivo extends Automovil{
 
     public static class DeportivoBuilder extends AutomovilBuilder {
 
-        private Deportivo deportivo;
+        private Double caballosFuerza;
+        private Double tiempo100Km;
 
-        public DeportivoBuilder() {
-            deportivo = new Deportivo();
-        }
 
         public DeportivoBuilder caballosFuerza(Double caballosFuerza) {
-            deportivo.caballosFuerza = caballosFuerza;
+            this.caballosFuerza = caballosFuerza;
             return this;
         }
 
         public DeportivoBuilder tiempo100Km(Double tiempo100Km) {
-            deportivo.tiempo100Km = tiempo100Km;
+            this.tiempo100Km = tiempo100Km;
             return this;
         }
 
         public Deportivo build() {
-            return deportivo;
+            return new Deportivo(this);
         }
     }
 }

@@ -1,6 +1,11 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
-public class Administrador extends Empleado {
+import jakarta.persistence.*;
+
+import java.io.Serializable;
+
+@Entity
+public class Administrador extends Empleado implements Serializable {
 
     private String idAdministrador;
 
@@ -8,6 +13,9 @@ public class Administrador extends Empleado {
         super();
         this.idAdministrador = idAdministrador;
     }
+
+    public Administrador() {}
+
 
     public String getIdAdministrador() {
         return idAdministrador;

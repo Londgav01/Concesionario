@@ -7,8 +7,12 @@ public class Sedaneta extends StationWagon{
     private boolean tieneSensorTraficoCruzado;
     private boolean tieneAsistenteCarril;
 
-    public Sedaneta() {
-        super();
+    public Sedaneta(SedanetaBuilder sedanetaBuilder) {
+        super(sedanetaBuilder);
+        this.tieneAsistenteCarril= sedanetaBuilder.tieneAsistenteCarril;
+        this.tieneVelocidadCrucero= sedanetaBuilder.tieneVelocidadCrucero;
+        this.tieneSensoresColision= sedanetaBuilder.tieneSensoresColision;
+        this.tieneSensorTraficoCruzado= sedanetaBuilder.tieneSensorTraficoCruzado;
     }
 
     public boolean isTieneVelocidadCrucero() {
@@ -28,33 +32,37 @@ public class Sedaneta extends StationWagon{
     }
 
     public static class SedanetaBuilder extends StationWagonBuilder {
-        Sedaneta sedaneta= new Sedaneta();
 
-        public SedanetaBuilder() {Sedaneta sedaneta= new Sedaneta();}
+        private boolean tieneVelocidadCrucero;
+        private boolean tieneSensoresColision;
+        private boolean tieneSensorTraficoCruzado;
+        private boolean tieneAsistenteCarril;
+
+        public SedanetaBuilder() {Sedaneta sedaneta= new Sedaneta(this);}
 
         public SedanetaBuilder tieneVelocidadCrucero(boolean tieneVelocidadCrucero) {
-            sedaneta.tieneVelocidadCrucero = tieneVelocidadCrucero;
+            this.tieneVelocidadCrucero = tieneVelocidadCrucero;
             return this;
         }
 
         public SedanetaBuilder tieneSensoresColision(boolean tieneSensoresColision) {
-            sedaneta.tieneSensoresColision = tieneSensoresColision;
+            this.tieneSensoresColision = tieneSensoresColision;
             return this;
         }
 
         public SedanetaBuilder tieneSensorTraficoCruzado(boolean tieneSensorTraficoCruzado) {
-            sedaneta.tieneSensorTraficoCruzado = tieneSensorTraficoCruzado;
+            this.tieneSensorTraficoCruzado = tieneSensorTraficoCruzado;
             return this;
         }
 
         public SedanetaBuilder tieneAsistenteCarril(boolean tieneAsistenteCarril) {
-            sedaneta.tieneAsistenteCarril = tieneAsistenteCarril;
+            this.tieneAsistenteCarril = tieneAsistenteCarril;
             return this;
         }
 
         @Override
         public Sedaneta build() {
-            return sedaneta;
+            return new Sedaneta(this);
         }
     }
 }

@@ -6,9 +6,12 @@ public class Bus extends Automovil{
     private Integer numSalidasEmergencia;
     private boolean tieneABS;
 
+    Bus(BusBuilder busBuilder) {
+        super(busBuilder);
+        this.numEjes= busBuilder.numEjes;
+        this.numSalidasEmergencia= busBuilder.numSalidasEmergencia;
+        this.tieneABS= busBuilder.tieneABS;
 
-    private Bus() {
-        super();
     }
     public Integer getNumEjes() {
         return numEjes;
@@ -23,29 +26,27 @@ public class Bus extends Automovil{
     }
 
     public static class BusBuilder extends AutomovilBuilder {
-        private Bus bus;
-
-        public BusBuilder() {
-            bus = new Bus();
-        }
+        private Integer numEjes;
+        private Integer numSalidasEmergencia;
+        private boolean tieneABS;
 
         public BusBuilder numEjes(Integer numEjes) {
-            bus.numEjes = numEjes;
+            this.numEjes = numEjes;
             return this;
         }
 
         public BusBuilder numSalidasEmergencia(Integer numSalidasEmergencia) {
-            bus.numSalidasEmergencia = numSalidasEmergencia;
+            this.numSalidasEmergencia = numSalidasEmergencia;
             return this;
         }
 
         public BusBuilder tieneABS(boolean tieneABS) {
-            bus.tieneABS = tieneABS;
+            this.tieneABS = tieneABS;
             return this;
         }
 
         public Bus build() {
-            return bus;
+            return new Bus(this);
         }
     }
 }

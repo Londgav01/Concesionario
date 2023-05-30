@@ -36,7 +36,7 @@ public class Vehiculo implements Serializable {
 
     public Vehiculo(VehiculoBuilder builder){
         this.id= builder.id;
-        //this.tipoCombustible= builder.tipoCombustible;
+        this.tipoCombustible= builder.tipoCombustible;
         this.estadoVehiculo= builder.estadoVehiculo;
         this.marca= builder.marca;
         this.placa= builder.placa;
@@ -85,7 +85,7 @@ public class Vehiculo implements Serializable {
         private double velocidadMaxima;
         private String cilindraje;
         private EstadoVehiculo estadoVehiculo;
-        //private TipoCombustible tipoCombustible;
+        private TipoCombustible tipoCombustible;
         private TipoTransmision tipoTransmision;
 
         public VehiculoBuilder setId(Long id) {
@@ -128,10 +128,10 @@ public class Vehiculo implements Serializable {
             return this;
         }
 
-        /*public VehiculoBuilder setTipoCombustible(TipoCombustible tipoCombustible) {
+        public VehiculoBuilder setTipoCombustible(TipoCombustible tipoCombustible) {
             this.tipoCombustible = tipoCombustible;
             return this;
-        }*/
+        }
 
         public VehiculoBuilder setTipoTransmision(TipoTransmision tipoTransmision) {
             this.tipoTransmision = tipoTransmision;

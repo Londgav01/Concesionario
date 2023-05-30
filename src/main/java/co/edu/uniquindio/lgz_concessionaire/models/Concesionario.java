@@ -4,12 +4,13 @@ import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import jakarta.persistence.*;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "concesionario")
-public class Concesionario {
+public class Concesionario implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
@@ -29,6 +30,8 @@ public class Concesionario {
     @OneToMany(mappedBy = "concesionario", orphanRemoval = true)
     private List<Empleado> listaEmpleados = new ArrayList<>();
 
+    @ManyToOne
+    @JoinColumn(name = "administrador_id")
     private Administrador administrador;
 
 
@@ -271,11 +274,16 @@ public class Concesionario {
                              TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
                              boolean camaraReversa, boolean aBS, boolean velocidadCrucero, boolean sensoresColision,
                              boolean sensorTraficoCruzado, boolean asistenteCarril){
-        Sedan sedan = new Sedan ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
-                cilindraje,  estadoVehiculo,  tipoCombustible,
-                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire,  aC,
-                camaraReversa,  aBS,  velocidadCrucero,  sensoresColision,
-                sensorTraficoCruzado,  asistenteCarril);
+        Sedan sedan = (Sedan) new Sedaneta.SedanetaBuilder()
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setModelo(modelo)
+                .setCantidadCambios(cantidadCambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .setEstadoVehiculo(estadoVehiculo).setTipoCombustible(tipoCombustible)
+                .setTipoTransmision(tipoTrasmision)
+                .build();
         return sedan;
     }
 
@@ -283,10 +291,24 @@ public class Concesionario {
 
     public Deportivo crearDeportivo(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                                     String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
-                                    TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, int tiempo100Km){
-        Deportivo deportivo = new Deportivo ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
-                cilindraje,  estadoVehiculo,  tipoCombustible,
-                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire,  tiempo100Km);
+                                    TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, Double tiempo100Km, Double caballosFuerza){
+        Deportivo deportivo = (Deportivo) new Deportivo.DeportivoBuilder()
+                .caballosFuerza(caballosFuerza)
+                .tiempo100Km(tiempo100Km)
+                .numBolsasAire(numBolsasAire)
+                .numPuertas(numPuertas)
+                .numPasajeros(numPasajeros)
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setModelo(modelo)
+                .setCantidadCambios(cantidadCambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .setEstadoVehiculo(estadoVehiculo)
+                .setTipoCombustible(tipoCombustible)
+                .setTipoTransmision(tipoTrasmision)
+                .build();
+
         return deportivo;
     }
 
@@ -297,11 +319,28 @@ public class Concesionario {
                                      TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
                                      boolean camaraReversa, boolean aBS, boolean velocidadCrucero, boolean sensoresColision,
                                      boolean sensorTraficoCruzado, boolean asistenteCarril, boolean is4x4){
-        Camioneta camioneta = new Camioneta ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
-                cilindraje,  estadoVehiculo,  tipoCombustible,
-                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire,  aC,
-                camaraReversa,  aBS,  velocidadCrucero,  sensoresColision,
-                sensorTraficoCruzado,  asistenteCarril,  is4x4);
+        Camioneta camioneta = (Camioneta) new Camioneta.CamionetaBuilder()
+                .is4x4(is4x4)
+                .tieneAsistenteCarril(asistenteCarril)
+                .tieneSensorTraficoCruzado(sensorTraficoCruzado)
+                .tieneSensoresColision(sensoresColision)
+                .tieneVelocidadCrucero(velocidadCrucero)
+                .tieneABS(aBS)
+                .tieneCamaraReversa(camaraReversa)
+                .numBolsasAire(numBolsasAire)
+                .numPasajeros(numPasajeros)
+                .numPuertas(numPuertas)
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setModelo(modelo)
+                .setCantidadCambios(cantidadCambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .setEstadoVehiculo(estadoVehiculo)
+                .setTipoCombustible(tipoCombustible)
+                .setTipoTransmision(tipoTrasmision)
+                .build();
+
         return camioneta;
     }
 
@@ -309,32 +348,64 @@ public class Concesionario {
     public Camion crearCamion (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                                String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                                TipoTransmision tipoTrasmision, double capacidadCarga, boolean tieneFrenosAire, int numeroEjes, boolean tieneABS, String tipoCamion, boolean tieneAC){
-        Camion camion = new Camion ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
-                cilindraje,  estadoVehiculo,  tipoCombustible,
-                tipoTrasmision,  capacidadCarga,  tieneFrenosAire,  numeroEjes,  tieneABS,  tipoCamion,  tieneAC);
+        Camion camion = (Camion) new Camion.CamionBuilder()
+                .numeroEjes(numeroEjes)
+                .capacidadCarga(capacidadCarga)
+                .tieneFrenosAire(tieneFrenosAire)
+                .setTipoTransmision(tipoTrasmision)
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setModelo(modelo)
+                .setCantidadCambios(cantidadCambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .setEstadoVehiculo(estadoVehiculo)
+                .setTipoCombustible(tipoCombustible)
+                .setTipoTransmision(tipoTrasmision)
+                .build();
         return camion;
-
-        //holaaaaaaaaaaaaaaaaaaaaaaa
-
     }
 
 
 
 
     public Moto crearMoto (String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, float velocidadMaxima,
-                           int cilindraje){
-        Moto moto = new Moto ( marca,  estadoVehiculo,  modelo,  cambios,  velocidadMaxima,
-                cilindraje);
+                           String cilindraje, String placa){
+        Moto moto = (Moto) new Moto.MotoBuilder()
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setEstadoVehiculo(estadoVehiculo)
+                .setModelo(modelo)
+                .setCantidadCambios(cambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .build();
         return moto;
 
     }
 
     public Bus crearBus (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                          String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
-                         TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire){
-        Bus bus = new Bus( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
-                cilindraje,  estadoVehiculo,  tipoCombustible,
-                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire);
+                         TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, int numEjes, int numSalidas, boolean tieneAbs){
+        Bus bus = (Bus) new Bus.BusBuilder()
+                .numEjes(numEjes)
+                .numSalidasEmergencia(numSalidas)
+                .tieneABS(tieneAbs)
+                .numPuertas(numPuertas)
+                .numPasajeros(numPasajeros)
+                .numBolsasAire(numBolsasAire)
+                .setCantidadCambios(cantidadCambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .setEstadoVehiculo(estadoVehiculo)
+                .setTipoCombustible(tipoCombustible)
+                .setTipoTransmision(tipoTrasmision)
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setModelo(modelo)
+                .build();
+
+
         return  bus;
     }
 
@@ -342,10 +413,25 @@ public class Concesionario {
                              String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                              TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
                              boolean camaraReversa, boolean aBS, boolean is4x4, double capacidadCarga){
-        PickUp pick = new PickUp ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
-                cilindraje,  estadoVehiculo,  tipoCombustible,
-                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire,  aC,
-                camaraReversa,  aBS,  is4x4,  capacidadCarga);
+        PickUp pick = (PickUp) new PickUp.PickUpBuilder()
+                .is4x4(is4x4)
+                .capacidadCarga(capacidadCarga)
+                .tieneAC(aC)
+                .tieneABS(aBS)
+                .tieneCamaraReversa(camaraReversa)
+                .numBolsasAire(numBolsasAire)
+                .numPasajeros(numPasajeros)
+                .numPuertas(numPuertas)
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setModelo(modelo)
+                .setCantidadCambios(cantidadCambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .setEstadoVehiculo(estadoVehiculo)
+                .setTipoTransmision(tipoTrasmision)
+                .setTipoCombustible(tipoCombustible)
+                .build();
         return pick;
     }
 
@@ -353,10 +439,23 @@ public class Concesionario {
                          String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                          TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
                          boolean camaraReversa, boolean aBS){
-        Van van = new Van ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
-                cilindraje,  estadoVehiculo,  tipoCombustible,
-                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire,  aC,
-                camaraReversa,  aBS);
+        Van van = (Van) new StationWagon.StationWagonBuilder()
+                .tieneAC(aC)
+                .tieneABS(aBS)
+                .tieneCamaraReversa(camaraReversa)
+                .numBolsasAire(numBolsasAire)
+                .numPasajeros(numPasajeros)
+                .numPuertas(numPuertas)
+                .setMarca(marca)
+                .setPlaca(placa)
+                .setModelo(modelo)
+                .setCantidadCambios(cantidadCambios)
+                .setVelocidadMaxima(velocidadMaxima)
+                .setCilindraje(cilindraje)
+                .setEstadoVehiculo(estadoVehiculo)
+                .setTipoTransmision(tipoTrasmision)
+                .setTipoCombustible(tipoCombustible)
+                .build();
         return van;
     }
 

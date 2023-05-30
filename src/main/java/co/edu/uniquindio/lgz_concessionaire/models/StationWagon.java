@@ -6,7 +6,12 @@ public class StationWagon extends Automovil{
     private boolean tieneCamaraReversa;
     private boolean tieneABS;
 
-    public StationWagon() {super();}
+    public StationWagon(StationWagonBuilder stationWagonBuilder) {
+        super(stationWagonBuilder);
+        this.tieneAC= stationWagonBuilder.tieneAC;
+        this.tieneCamaraReversa= stationWagonBuilder.tieneCamaraReversa;
+        this.tieneABS= stationWagonBuilder.tieneABS;
+    }
 
     public boolean isTieneAC() {
         return tieneAC;
@@ -21,29 +26,27 @@ public class StationWagon extends Automovil{
     }
 
     public static class StationWagonBuilder extends AutomovilBuilder {
-        private StationWagon stationWagon;
-
-        public StationWagonBuilder() {
-            stationWagon = new StationWagon();
-        }
+        private boolean tieneAC;
+        private boolean tieneCamaraReversa;
+        private boolean tieneABS;
 
         public StationWagonBuilder tieneAC(boolean tieneAC) {
-            stationWagon.tieneAC = tieneAC;
+            this.tieneAC = tieneAC;
             return this;
         }
 
         public StationWagonBuilder tieneCamaraReversa(boolean tieneCamaraReversa) {
-            stationWagon.tieneCamaraReversa = tieneCamaraReversa;
+            this.tieneCamaraReversa = tieneCamaraReversa;
             return this;
         }
 
         public StationWagonBuilder tieneABS(boolean tieneABS) {
-            stationWagon.tieneABS = tieneABS;
+            this.tieneABS = tieneABS;
             return this;
         }
 
         public StationWagon build() {
-            return stationWagon;
+            return new StationWagon(this);
         }
     }
 }

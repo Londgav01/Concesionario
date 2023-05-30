@@ -47,13 +47,14 @@ public class RegistrosEmpleadoController {
     }
 
 
+    /*
     private MenuPrincipalController menuPrincipalController;
     private Stage stage;
 
     public void init(Stage stage, MenuPrincipalController menuPrincipalController) {
         this.menuPrincipalController = menuPrincipalController;
         this.stage = stage;
-    }
+    }*/
 
 }
 

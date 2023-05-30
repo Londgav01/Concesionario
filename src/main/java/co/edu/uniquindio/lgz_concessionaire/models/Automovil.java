@@ -6,8 +6,11 @@ public class Automovil extends Vehiculo {
     private Integer numPasajeros;
     private Integer numBolsasAire;
 
-    public Automovil() {
+    public Automovil(AutomovilBuilder automovilBuilder) {
         super();
+        this.numPuertas= automovilBuilder.numPuertas;
+        this.numBolsasAire= automovilBuilder.numBolsasAire;
+        this.numPasajeros= automovilBuilder.numPasajeros;
     }
 
     public Integer getNumPuertas() {
@@ -24,29 +27,28 @@ public class Automovil extends Vehiculo {
 
     // Clase interna AutomovilBuilder
     public static class AutomovilBuilder extends VehiculoBuilder {
-        private Automovil automovil;
 
-        public AutomovilBuilder() {
-            automovil = new Automovil();
-        }
+        private Integer numPuertas;
+        private Integer numPasajeros;
+        private Integer numBolsasAire;
 
         public AutomovilBuilder numPuertas(Integer numPuertas) {
-            automovil.numPuertas = numPuertas;
+            this.numPuertas = numPuertas;
             return this;
         }
 
         public AutomovilBuilder numPasajeros(Integer numPasajeros) {
-            automovil.numPasajeros = numPasajeros;
+            this.numPasajeros = numPasajeros;
             return this;
         }
 
         public AutomovilBuilder numBolsasAire(Integer numBolsasAire) {
-            automovil.numBolsasAire = numBolsasAire;
+            this.numBolsasAire = numBolsasAire;
             return this;
         }
 
         public Automovil build() {
-            return automovil;
+            return new Automovil(this);
         }
     }
 }

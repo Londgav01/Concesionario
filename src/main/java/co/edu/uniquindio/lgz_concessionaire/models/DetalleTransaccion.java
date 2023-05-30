@@ -2,9 +2,11 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 @Entity
 @Table(name = "DETALLES TRANSACCION")
-public class DetalleTransaccion {
+public class DetalleTransaccion implements Serializable {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

@@ -9,8 +9,14 @@ public class Camion extends Vehiculo{
     private String tipoCamion;
     private boolean tieneAC;
 
-    private Camion() {
+    Camion(CamionBuilder camionBuilder) {
         super();
+        this.capacidadCarga= camionBuilder.capacidadCarga;
+        this.tipoCamion= camionBuilder.tipoCamion;
+        this.tieneABS= camionBuilder.tieneABS;
+        this.numeroEjes= camionBuilder.numeroEjes;
+        this.tieneFrenosAire= camionBuilder.tieneFrenosAire;
+        this.tieneAC= camionBuilder.tieneAC;
     }
 
 
@@ -40,41 +46,46 @@ public class Camion extends Vehiculo{
 
     public static class CamionBuilder extends Vehiculo.VehiculoBuilder {
 
-        Camion camion = new Camion();
+        private double capacidadCarga;
+        private boolean tieneFrenosAire;
+        private int numeroEjes;
+        private boolean tieneABS;
+        private String tipoCamion;
+        private boolean tieneAC;
 
         public CamionBuilder capacidadCarga(double capacidadCarga) {
-            camion.capacidadCarga = capacidadCarga;
+            this.capacidadCarga = capacidadCarga;
             return this;
         }
 
         public CamionBuilder tieneFrenosAire(boolean tieneFrenosAire) {
-            camion.tieneFrenosAire = tieneFrenosAire;
+            this.tieneFrenosAire = tieneFrenosAire;
             return this;
         }
 
         public CamionBuilder numeroEjes(int numeroEjes) {
-            camion.numeroEjes = numeroEjes;
+            this.numeroEjes = numeroEjes;
             return this;
         }
 
         public CamionBuilder tieneABS(boolean tieneABS) {
-            camion.tieneABS = tieneABS;
+            this.tieneABS = tieneABS;
             return this;
         }
 
         public CamionBuilder tipoCamion(String tipoCamion) {
-            camion.tipoCamion = tipoCamion;
+            this.tipoCamion = tipoCamion;
             return this;
         }
 
         public CamionBuilder tieneAC(boolean tieneAC) {
-            camion.tieneAC = tieneAC;
+            this.tieneAC = tieneAC;
             return this;
         }
 
         @Override
         public Camion build() {
-            return camion;
+            return new Camion(this);
         }
     }
 }

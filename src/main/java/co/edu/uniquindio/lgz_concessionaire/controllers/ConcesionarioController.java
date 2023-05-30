@@ -52,7 +52,7 @@ public class ConcesionarioController implements Initializable {
     @FXML
     void abrirVehiculos(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/co/edu/uniquindio/concesionario/views/TransaccionesViews.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vehiculos.fxml"));
             Parent root = loader.load();
             VehiculosController vehiculosController = loader.getController();
             Scene scene = new Scene(root);

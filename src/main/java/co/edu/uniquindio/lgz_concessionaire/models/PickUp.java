@@ -4,8 +4,10 @@ public class PickUp extends StationWagon {
     private boolean is4x4;
     private Double capacidadCarga;
 
-    private PickUp() {
-        super();
+    PickUp(PickUpBuilder pickUpBuilder) {
+        super(pickUpBuilder);
+        this.capacidadCarga= pickUpBuilder.capacidadCarga;
+        this.is4x4= pickUpBuilder.is4x4;
     }
 
     // Getters para los atributos
@@ -20,25 +22,26 @@ public class PickUp extends StationWagon {
 
     public static class PickUpBuilder extends StationWagonBuilder {
 
-        PickUp pickUp= new PickUp();
+        private boolean is4x4;
+        private Double capacidadCarga;
 
         public PickUpBuilder() {
-            PickUp pickUp= new PickUp();
+            PickUp pickUp= new PickUp(this);
         }
 
         public PickUpBuilder is4x4(boolean is4x4) {
-            pickUp.is4x4 = is4x4;
+            this.is4x4 = is4x4;
             return this;
         }
 
         public PickUpBuilder capacidadCarga(Double capacidadCarga) {
-            pickUp.capacidadCarga = capacidadCarga;
+            this.capacidadCarga = capacidadCarga;
             return this;
         }
 
         @Override
         public PickUp build() {
-            return pickUp;
+            return new PickUp(this);
         }
     }
 }

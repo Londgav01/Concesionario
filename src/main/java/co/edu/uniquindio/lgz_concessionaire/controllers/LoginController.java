@@ -6,12 +6,14 @@ import co.edu.uniquindio.lgz_concessionaire.models.Administrador;
 import co.edu.uniquindio.lgz_concessionaire.models.Empleado;
 import co.edu.uniquindio.lgz_concessionaire.repository.ClienteRepository;
 import co.edu.uniquindio.lgz_concessionaire.repository.ConcesionarioRepository;
+import co.edu.uniquindio.lgz_concessionaire.repository.EmpleadoRepository;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javafx.event.ActionEvent;
@@ -20,8 +22,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import org.springframework.stereotype.Controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 @Component
@@ -29,17 +33,18 @@ public class LoginController implements Initializable {
 
     private Stage stage2= new Stage();
     private RecuperacionController recuperacionController;
+
+    ModelFactoryController mfm= ModelFactoryController.getInstance();
+    @Autowired
+    private EmpleadoRepository empleadoRepository;
     private ConcesionarioRepository concesionarioRepository;
 
-
-    Administrador admin= (Administrador) new Empleado.EmpleadoBuilder()
-            .contraEmpleado("RobinsonMiAmor1")
-            .withNombre("Robinson")
-            .withNumeroTelefonico("09876")
-            .withId("12345")
+    Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
+            .withNombre("robinson")
             .withDireccion("cra 12")
+            .withNumeroTelefonico("1234")
+            .withId("456")
             .build();
-
 
 
     @FXML
@@ -78,6 +83,7 @@ public class LoginController implements Initializable {
         }
     }
 
+
     void abrirVentanaConcesionario(){
         LgzConcessionaireApplication.getPrimaryStage().close();
         try {
@@ -110,6 +116,8 @@ public class LoginController implements Initializable {
             this.stage2.setScene(scene);
             olividoContrasena.getScene().getWindow().hide();
             this.stage2.show();
+            empleadoRepository.save(empleado);
+
 
         } catch (Exception e) {
             // TODO Auto-generated catch block
