@@ -38,7 +38,10 @@
                   <Hyperlink fx:id="empleados" layoutX="954.0" layoutY="53.0" text="Empleados" textFill="#e7b12b" />
                </children>
             </Pane>
-            <Pane fx:id="imagenes" layoutX="37.0" layoutY="157.0" prefHeight="358.0" prefWidth="1016.0" style="-fx-border-color: #E7B12B;" />
+            <Pane fx:id="imagenes" layoutX="37.0" layoutY="157.0" prefHeight="358.0" prefWidth="1016.0" style="-fx-border-color: #E7B12B;">
+               <children>
+                  <ImageView fx:id="imageViewVehiculos" fitHeight="150.0" fitWidth="200.0" layoutX="31.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true" />
+               </children></Pane>
             <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="14.0" layoutY="521.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/img_15.png" />

@@ -78,7 +78,7 @@ public class RecuperacionController implements Initializable {
     void cambiarContrasena(ActionEvent event) throws EmpleadoException {
         if(code.getText().equals(codigo)) {//aquí va la condicion de si el codifo introducido es el mismo enviado
             if(verificarContrasenia()){
-                Empleado empleadoActualizar = ModelFactoryController.getInstance()
+                Administrador empleadoActualizar = (Administrador) ModelFactoryController.getInstance()
                                                 .buscarEmpleadoIdentificacion(id.getText());
                 String nombre = empleadoActualizar.getNombre();
                 String direccion = empleadoActualizar.getDireccion();
