@@ -304,6 +304,7 @@ public class Concesionario {
                 cilindraje,  estadoVehiculo,  tipoCombustible,
                 tipoTrasmision,  capacidadCarga,  tieneFrenosAire,  numeroEjes,  tieneABS,  tipoCamion,  tieneAC);
         return camion;
+
     }
 
 
