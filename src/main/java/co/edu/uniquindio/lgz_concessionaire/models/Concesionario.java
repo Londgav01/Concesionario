@@ -183,6 +183,16 @@ public class Concesionario {
         throw new UsuarioExcepction("El cliente no se ha encontrado");
     }
 
+    public boolean eliminarCliente (String identificacion) throws UsuarioExcepction {
+        for (Cliente cliente: listaClientes) {
+            if(buscarCliente(identificacion).equals(cliente.getIdentificacion())){
+                listaClientes.remove(cliente);
+                return true;
+            }
+        }
+        return false;
+    }
+
     //////////////////////////////////////////////////////////////////
     //Metodos CRUD proveedor
 
