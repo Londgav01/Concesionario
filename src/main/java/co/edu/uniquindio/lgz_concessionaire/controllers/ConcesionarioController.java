@@ -116,6 +116,7 @@ public class ConcesionarioController implements Initializable {
         });
         timeline.getKeyFrames().add(keyFrame);
         timeline.play();
+
     }
 
 }
