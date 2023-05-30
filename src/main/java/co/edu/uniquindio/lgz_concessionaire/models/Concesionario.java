@@ -329,4 +329,35 @@ public class Concesionario {
 
     }
 
+    public Bus crearBus (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+                         String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+                         TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire){
+        Bus bus = new Bus( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
+                cilindraje,  estadoVehiculo,  tipoCombustible,
+                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire);
+        return  bus;
+    }
+
+    public PickUp crearPick (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+                             String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+                             TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
+                             boolean camaraReversa, boolean aBS, boolean is4x4, double capacidadCarga){
+        PickUp pick = new PickUp ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
+                cilindraje,  estadoVehiculo,  tipoCombustible,
+                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire,  aC,
+                camaraReversa,  aBS,  is4x4,  capacidadCarga);
+        return pick;
+    }
+
+    public Van crearVan (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+                         String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+                         TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
+                         boolean camaraReversa, boolean aBS){
+        Van van = new Van ( marca,  placa,  modelo,  cantidadCambios,  velocidadMaxima,
+                cilindraje,  estadoVehiculo,  tipoCombustible,
+                tipoTrasmision,  numPuertas,  numPasajeros,  numBolsasAire,  aC,
+                camaraReversa,  aBS);
+        return van;
+    }
+
 }
