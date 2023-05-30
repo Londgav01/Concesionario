@@ -6,6 +6,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class TransaccionesControlle {
 
@@ -92,4 +93,11 @@ public class TransaccionesControlle {
 
     }
 
+    private ConcesionarioController concesionarioController;
+    private Stage stage;
+
+    public void init(Stage stage, ConcesionarioController concesionarioController) {
+        this.concesionarioController = concesionarioController;
+        this.stage = stage;
+    }
 }

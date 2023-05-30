@@ -54,4 +54,22 @@ public class ConcesionarioController {
         }
     }
 
+
+    @FXML
+    void abrirTransacciones(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Transacciones.fxml"));
+            Parent root = loader.load();
+            TransaccionesControlle transaccionesControlle = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            transaccionesControlle.init(stage, this);
+            stage.show();
+            this.stage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }
