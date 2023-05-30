@@ -3,10 +3,9 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 import java.util.List;
 
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
+import co.edu.uniquindio.lgz_concessionaire.exceptions.TransactionException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
-import co.edu.uniquindio.lgz_concessionaire.models.Administrador;
-import co.edu.uniquindio.lgz_concessionaire.models.Concesionario;
-import co.edu.uniquindio.lgz_concessionaire.models.Empleado;
+import co.edu.uniquindio.lgz_concessionaire.models.*;
 
 
 public class ModelFactoryController {
@@ -43,50 +42,91 @@ public class ModelFactoryController {
 		this.concesionario = concesionario;
 	}
 
-	public Empleado buscarEmpleado (String idEmpleado, String contrasenia) throws EmpleadoException {
+	public Empleado buscarEmpleado(String idEmpleado, String contrasenia) throws EmpleadoException {
 		Empleado empleado = (concesionario.buscarEmpleado(idEmpleado, contrasenia));
 		return empleado;
 	}
 
-	public Empleado buscarEmpleadoIdentificacion(String idetificacion) throws EmpleadoException{
+	public Empleado buscarEmpleadoIdentificacion(String idetificacion) throws EmpleadoException {
 		Empleado empleado = (concesionario.buscarEmpleadoIdentificacion(idetificacion));
 		return empleado;
 	}
 
-	public Empleado crearEmpleado (String nombre, String identificacion, String direccion, String numeroTelefonico,
-								   String idEmpleado) throws EmpleadoException {
-		Empleado empleado = (concesionario.crearEmpleado(nombre, identificacion, direccion, numeroTelefonico ,idEmpleado));
+	public Empleado crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico,
+								  String idEmpleado) throws EmpleadoException {
+		Empleado empleado = (concesionario.crearEmpleado(nombre, identificacion, direccion, numeroTelefonico, idEmpleado));
 		return empleado;
 	}
 
 	public boolean eliminarEmpleado(String idEmpleado) throws EmpleadoException {
-		boolean eliminado = concesionario.eliminarEmpleado(idEmpleado );
+		boolean eliminado = concesionario.eliminarEmpleado(idEmpleado);
 		return eliminado;
 	}
 
 	public void actualizarEmpleado(String nombre, String direccion, String numeroTelefonico, String idEmpleado, String contrasenia) throws EmpleadoException {
-		concesionario.actualizarEmpleado(nombre,direccion, numeroTelefonico ,idEmpleado, contrasenia);
+		concesionario.actualizarEmpleado(nombre, direccion, numeroTelefonico, idEmpleado, contrasenia);
 	}
 
 	public void actualizarEmpleado2(String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException {
 		concesionario.actualizarEmpleado2(nombre, direccion, numeroTelefonico, idEmpleado);
 	}
 
-	public boolean verificarEmpleado(String identificacion){
+	public boolean verificarEmpleado(String identificacion) {
 		return concesionario.verificarEmpleado(identificacion);
 	}
 
+	public List<Empleado> obtenerEmpleados() {
+		return concesionario.getListaEmpleados();
+	}
 
-	public boolean eliminarCliente (String idCliente) throws UsuarioExcepction {
+	////////////////////////
+	public boolean eliminarCliente(String idCliente) throws UsuarioExcepction {
 		boolean eliminado = concesionario.eliminarCliente(idCliente);
 		return eliminado;
 	}
 
-	public void actualizarCliente (String nombreCliente, String direccionCliente,String  idCliente,String  telefonoCliente) throws UsuarioExcepction {
+	public void actualizarCliente(String nombreCliente, String direccionCliente, String idCliente, String telefonoCliente) throws UsuarioExcepction {
 		concesionario.actualizarCliente(nombreCliente, idCliente, direccionCliente, telefonoCliente);
 	}
-	public List<Empleado> obtenerEmpleados() {
-		return concesionario.getListaEmpleados();
+
+	public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
+		concesionario.crearCliente(nombre, identificacion, direccion, numeroTelefonico);
+	}
+
+	public Cliente buscarCliente(String idCliente) throws UsuarioExcepction {
+		return concesionario.buscarCliente(idCliente);
+	}
+
+	/////////////////////
+	public void crearProveedor(String nombre, String identificacion, String direccion, String num) throws UsuarioExcepction {
+		concesionario.crearProveedor(nombre, identificacion, direccion, num);
+	}
+
+	public void actualizarProveedor(String nombre, String identificacion, String direccion,
+									String numTelefono)throws UsuarioExcepction{
+		concesionario.actualizarProveedor(nombre, identificacion, direccion, numTelefono);
+	}
+
+	public Proveedor buscarProveedor (String idProveedor) throws UsuarioExcepction{
+		return concesionario.buscarProveedor(idProveedor);
+	}
+
+	/////////////////////////
+	public void crearTransacciones(Empleado empleado, String code, Double valorTotal, Cliente cliente,  List<DetalleTransaccion> listaDetalles) throws TransactionException {
+		concesionario.crearTransacciones(empleado, code, valorTotal, cliente, listaDetalles);
+	}
+
+	public Transaccion buscarTransaccion(String code){
+		return concesionario.buscarTransaccion(code);
+	}
+
+	public void eliminarTransaccion(String code) throws TransactionException {
+		concesionario.eliminarTransaccion(code);
+	}
+
+	//////////////////////////////////
+	public Vehiculo buscarVehiculo (String placa){
+		return concesionario.buscarVehiculo(placa);
 	}
 }
 
