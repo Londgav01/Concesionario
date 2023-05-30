@@ -30,7 +30,7 @@ public class Empleado extends Persona implements Serializable {
 
     public Empleado() {super();}
 
-    public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono){
+    public Cliente registrarCliente(String nombre, String id, String direccion, String numTelefono, String contrasenia){
         return (Cliente) new PersonaBuilder()
                 .withNombre(nombre)
                 .withId(id)
@@ -50,7 +50,7 @@ public class Empleado extends Persona implements Serializable {
     public static class EmpleadoBuilder extends PersonaBuilder{
         Empleado empleado= new Empleado();
 
-        public EmpleadoBuilder idEmpleado(String contrasenia) {
+        public EmpleadoBuilder contraEmpleado(String contrasenia) {
             empleado.contrasenia= contrasenia;
             return this;
         }

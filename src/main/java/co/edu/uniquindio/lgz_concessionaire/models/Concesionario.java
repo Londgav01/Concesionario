@@ -29,6 +29,8 @@ public class Concesionario {
     @OneToMany(mappedBy = "concesionario", orphanRemoval = true)
     private List<Empleado> listaEmpleados = new ArrayList<>();
 
+    private Administrador administrador;
+
 
     /**
      *  Constructor y methods getter and setter
@@ -37,6 +39,14 @@ public class Concesionario {
 
     public Concesionario(String name) {
         this.name = name;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 
     public List<Empleado> getListaEmpleados() {
@@ -88,7 +98,7 @@ public class Concesionario {
 
     public Empleado crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String contrasenia) throws EmpleadoException{
         Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
-                .idEmpleado(contrasenia)
+                .contraEmpleado(contrasenia)
                 .withNombre(nombre)
                 .withId(identificacion)
                 .withDireccion(direccion)
@@ -129,9 +139,9 @@ public class Concesionario {
     }
 
 
-    public boolean eliminarEmpleado (String idEmpleado, String contrasenia) throws EmpleadoException{
+    public boolean eliminarEmpleado (String idEmpleado) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
-            if(empleado.getIdentificacion().equals(idEmpleado) && empleado.getContrasenia().equals(contrasenia)){
+            if(empleado.getIdentificacion().equals(idEmpleado) ){
                 listaEmpleados.remove(empleado);
                 return true;
             }
@@ -233,4 +243,5 @@ public class Concesionario {
         }
         throw new UsuarioExcepction("El proveedor no se ha encontrado");
     }
+
 }

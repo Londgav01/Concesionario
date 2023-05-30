@@ -3,13 +3,15 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 import java.util.List;
 
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
+import co.edu.uniquindio.lgz_concessionaire.models.Administrador;
 import co.edu.uniquindio.lgz_concessionaire.models.Concesionario;
 import co.edu.uniquindio.lgz_concessionaire.models.Empleado;
-import org.springframework.stereotype.Component;
 
-@Component
+
 public class ModelFactoryController {
-	Concesionario concesionario = null;
+
+
+	public Concesionario concesionario = null;
 
 	//------------------------------  Singleton ------------------------------------------------
 	// Clase estatica oculta. Tan solo se instanciara el singleton una vez
@@ -52,16 +54,19 @@ public class ModelFactoryController {
 	}
 
 	public boolean eliminarEmpleado(String idEmpleado) throws EmpleadoException {
-		boolean eliminado = concesionario.eliminarEmpleado(idEmpleado);
+		boolean eliminado = concesionario.eliminarEmpleado(idEmpleado );
 		return eliminado;
 	}
 
 	public void actualizarEmpleado(String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException {
-		concesionario.actualizarEmpleado(nombre,direccion, direccion, idEmpleado);
+		concesionario.actualizarEmpleado(nombre,direccion, direccion, numeroTelefonico ,idEmpleado);
 	}
 
 	public List<Empleado> obtenerEmpleados() {
 		return concesionario.getListaEmpleados();
 	}
+
+
+
 
 }
