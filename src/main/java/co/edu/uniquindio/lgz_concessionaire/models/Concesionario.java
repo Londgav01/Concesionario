@@ -104,7 +104,7 @@ public class Concesionario {
                 .withDireccion(direccion)
                 .withNumeroTelefonico(numeroTelefonico)
                 .build();
-        if(verificarEmpleado(empleado)){
+        if(verificarEmpleado(empleado.getIdentificacion())){
             throw new EmpleadoException("El empleado ya existe");
         }
         listaEmpleados.add(empleado);
@@ -120,10 +120,19 @@ public class Concesionario {
         throw new EmpleadoException("El empleado no se ha encontrado");
     }
 
+    public Empleado buscarEmpleadoIdentificacion(String identificacion) throws EmpleadoException {
+        for (Empleado empleado: listaEmpleados) {
+            if(empleado.equals(identificacion)){
+                return empleado;
+            }
+        }
+        throw new EmpleadoException("El empleado no se ha encontrado");
+    }
+
     public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado, String contrasenia) throws EmpleadoException{
         if(buscarEmpleado(idEmpleado, contrasenia) != null) {
             for (Empleado empleado : listaEmpleados) {
-                if (empleado.getId().equals(idEmpleado)){
+                if (empleado.equals(idEmpleado)){
                     empleado.setDireccion(direccion);
                     empleado.setNombre(nombre);
                     empleado.setNumeroTelefonico(numeroTelefonico);
@@ -134,8 +143,8 @@ public class Concesionario {
         }
     }
 
-    public boolean verificarEmpleado(Empleado empleado){
-        return listaEmpleados.stream().anyMatch(e -> e.equals(empleado));
+    public boolean verificarEmpleado(String idEmpleado){
+        return listaEmpleados.stream().anyMatch(e -> e.equals(idEmpleado));
     }
 
 

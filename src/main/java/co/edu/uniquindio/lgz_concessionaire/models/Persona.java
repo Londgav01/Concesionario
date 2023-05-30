@@ -3,6 +3,7 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.Objects;
 
 
 public class Persona implements Serializable {
@@ -90,5 +91,18 @@ public class Persona implements Serializable {
          }
 
      }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Persona persona = (Persona) o;
+        return Objects.equals(identificacion, persona.identificacion);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(identificacion);
+    }
 }
 

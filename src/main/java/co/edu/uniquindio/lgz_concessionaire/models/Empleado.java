@@ -73,4 +73,5 @@ public class Empleado extends Persona implements Serializable {
     }
 
 
+
 }

@@ -47,6 +47,11 @@ public class ModelFactoryController {
 		return empleado;
 	}
 
+	public Empleado buscarEmpleadoIdentificacion(String idetificacion) throws EmpleadoException{
+		Empleado empleado = (concesionario.buscarEmpleadoIdentificacion(idetificacion));
+		return empleado;
+	}
+
 	public Empleado crearEmpleado (String nombre, String identificacion, String direccion, String numeroTelefonico,
 								   String idEmpleado) throws EmpleadoException {
 		Empleado empleado = (concesionario.crearEmpleado(nombre, identificacion, direccion, numeroTelefonico ,idEmpleado));
@@ -58,15 +63,15 @@ public class ModelFactoryController {
 		return eliminado;
 	}
 
-	public void actualizarEmpleado(String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException {
-		concesionario.actualizarEmpleado(nombre,direccion, direccion, numeroTelefonico ,idEmpleado);
+	public void actualizarEmpleado(String nombre, String direccion, String numeroTelefonico, String idEmpleado, String contrasenia) throws EmpleadoException {
+		concesionario.actualizarEmpleado(nombre,direccion, numeroTelefonico ,idEmpleado, contrasenia);
+	}
+
+	public boolean verificarEmpleado(String identificacion){
+		return concesionario.verificarEmpleado(identificacion);
 	}
 
 	public List<Empleado> obtenerEmpleados() {
 		return concesionario.getListaEmpleados();
 	}
-
-
-
-
 }
