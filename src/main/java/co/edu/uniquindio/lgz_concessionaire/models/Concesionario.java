@@ -291,6 +291,16 @@ public class Concesionario implements Serializable {
 
     ////////////////////////////////////////////////////////////////////////////
     //CRUD vehiculos
+
+    public Vehiculo buscarVehiculo (String placa){
+        for (Vehiculo vehiculo : listaVehiculos) {
+            if(vehiculo.getPlaca().equals(placa)){
+                return vehiculo;
+
+            }
+        }
+        return null;
+    }
     public boolean eliminarVehiculo (String placa){
         boolean eliminado = false;
         for (Vehiculo vehiculo: listaVehiculos) {
