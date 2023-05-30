@@ -85,7 +85,7 @@ public class VehiculosController {
     @FXML
     void volverEvent(ActionEvent event) {
         concesionarioController.show();
-        this.stage.close();
+        this.stage.hide();
     }
 
     private ConcesionarioController concesionarioController;
