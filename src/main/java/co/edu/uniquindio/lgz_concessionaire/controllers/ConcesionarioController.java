@@ -103,12 +103,12 @@ public class ConcesionarioController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Image> images = new ArrayList<>();
         images.add(new Image("/images/Ducati panigale moto.jpg"));
-        images.add(new Image("/images/Carro deportivo.png"));
+        images.add(new Image("images/CamionDeBasura camion.jpg"));
         images.add(new Image("/images/Toyota_Camry_(ASV50R)_SX_sedan.jpg"));
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(4), event -> {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(3), event -> {
             int currentIndex = images.indexOf(imageViewVehiculos.getImage());
             int nextIndex = (currentIndex + 1) % images.size();
             imageViewVehiculos.setImage(images.get(nextIndex));
