@@ -10,13 +10,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-
-import javax.swing.text.html.ImageView;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.animation.*;
 import javafx.util.*;
 
@@ -29,6 +28,9 @@ public class ConcesionarioController implements Initializable {
     private Hyperlink empleados;
 
     @FXML
+    private ImageView imageViewVehiculos;
+
+    @FXML
     private Pane imagenes;
 
     @FXML
@@ -39,9 +41,6 @@ public class ConcesionarioController implements Initializable {
 
     @FXML
     private Hyperlink vehiculos;
-
-    @FXML
-    private ImageView imageViewVehiculos;
 
     @FXML
     void volverALogin(ActionEvent event) {
@@ -110,7 +109,7 @@ public class ConcesionarioController implements Initializable {
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
-        KeyFrame keyFrame = new KeyFrame(Duration.seconds(6), event -> {
+        KeyFrame keyFrame = new KeyFrame(Duration.seconds(4), event -> {
             int currentIndex = images.indexOf(imageViewVehiculos.getImage());
             int nextIndex = (currentIndex + 1) % images.size();
             imageViewVehiculos.setImage(images.get(nextIndex));
