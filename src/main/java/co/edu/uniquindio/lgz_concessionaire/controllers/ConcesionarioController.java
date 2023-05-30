@@ -101,7 +101,6 @@ public class ConcesionarioController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
         List<Image> images = new ArrayList<>();
         images.add(new Image("/images/Ducati panigale moto.jpg"));
         images.add(new Image("/images/Carro deportivo.png"));
