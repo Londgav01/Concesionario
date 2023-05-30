@@ -20,7 +20,7 @@
                         <Image url="@images/Captura%20de%20pantalla%202023-05-23%20150408.png" />
                      </image>
                   </ImageView>
-                  <Hyperlink fx:id="vehiculos" layoutX="181.0" layoutY="48.0" text="Vehiculos" textFill="#e7b12b">
+                  <Hyperlink fx:id="vehiculos" layoutX="181.0" layoutY="48.0" onAction="#abrirVehiculos" text="Vehiculos" textFill="#e7b12b">
                      <font>
                         <Font name="Cooper Black" size="21.0" />
                      </font>

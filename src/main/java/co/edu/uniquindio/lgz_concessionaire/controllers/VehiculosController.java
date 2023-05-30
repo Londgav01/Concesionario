@@ -3,6 +3,7 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
 public class VehiculosController {
 
@@ -76,6 +77,15 @@ public class VehiculosController {
     @FXML
     void mostrarInfoVan(ActionEvent event) {
 
+    }
+
+
+    private ConcesionarioController concesionarioController;
+    private Stage stage;
+
+    public void init(Stage stage, ConcesionarioController concesionarioController) {
+        this.concesionarioController = concesionarioController;
+        this.stage = stage;
     }
 
 }
