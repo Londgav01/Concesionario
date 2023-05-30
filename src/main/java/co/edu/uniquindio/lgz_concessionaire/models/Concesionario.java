@@ -156,6 +156,29 @@ public class Concesionario implements Serializable {
         }
     }
 
+    public Empleado buscarEmpleadoRoyer (String idEmpleado){
+        for (Empleado empleado: listaEmpleados
+             ) {
+            if(empleado.getId().equals(idEmpleado)){
+                return empleado;
+            }
+
+        }
+        return null;
+    }
+
+    public void actualizarEmpleado2 (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException {
+        for (Empleado empleado: listaEmpleados) {
+            if(buscarEmpleadoRoyer(idEmpleado) != null){
+                empleado.setDireccion(direccion);
+                empleado.setNombre(nombre);
+                empleado.setNumeroTelefonico(numeroTelefonico);
+
+            }
+        }
+
+    }
+
     public boolean verificarEmpleado(String idEmpleado){
         return listaEmpleados.stream().anyMatch(e -> e.equals(idEmpleado));
     }
@@ -468,5 +491,7 @@ public class Concesionario implements Serializable {
                 .build();
         return van;
     }
+
+
 
 }

@@ -1,11 +1,10 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
+import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
+import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -77,24 +76,112 @@ public class RegistrosAdminController {
     @FXML
     private TextField telefonoNuevoCliente;
 
+
+
+    //////////////////////////////////////////////////////
+
+    /**
+     * Funcionalidades generales utilizadas para los registros utilizados
+     *
+     */
+    ModelFactoryController mfm = ModelFactoryController.getInstance();
+
+    /**
+     * funcion para crear mensajes de alerta, lo podemos usar en diferentes metodos
+     * @param titulo
+     * @param header
+     * @param contenido
+     * @param alertType
+     */
+    public void mostrarMensajeAlerta (String titulo, String header, String contenido, Alert.AlertType alertType){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle(titulo);
+        alert.setHeaderText(header);
+        alert.setContentText(contenido);
+        alert.showAndWait();
+    }
+
+
+    /**
+     * funcion para validar si los campos de texto tienen informacion
+     * @param saldoAux
+     * @param tasaAux
+     * @param numeroCuenta1
+     * @param estrato
+     * @return
+     */
+    private boolean datosValidados(String saldoAux, String tasaAux, String numeroCuenta1, String estrato) {
+        String notificacion = "";
+        if(saldoAux == null || saldoAux.equals("")){
+            notificacion+= "El dato es invalido";
+        }
+        if(tasaAux == null || tasaAux.equals("")){
+            notificacion+= "El dato es invalido";
+        }
+        if(numeroCuenta1 == null || numeroCuenta1.equals("")){
+            notificacion+= "El dato es invalido";
+        }
+        if(estrato == null || estrato.equals("")){
+            notificacion+= "El dato es invalido";
+        }
+        if(notificacion.equals("") || notificacion == null){
+            return true;
+        }
+        return false;
+    }
+
+
+    //////////////////////////////////////////////////////
     @FXML
     void actualizarAdmin(ActionEvent event) {
 
     }
 
     @FXML
-    void actualizarCliente(ActionEvent event) {
+    void actualizarCliente(ActionEvent event) throws EmpleadoException, UsuarioExcepction {
+         actualizarClienteAction();
+    }
+    private void actualizarClienteAction() throws EmpleadoException, UsuarioExcepction {
+        String nombreCliente = nombreNuevoCliente.getText();
+        String idCliente = idNuevoCliente.getText();
+        String direccionCliente = direccionNuevoCliente.getText();
+        String telefonoCliente = telefonoNuevoCliente.getText();
+        if(datosValidados(nombreCliente, direccionCliente, "aaa", telefonoCliente)){
+            mfm.actualizarCliente(nombreCliente, idCliente, direccionCliente, telefonoCliente);
+        }
+    }
+
+
+
+    @FXML
+    void actualizarEmpleado(ActionEvent event) throws EmpleadoException {
+        actualizarEmpleadoAction();
+    }
+    private void actualizarEmpleadoAction() throws EmpleadoException {
+        String nombreEmpleado = nuevoNombreEmpleado.getText();
+        String idEmpleado = nuevoIdEmpleado.getText();
+        String direccionEmpleado = nuevoDireccionEmpleado.getText();
+        String telefonoEmpleado = nuevoTelefonoEmpleado.getText();
+            if(datosValidados(nombreEmpleado, direccionEmpleado, "aaa", telefonoEmpleado)){
+                mfm.actualizarEmpleado2(nombreEmpleado, direccionEmpleado,telefonoEmpleado, idEmpleado);
+        }
+    }
+
+
+    @FXML
+    void eliminar(ActionEvent event) throws EmpleadoException, UsuarioExcepction {
+        eliminarAction();
 
     }
 
-    @FXML
-    void actualizarEmpleado(ActionEvent event) {
-
-    }
-
-    @FXML
-    void eliminar(ActionEvent event) {
-
+    private void eliminarAction () throws EmpleadoException, UsuarioExcepction {
+        if(opciones.getOnAction().equals("empleado")) {
+            mfm.eliminarEmpleado(idEliminar.getText());
+            mostrarMensajeAlerta("Cliente eliminado ", "Cliente informacion ", "El Cliente se elimino correctamente ", Alert.AlertType.INFORMATION);
+        }
+        else{
+            mfm.eliminarCliente(idEliminar.getText());
+        }
     }
 
     @FXML

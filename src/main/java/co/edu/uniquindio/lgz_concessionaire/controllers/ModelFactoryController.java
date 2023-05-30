@@ -3,6 +3,7 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 import java.util.List;
 
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
+import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import co.edu.uniquindio.lgz_concessionaire.models.Administrador;
 import co.edu.uniquindio.lgz_concessionaire.models.Concesionario;
 import co.edu.uniquindio.lgz_concessionaire.models.Empleado;
@@ -67,11 +68,25 @@ public class ModelFactoryController {
 		concesionario.actualizarEmpleado(nombre,direccion, numeroTelefonico ,idEmpleado, contrasenia);
 	}
 
+	public void actualizarEmpleado2(String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException {
+		concesionario.actualizarEmpleado2(nombre, direccion, numeroTelefonico, idEmpleado);
+	}
+
 	public boolean verificarEmpleado(String identificacion){
 		return concesionario.verificarEmpleado(identificacion);
 	}
 
+
+	public boolean eliminarCliente (String idCliente) throws UsuarioExcepction {
+		boolean eliminado = concesionario.eliminarCliente(idCliente);
+		return eliminado;
+	}
+
+	public void actualizarCliente (String nombreCliente, String direccionCliente,String  idCliente,String  telefonoCliente) throws UsuarioExcepction {
+		concesionario.actualizarCliente(nombreCliente, idCliente, direccionCliente, telefonoCliente);
+	}
 	public List<Empleado> obtenerEmpleados() {
 		return concesionario.getListaEmpleados();
 	}
 }
+
