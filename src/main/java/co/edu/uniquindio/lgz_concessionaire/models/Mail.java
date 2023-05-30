@@ -18,7 +18,6 @@ public class Mail {
         String username = "LGZConcessionaire@hotmail.com";
         String password = "RobinsonMiAmor1";
         String imagenUrl = "https://i.ibb.co/cF2Vp5L/Logo-concesionario.png";
-
         try {
             // Propiedades de la conexión
             Properties props = new Properties();

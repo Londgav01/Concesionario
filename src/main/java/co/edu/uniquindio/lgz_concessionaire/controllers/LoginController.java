@@ -49,7 +49,11 @@ public class LoginController implements Initializable {
 
     @FXML
     void login(ActionEvent event) {
+        String identificacion = userLogin.getText();
+        String contrasenia = contraLogin.getText();
+        if(ModelFactoryController.getInstance().buscarEmpleado(identificacion, contrasenia) != null){
 
+        }
     }
 
     @FXML
@@ -69,12 +73,27 @@ public class LoginController implements Initializable {
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        };
+        }
     }
 
     @FXML
     void registrar(ActionEvent event) {
+        LgzConcessionaireApplication.getPrimaryStage().close();
+        try {
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(LgzConcessionaireApplication.class.getResource("/Registro.fxml"));
+            AnchorPane rootLayout = (AnchorPane)loader.load();
+            Scene scene = new Scene(rootLayout);
 
+            this.stage2.setTitle("Registro");
+            this.stage2.setScene(scene);
+            registrar.getScene().getWindow().hide();
+            this.stage2.show();
+
+        } catch (Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     @Override

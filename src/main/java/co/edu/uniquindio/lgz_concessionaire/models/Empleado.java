@@ -43,6 +43,9 @@ public class Empleado extends Persona implements Serializable {
         return contrasenia;
     }
 
+    public void setContrasenia(String contrasenia) {
+        this.contrasenia = contrasenia;
+    }
 
     public static class EmpleadoBuilder extends PersonaBuilder{
         Empleado empleado= new Empleado();
@@ -68,5 +71,6 @@ public class Empleado extends Persona implements Serializable {
     public void setId(Long id) {
         this.id = id;
     }
+
 
 }
