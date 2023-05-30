@@ -127,6 +127,7 @@ public class ModelFactoryController {
 	//////////////////////////////////
 	public Vehiculo buscarVehiculo (String placa){
 		return concesionario.buscarVehiculo(placa);
+
 	}
 }
 
