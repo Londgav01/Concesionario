@@ -83,7 +83,7 @@ public class LoginController implements Initializable {
 
             this.stage2.setTitle("Registro");
             this.stage2.setScene(scene);
-            olividoContrasena.getScene().getWindow().hide();
+            registrar.getScene().getWindow().hide();
             this.stage2.show();
 
         } catch (Exception e) {
