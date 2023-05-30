@@ -2,6 +2,9 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
@@ -77,7 +80,19 @@ public class TransaccionesControlle {
 
     @FXML
     void abrirVentanaRegistrosVehiculos(ActionEvent event) {
-
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Vehiculos.fxml"));
+            Parent root = loader.load();
+            VehiculosController vehiculosController = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            vehiculosController.init2(stage, this);
+            stage.show();
+            this.stage.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     @FXML

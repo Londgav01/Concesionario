@@ -96,4 +96,10 @@ public class VehiculosController {
         this.stage = stage;
     }
 
+    private TransaccionesControlle transaccionesController;
+    public void init2(Stage stage, TransaccionesControlle transaccionesController) {
+        this.transaccionesController = transaccionesController;
+        this.stage = stage;
+    }
+
 }
