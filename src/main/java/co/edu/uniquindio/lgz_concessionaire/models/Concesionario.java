@@ -130,7 +130,7 @@ public class Concesionario {
     }
 
     public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado, String contrasenia) throws EmpleadoException{
-        if(buscarEmpleado(idEmpleado, contrasenia) != null) {
+        if(buscarEmpleadoIdentificacion(idEmpleado) != null) {
             for (Empleado empleado : listaEmpleados) {
                 if (empleado.equals(idEmpleado)){
                     empleado.setDireccion(direccion);
