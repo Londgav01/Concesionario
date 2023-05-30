@@ -1,9 +1,10 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
+import co.edu.uniquindio.lgz_concessionaire.exceptions.TransactionException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import jakarta.persistence.*;
-
+import java.util.stream.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -289,6 +290,33 @@ public class Concesionario implements Serializable {
         throw new UsuarioExcepction("El proveedor no se ha encontrado");
     }
 
+    /////////////////////////////////////////////////////////////////////////
+    //CRUD Transacciones
+
+    public void crearTransacciones(Empleado empleado, String code, Double valorTotal, Cliente cliente,  List<DetalleTransaccion> listaDetalles) throws TransactionException {
+        Transaccion transaccion = new Transaccion(empleado, code, valorTotal, cliente, listaDetalles);
+        if(verificarTransacciones(transaccion.getCode())){
+            throw new TransactionException("La transaccion ya existe");
+        }
+        listaTransacciones.add(transaccion);
+    }
+
+    public Transaccion buscarTransaccion(String code){
+        return (Transaccion) listaTransacciones.stream()
+                .filter(t -> t.getCode().equals(code)).collect(Collectors.toList());
+    }
+
+    public void eliminarTransaccion(String code) throws TransactionException {
+        Transaccion transaccion = buscarTransaccion(code);
+        if(transaccion != null){
+            listaTransacciones.remove(transaccion);
+        }
+        throw new TransactionException("La transacción no existe");
+    }
+
+    public boolean verificarTransacciones(String code){
+        return listaTransacciones.stream().anyMatch(t -> t.getCode().equals(code));
+    }
     ////////////////////////////////////////////////////////////////////////////
     //CRUD vehiculos
 

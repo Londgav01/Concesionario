@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TRANSACCIONES")
@@ -87,4 +88,16 @@ public class Transaccion implements Serializable {
         this.listaDetalleTransaccion = listaDetalleTransaccion;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transaccion that = (Transaccion) o;
+        return Objects.equals(code, that.code);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(code);
+    }
 }
