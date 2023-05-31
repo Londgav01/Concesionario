@@ -13,6 +13,8 @@ import org.springframework.stereotype.Component;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javax.swing.*;
+
 @Component
 public class RegistrosAdminController implements Initializable {
 
@@ -248,11 +250,21 @@ public class RegistrosAdminController implements Initializable {
         String direccion = nuevoDireccionEmpleado.getText();
         String telefonoEmpleado = nuevoTelefonoEmpleado.getText();
         int numContrasenia = (int) (Math.random() * 6);
-        try {
-            mfm.crearEmpleado(nombre, idEmpleado, direccion, telefonoEmpleado, String.valueOf(numContrasenia));
-        } catch (EmpleadoException e) {
-            throw new RuntimeException(e);
+        if(validarDatos(nombre, idEmpleado, direccion, telefonoEmpleado)) {
+            try {
+                mfm.crearEmpleado(nombre, idEmpleado, direccion, telefonoEmpleado, String.valueOf(numContrasenia));
+            } catch (EmpleadoException e) {
+                throw new RuntimeException(e);
+            }
         }
+    }
+
+    public boolean validarDatos(String nombre, String idEmpleado, String direccion, String telefono){
+        if(nombre=="" || idEmpleado=="" || direccion=="" || telefono==""){
+            JOptionPane.showMessageDialog(null, "Error, llene todos los campos");
+            return false;
+        }
+        return true;
     }
 
     @FXML
