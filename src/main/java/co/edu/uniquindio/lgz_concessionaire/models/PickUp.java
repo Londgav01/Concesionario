@@ -5,7 +5,7 @@ public class PickUp extends StationWagon {
     private Double capacidadCarga;
 
     PickUp(PickUpBuilder pickUpBuilder) {
-        super(pickUpBuilder);
+        super();
         this.capacidadCarga= pickUpBuilder.capacidadCarga;
         this.is4x4= pickUpBuilder.is4x4;
     }

@@ -10,7 +10,7 @@ public class Camion extends Vehiculo{
     private boolean tieneAC;
 
     Camion(CamionBuilder camionBuilder) {
-        super();
+        super(precio);
         this.capacidadCarga= camionBuilder.capacidadCarga;
         this.tipoCamion= camionBuilder.tipoCamion;
         this.tieneABS= camionBuilder.tieneABS;

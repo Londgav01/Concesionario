@@ -5,17 +5,14 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
+@Table(name = "Administrador")
 public class Administrador extends Empleado implements Serializable {
 
     private String idAdministrador;
 
-    public Administrador(String idAdministrador) {
+    public Administrador() {
         super();
-        this.idAdministrador = idAdministrador;
     }
-
-    public Administrador() {}
-
 
     public String getIdAdministrador() {
         return idAdministrador;
@@ -23,5 +20,20 @@ public class Administrador extends Empleado implements Serializable {
 
     public void setIdAdministrador(String idAdministrador) {
         this.idAdministrador = idAdministrador;
+    }
+
+    public static class AdministradorBuilder extends EmpleadoBuilder {
+        private String idAdministrador;
+
+        public AdministradorBuilder idAdministrador(String idAdministrador) {
+            this.idAdministrador = idAdministrador;
+            return this;
+        }
+
+        public Administrador build() {
+            Administrador administrador = new Administrador();
+            administrador.setIdAdministrador(idAdministrador);
+            return administrador;
+        }
     }
 }

@@ -440,7 +440,7 @@ public class Concesionario implements Serializable {
 
 
 
-    public Moto crearMoto (String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, float velocidadMaxima,
+    public Moto crearMoto (String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, Double velocidadMaxima,
                            String cilindraje, String placa){
         Moto moto = (Moto) new Moto.MotoBuilder()
                 .setMarca(marca)
@@ -529,4 +529,7 @@ public class Concesionario implements Serializable {
                 .build();
         return van;
     }
+
+
+
 }

@@ -2,16 +2,34 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 
 import java.util.List;
 
+import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.TransactionException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import co.edu.uniquindio.lgz_concessionaire.models.*;
+import javafx.scene.control.Alert;
+import javafx.stage.Modality;
+import javafx.stage.Window;
+
+import static co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication.primaryStage;
 
 
 public class ModelFactoryController {
 
 
 	public Concesionario concesionario = null;
+
+	public void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
+		Alert alert = new Alert(tipo);
+		alert.setTitle(titulo);
+		alert.setHeaderText(null);
+		alert.setContentText(mensaje);
+		alert.initModality(Modality.APPLICATION_MODAL);
+		Window primaryStage = null;
+		alert.initOwner(primaryStage); // Reemplaza primaryStage con tu Stage principal
+
+		alert.showAndWait();
+	}
 
 	//------------------------------  Singleton ------------------------------------------------
 	// Clase estatica oculta. Tan solo se instanciara el singleton una vez
@@ -66,6 +84,7 @@ public class ModelFactoryController {
 	public void actualizarEmpleado(String nombre, String direccion, String numeroTelefonico, String idEmpleado, String contrasenia) throws EmpleadoException {
 		concesionario.actualizarEmpleado(nombre, direccion, numeroTelefonico, idEmpleado, contrasenia);
 	}
+
 
 	public void actualizarEmpleado2(String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException {
 		concesionario.actualizarEmpleado2(nombre, direccion, numeroTelefonico, idEmpleado);
@@ -162,7 +181,7 @@ public class ModelFactoryController {
 		return concesionario.crearCamion(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, capacidadCarga, tieneFrenosAire, numeroEjes, tieneABS, tipoCamion, tieneAC);
 	}
 
-	public Moto crearMoto(String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, float velocidadMaxima,
+	public Moto crearMoto(String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, Double velocidadMaxima,
 						  String cilindraje, String placa) {
 		return concesionario.crearMoto(marca, estadoVehiculo, modelo, cambios, velocidadMaxima, cilindraje, placa);
 	}

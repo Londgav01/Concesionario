@@ -8,11 +8,15 @@ public class Sedaneta extends StationWagon{
     private boolean tieneAsistenteCarril;
 
     public Sedaneta(SedanetaBuilder sedanetaBuilder) {
-        super(sedanetaBuilder);
+        super();
         this.tieneAsistenteCarril= sedanetaBuilder.tieneAsistenteCarril;
         this.tieneVelocidadCrucero= sedanetaBuilder.tieneVelocidadCrucero;
         this.tieneSensoresColision= sedanetaBuilder.tieneSensoresColision;
         this.tieneSensorTraficoCruzado= sedanetaBuilder.tieneSensorTraficoCruzado;
+    }
+
+    public Sedaneta() {
+        super();
     }
 
     public boolean isTieneVelocidadCrucero() {
@@ -38,7 +42,6 @@ public class Sedaneta extends StationWagon{
         private boolean tieneSensorTraficoCruzado;
         private boolean tieneAsistenteCarril;
 
-        public SedanetaBuilder() {Sedaneta sedaneta= new Sedaneta(this);}
 
         public SedanetaBuilder tieneVelocidadCrucero(boolean tieneVelocidadCrucero) {
             this.tieneVelocidadCrucero = tieneVelocidadCrucero;
@@ -62,7 +65,7 @@ public class Sedaneta extends StationWagon{
 
         @Override
         public Sedaneta build() {
-            return new Sedaneta(this);
+            return new Sedaneta();
         }
     }
 }

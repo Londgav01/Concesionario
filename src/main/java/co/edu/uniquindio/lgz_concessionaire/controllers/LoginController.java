@@ -4,9 +4,12 @@ import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
 import co.edu.uniquindio.lgz_concessionaire.models.Administrador;
 import co.edu.uniquindio.lgz_concessionaire.models.Empleado;
+import co.edu.uniquindio.lgz_concessionaire.models.Persona;
+import co.edu.uniquindio.lgz_concessionaire.repository.AdministradorRepository;
 import co.edu.uniquindio.lgz_concessionaire.repository.ClienteRepository;
 import co.edu.uniquindio.lgz_concessionaire.repository.ConcesionarioRepository;
 import co.edu.uniquindio.lgz_concessionaire.repository.EmpleadoRepository;
+import co.edu.uniquindio.lgz_concessionaire.service.AdministradorService;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
@@ -37,14 +40,12 @@ public class LoginController implements Initializable {
     ModelFactoryController mfm= ModelFactoryController.getInstance();
     @Autowired
     private EmpleadoRepository empleadoRepository;
-    private ConcesionarioRepository concesionarioRepository;
 
-    Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
-            .withNombre("robinson")
-            .withDireccion("cra 12")
-            .withNumeroTelefonico("1234")
-            .withId("456")
-            .build();
+    @Autowired
+    private AdministradorRepository administradorRepository;
+
+    @Autowired
+    private AdministradorService administradorService;
 
 
     @FXML
@@ -120,7 +121,7 @@ public class LoginController implements Initializable {
             this.stage2.setScene(scene);
             olividoContrasena.getScene().getWindow().hide();
             this.stage2.show();
-            empleadoRepository.save(empleado);
+            //empleadoRepository.save(empleado);
 
 
         } catch (Exception e) {
@@ -149,9 +150,23 @@ public class LoginController implements Initializable {
         }
     }
 
+    public void setAdministradorService(AdministradorService administradorService) {
+        this.administradorService = administradorService;
+    }
+    Administrador crearAdministrado(){
+        Administrador admin= new Administrador();
+        admin.setNombre("Robinson");
+        admin.setContrasenia("010101");
+        admin.setDireccion("cra 12");
+        admin.setIdAdministrador("9090");
+
+        return admin;
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
+        Administrador administrador= crearAdministrado();
+        administradorRepository.save(administrador);
     }
 
 }

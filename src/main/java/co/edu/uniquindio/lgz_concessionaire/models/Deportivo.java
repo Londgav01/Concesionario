@@ -5,7 +5,7 @@ public class Deportivo extends Automovil{
     private Double tiempo100Km;
 
     public Deportivo(DeportivoBuilder deportivoBuilder) {
-        super(deportivoBuilder);
+        super();
         this.tiempo100Km= deportivoBuilder.tiempo100Km;
         this.caballosFuerza= deportivoBuilder.caballosFuerza;
     }

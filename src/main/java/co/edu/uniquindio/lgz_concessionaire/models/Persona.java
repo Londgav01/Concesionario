@@ -5,9 +5,12 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-
+@Entity
+@Table(name = "Personas")
 public class Persona implements Serializable {
 
+    @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
     private String nombre;
     private String identificacion;

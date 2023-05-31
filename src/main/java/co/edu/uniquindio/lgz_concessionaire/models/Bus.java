@@ -7,7 +7,7 @@ public class Bus extends Automovil{
     private boolean tieneABS;
 
     Bus(BusBuilder busBuilder) {
-        super(busBuilder);
+        super();
         this.numEjes= busBuilder.numEjes;
         this.numSalidasEmergencia= busBuilder.numSalidasEmergencia;
         this.tieneABS= busBuilder.tieneABS;

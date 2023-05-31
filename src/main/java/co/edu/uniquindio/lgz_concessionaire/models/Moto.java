@@ -3,7 +3,7 @@ package co.edu.uniquindio.lgz_concessionaire.models;
 public class Moto extends Vehiculo{
 
     public Moto() {
-        super();
+        super(precio);
     }
     public static class MotoBuilder extends VehiculoBuilder {
         Moto moto= new Moto();

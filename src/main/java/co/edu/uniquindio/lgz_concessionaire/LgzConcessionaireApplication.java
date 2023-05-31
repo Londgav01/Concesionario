@@ -14,7 +14,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication
 public class LgzConcessionaireApplication extends Application {
 
-    private static Stage primaryStage;
+    public static Stage primaryStage;
     public static ConfigurableApplicationContext context;
     public static Parent rootNode;
     Concesionario conse;

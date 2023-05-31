@@ -6,12 +6,14 @@ public class StationWagon extends Automovil{
     private boolean tieneCamaraReversa;
     private boolean tieneABS;
 
-    public StationWagon(StationWagonBuilder stationWagonBuilder) {
-        super(stationWagonBuilder);
-        this.tieneAC= stationWagonBuilder.tieneAC;
-        this.tieneCamaraReversa= stationWagonBuilder.tieneCamaraReversa;
-        this.tieneABS= stationWagonBuilder.tieneABS;
+    public StationWagon(AutomovilBuilder automovilBuilder) {
+        super();
     }
+
+    public StationWagon() {
+        super();
+    }
+
 
     public boolean isTieneAC() {
         return tieneAC;
@@ -46,7 +48,7 @@ public class StationWagon extends Automovil{
         }
 
         public StationWagon build() {
-            return new StationWagon(this);
+            return new StationWagon();
         }
     }
 }
