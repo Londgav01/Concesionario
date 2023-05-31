@@ -156,19 +156,21 @@ public class VehiculosController {
             }
         }
         if(texto == ""){
-            texto = "Estimado profesor Robinson Arias,\n" +
-                    "\n" +
-                    "Espero que este mensaje le encuentre bien. Me dirijo a usted con sinceridad y humildad para expresarle mis disculpas por no haber logrado completar el proyecto asignado a tiempo. Reconozco que mi falta de organización y compromiso ha afectado negativamente el resultado final y le pido sinceramente perdón por ello.\n" +
-                    "\n" +
-                    "Entiendo la importancia de la responsabilidad y la puntualidad en el ámbito académico, y lamento no haber cumplido con estas expectativas. Acepto toda la responsabilidad por mis acciones y entiendo que mi comportamiento ha sido inaceptable.\n" +
-                    "\n" +
-                    "Me gustaría asegurarle que he reflexionado profundamente sobre esta situación y estoy comprometido a aprender de mis errores. Entiendo la importancia de cumplir con mis obligaciones y asumo la responsabilidad de enfrentar las consecuencias de mis acciones.\n" +
-                    "\n" +
-                    "Si hay alguna oportunidad para remediar esta situación o para realizar cualquier acción adicional, estaría más que dispuesto a colaborar y asumir cualquier tarea adicional que pueda ayudar a mitigar los efectos negativos de mi falta de compromiso.\n" +
-                    "\n" +
-                    "Aprecio mucho su dedicación y paciencia como profesor, y lamento profundamente haber defraudado su confianza. Me esforzaré por mejorar en el futuro y asegurarme de que situaciones como esta no vuelvan a ocurrir.\n" +
-                    "\n" +
-                    "Gracias por su comprensión y por considerar mis disculpas. Valoraría mucho cualquier orientación o consejo que pueda brindarme para aprender de esta experiencia y crecer tanto académica como personalmente.";
+            texto = """
+                    Estimado profesor Robinson Arias,
+                                        
+                    Espero que este mensaje le encuentre bien. Me dirijo a usted con sinceridad y humildad para expresarle mis disculpas por no haber logrado completar el proyecto asignado a tiempo. Reconozco que mi falta de organización y compromiso ha afectado negativamente el resultado final y le pido sinceramente perdón por ello.
+                                        
+                    Entiendo la importancia de la responsabilidad y la puntualidad en el ámbito académico, y lamento no haber cumplido con estas expectativas. Acepto toda la responsabilidad por mis acciones y entiendo que mi comportamiento ha sido inaceptable.
+                                        
+                    Me gustaría asegurarle que he reflexionado profundamente sobre esta situación y estoy comprometido a aprender de mis errores. Entiendo la importancia de cumplir con mis obligaciones y asumo la responsabilidad de enfrentar las consecuencias de mis acciones.
+                                        
+                    Si hay alguna oportunidad para remediar esta situación o para realizar cualquier acción adicional, estaría más que dispuesto a colaborar y asumir cualquier tarea adicional que pueda ayudar a mitigar los efectos negativos de mi falta de compromiso.
+                                        
+                    Aprecio mucho su dedicación y paciencia como profesor, y lamento profundamente haber defraudado su confianza. Me esforzaré por mejorar en el futuro y asegurarme de que situaciones como esta no vuelvan a ocurrir.
+                                        
+                    Gracias por su comprensión y por considerar mis disculpas. Valoraría mucho cualquier orientación o consejo que pueda brindarme para aprender de esta experiencia y crecer tanto académica como personalmente.
+                    """;
         }
         mostrarAlertaError(texto);
 
