@@ -510,6 +510,7 @@ public class RegistroVehiculosController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         llenarChoiceBox();
     }
 }
