@@ -236,16 +236,29 @@ public class RegistrosAdminController implements Initializable {
      * @param event
      */
 
+    private void mostrarAlertaConfirmacion(String mensaje) {
+        // Crear la alerta de error
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmacion");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        // Mostrar la alerta y esperar a que el usuario la cierre
+        alert.showAndWait();
+    }
+
     @FXML
     void registrarCliente(ActionEvent event) {
         String nombre = nombreNuevoCliente.getText();
         String idCliente = idNuevoCliente.getText();
         String direccion = direccionNuevoCliente.getText();
         String telefonoCliente = telefonoNuevoCliente.getText();
-        try {
-            mfm.crearCliente(nombre, idCliente, direccion, telefonoCliente);
-        } catch (UsuarioExcepction e) {
-            throw new RuntimeException(e);
+        if(validarDatos(nombre,idCliente,direccion,telefonoCliente)) {
+            try {
+                mfm.crearCliente(nombre, idCliente, direccion, telefonoCliente);
+            } catch (UsuarioExcepction e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -289,9 +302,10 @@ public class RegistrosAdminController implements Initializable {
      */
     public boolean validarDatos(String nombre, String idEmpleado, String direccion, String telefono){
         if(nombre=="" || idEmpleado=="" || direccion=="" || telefono==""){
-            JOptionPane.showMessageDialog(null, "Error, llene todos los campos");
+            mostrarAlertaConfirmacion("Llene todos los campos");
             return false;
         }
+        mostrarAlertaConfirmacion("Persona creada");
         return true;
     }
 
