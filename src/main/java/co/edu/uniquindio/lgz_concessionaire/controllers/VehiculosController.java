@@ -101,8 +101,16 @@ public class VehiculosController {
 
     @FXML
     void mostrarInfoVan(ActionEvent event) {
-        mostrarAlertaError("No hay stock," +
-                "vulva la semana siguiente");
+        String texto = "";
+        for (Vehiculo vehiculos: modelFactoryController.getConcesionario().getListaVehiculos()) {
+            if(vehiculos instanceof Van){
+                texto+=vehiculos.toString();
+            }
+        }
+        if(texto == ""){
+            texto = "No hay vehículos disponibles";
+        }
+        mostrarAlertaError(texto);
     }
 
     @FXML
