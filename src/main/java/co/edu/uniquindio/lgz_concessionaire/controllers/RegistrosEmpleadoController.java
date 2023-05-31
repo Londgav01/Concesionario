@@ -75,9 +75,9 @@ public class RegistrosEmpleadoController {
     public boolean validarDatos(){
         if(nuevoNombreCliente.getText() == "" || nuevoIdCliente.getText() == "" ||
                 nuevoDireccionCliente.getText() == "" || nuevoTelefonoCliente.getText() == ""){
-            mostrarAlertaConfirmacion("Persona añadida");
             return false;
         }
+        mostrarAlertaConfirmacion("Persona añadida");
         return true;
     }
 
