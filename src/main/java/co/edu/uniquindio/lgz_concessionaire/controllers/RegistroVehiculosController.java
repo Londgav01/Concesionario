@@ -208,6 +208,8 @@ public class RegistroVehiculosController implements Initializable {
     @FXML
     private Tab vehiculo;
 
+
+
     private Vehiculo vehicule;
 
     private void llenarChoiceBox() {

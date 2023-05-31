@@ -88,7 +88,6 @@
                         <TextField fx:id="cargaCamion" layoutX="46.0" layoutY="172.0" />
                         <TextField fx:id="numEjesCamion" layoutX="555.0" layoutY="170.0" />
                         <TextField fx:id="tipoCamion" layoutX="305.0" layoutY="274.0" />
-                        <TextField fx:id="tieneACCamion" layoutX="555.0" layoutY="274.0" />
                         <Label layoutX="46.0" layoutY="151.0" styleClass="label-verde-oscuro" text="Capacidad de Carga:" underline="true" />
                         <Label layoutX="305.0" layoutY="151.0" styleClass="label-verde-oscuro" text="Tiene Frenos de Aire?" underline="true" />
                         <Label layoutX="555.0" layoutY="151.0" styleClass="label-verde-oscuro" text="Número de ejes:" underline="true" />
@@ -107,6 +106,7 @@
                         </Label>
                         <ChoiceBox fx:id="tieneFrenosCamion" layoutX="302.0" layoutY="171.0" prefHeight="26.0" prefWidth="158.0" />
                         <ChoiceBox fx:id="tieneABSCamion" layoutX="46.0" layoutY="272.0" prefHeight="28.0" prefWidth="155.0" />
+                        <ChoiceBox fx:id="tieneACCamion" layoutX="543.0" layoutY="275.0" prefWidth="150.0" />
                      </children></AnchorPane>
               </content>
             </Tab>
