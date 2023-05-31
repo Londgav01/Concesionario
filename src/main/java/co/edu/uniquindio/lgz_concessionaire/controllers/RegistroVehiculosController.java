@@ -159,6 +159,8 @@ public class RegistroVehiculosController implements Initializable {
 
     @FXML
     private TextField tipoCamion;
+    @FXML
+    private TextField urlImage1;
 
     @FXML
     private ChoiceBox<String> tipoCombustible;

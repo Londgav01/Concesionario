@@ -53,7 +53,7 @@
                         <ChoiceBox fx:id="tipoTransimicion" layoutX="537.0" layoutY="297.0" prefWidth="150.0" />
                         <Label layoutX="563.0" layoutY="343.0" text="Precio:" />
                         <ChoiceBox fx:id="tipoCombustible" layoutX="64.0" layoutY="368.0" prefWidth="150.0" />
-                        <TextField fx:id="urlImage" layoutX="61.0" layoutY="296.0" />
+                        <TextField fx:id="urlImage1" layoutX="61.0" layoutY="296.0" />
                         <Hyperlink layoutX="60.0" layoutY="262.0" prefHeight="24.0" prefWidth="92.0" text="URL imagen:" textFill="WHITE">
                            <font>
                               <Font name="Cooper Black" size="13.0" />
