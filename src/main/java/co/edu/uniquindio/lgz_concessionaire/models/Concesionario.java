@@ -529,7 +529,4 @@ public class Concesionario implements Serializable {
                 .build();
         return van;
     }
-
-
-
 }

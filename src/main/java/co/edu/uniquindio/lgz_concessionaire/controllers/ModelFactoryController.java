@@ -103,20 +103,20 @@ public class ModelFactoryController {
 	}
 
 	public void actualizarProveedor(String nombre, String identificacion, String direccion,
-									String numTelefono)throws UsuarioExcepction{
+									String numTelefono) throws UsuarioExcepction {
 		concesionario.actualizarProveedor(nombre, identificacion, direccion, numTelefono);
 	}
 
-	public Proveedor buscarProveedor (String idProveedor) throws UsuarioExcepction{
+	public Proveedor buscarProveedor(String idProveedor) throws UsuarioExcepction {
 		return concesionario.buscarProveedor(idProveedor);
 	}
 
 	/////////////////////////
-	public void crearTransacciones(Empleado empleado, String code, Double valorTotal, Cliente cliente,  List<DetalleTransaccion> listaDetalles) throws TransactionException {
+	public void crearTransacciones(Empleado empleado, String code, Double valorTotal, Cliente cliente, List<DetalleTransaccion> listaDetalles) throws TransactionException {
 		concesionario.crearTransacciones(empleado, code, valorTotal, cliente, listaDetalles);
 	}
 
-	public Transaccion buscarTransaccion(String code){
+	public Transaccion buscarTransaccion(String code) {
 		return concesionario.buscarTransaccion(code);
 	}
 
@@ -125,9 +125,66 @@ public class ModelFactoryController {
 	}
 
 	//////////////////////////////////
-	public Vehiculo buscarVehiculo (String placa){
+	public Vehiculo buscarVehiculo(String placa) {
 		return concesionario.buscarVehiculo(placa);
 
+	}
+
+	public boolean eliminarVehiculo(String placa) {
+		return concesionario.eliminarVehiculo(placa);
+	}
+
+	public Sedan crearSedan(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+							String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+							TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
+							boolean camaraReversa, boolean aBS, boolean velocidadCrucero, boolean sensoresColision,
+							boolean sensorTraficoCruzado, boolean asistenteCarril) {
+		return concesionario.crearSedan(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, numPuertas, numPasajeros, numBolsasAire, aC, camaraReversa, aBS, velocidadCrucero, sensoresColision, sensorTraficoCruzado, asistenteCarril);
+	}
+
+	public Deportivo crearDeportivo(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+									String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+									TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, Double tiempo100Km, Double caballosFuerza) {
+		return concesionario.crearDeportivo(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, numPuertas, numPasajeros, numBolsasAire, tiempo100Km, caballosFuerza);
+	}
+
+	public Camioneta crearCamioneta(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+									String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+									TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
+									boolean camaraReversa, boolean aBS, boolean velocidadCrucero, boolean sensoresColision,
+									boolean sensorTraficoCruzado, boolean asistenteCarril, boolean is4x4) {
+		return concesionario.crearCamioneta(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, numPuertas, numPasajeros, numBolsasAire, aC, camaraReversa, aBS, velocidadCrucero, sensoresColision, sensorTraficoCruzado, asistenteCarril, is4x4);
+	}
+
+	public Camion crearCamion(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+							  String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+							  TipoTransmision tipoTrasmision, double capacidadCarga, boolean tieneFrenosAire, int numeroEjes, boolean tieneABS, String tipoCamion, boolean tieneAC) {
+		return concesionario.crearCamion(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, capacidadCarga, tieneFrenosAire, numeroEjes, tieneABS, tipoCamion, tieneAC);
+	}
+
+	public Moto crearMoto(String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, float velocidadMaxima,
+						  String cilindraje, String placa) {
+		return concesionario.crearMoto(marca, estadoVehiculo, modelo, cambios, velocidadMaxima, cilindraje, placa);
+	}
+
+	public Bus crearBus(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+						String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+						TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, int numEjes, int numSalidas, boolean tieneAbs) {
+		return concesionario.crearBus(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, numPuertas, numPasajeros, numBolsasAire, numEjes, numSalidas, tieneAbs);
+	}
+
+	public PickUp crearPick(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+							String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+							TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
+							boolean camaraReversa, boolean aBS, boolean is4x4, double capacidadCarga) {
+		return concesionario.crearPick(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, numPuertas, numPasajeros, numBolsasAire, aC, camaraReversa, aBS, is4x4, capacidadCarga);
+	}
+
+	public Van crearVan(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
+						String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
+						TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
+						boolean camaraReversa, boolean aBS) {
+		return concesionario.crearVan(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, numPuertas, numPasajeros, numBolsasAire, aC, camaraReversa, aBS);
 	}
 }
 

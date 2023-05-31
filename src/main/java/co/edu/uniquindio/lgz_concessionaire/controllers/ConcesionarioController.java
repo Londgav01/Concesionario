@@ -103,8 +103,8 @@ public class ConcesionarioController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Image> images = new ArrayList<>();
         images.add(new Image("/images/Ducati panigale moto.jpg"));
-        images.add(new Image("images/CamionDeBasura camion.jpg"));
-        images.add(new Image("/images/Toyota_Camry_(ASV50R)_SX_sedan.jpg"));
+        images.add(new Image("images/FORD-RANGER-BLACK.jpg"));
+        images.add(new Image("images/SITP transmilenio.jpeg"));
 
         Timeline timeline = new Timeline();
         timeline.setCycleCount(Timeline.INDEFINITE);
