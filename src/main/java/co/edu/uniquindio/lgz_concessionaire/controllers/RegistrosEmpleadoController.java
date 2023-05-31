@@ -4,6 +4,7 @@ import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
@@ -74,10 +75,21 @@ public class RegistrosEmpleadoController {
     public boolean validarDatos(){
         if(nuevoNombreCliente.getText() == "" || nuevoIdCliente.getText() == "" ||
                 nuevoDireccionCliente.getText() == "" || nuevoTelefonoCliente.getText() == ""){
-            JOptionPane.showMessageDialog(null, "Error, campos vacios");
+            mostrarAlertaConfirmacion("Persona añadida");
             return false;
         }
         return true;
+    }
+
+    private void mostrarAlertaConfirmacion(String mensaje) {
+        // Crear la alerta de error
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmacion");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        // Mostrar la alerta y esperar a que el usuario la cierre
+        alert.showAndWait();
     }
     /*
     private MenuPrincipalController menuPrincipalController;
