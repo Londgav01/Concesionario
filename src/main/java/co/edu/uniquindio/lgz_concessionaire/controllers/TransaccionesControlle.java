@@ -135,6 +135,6 @@ public class TransaccionesControlle implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         String listaVentas[] = {"Moto","Camion", "Bus", "Camioneta", "Sedan", "PickUp",
                     "Deportivo", "Van"};
-        tipoVehiculoVenta.setItems(FXCollections.observableList(Arrays.asList(listaVentas));
+        tipoVehiculoVenta.setItems(FXCollections.observableList(Arrays.asList(listaVentas)));
     }
 }
