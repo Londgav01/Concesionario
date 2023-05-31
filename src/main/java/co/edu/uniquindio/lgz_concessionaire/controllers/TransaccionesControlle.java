@@ -1,8 +1,10 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -11,7 +13,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
-public class TransaccionesControlle {
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.ResourceBundle;
+
+public class TransaccionesControlle implements Initializable {
 
     @FXML
     private Button botonAbrirVentanaRegistros;
@@ -64,10 +71,10 @@ public class TransaccionesControlle {
     private TextField placaVenta;
 
     @FXML
-    private ChoiceBox<?> tipoVehiculoAlquiler;
+    private ChoiceBox<String> tipoVehiculoAlquiler;
 
     @FXML
-    private ChoiceBox<?> tipoVehiculoVenta;
+    private ChoiceBox<String> tipoVehiculoVenta;
 
     @FXML
     private TextField totalCompra;
@@ -122,5 +129,12 @@ public class TransaccionesControlle {
     public void init(Stage stage, ConcesionarioController concesionarioController) {
         this.concesionarioController = concesionarioController;
         this.stage = stage;
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String listaVentas[] = {"Moto","Camion", "Bus", "Camioneta", "Sedan", "PickUp",
+                    "Deportivo", "Van"};
+        tipoVehiculoVenta.setItems(FXCollections.observableList(Arrays.asList(listaVentas));
     }
 }
