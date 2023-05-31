@@ -26,6 +26,10 @@ import java.util.ResourceBundle;
 @Component
 public class LoginController implements Initializable {
 
+    /**
+     * Datos utilizados a traves de la clase
+     * Incluye: instancias, datos de interfaz
+     */
     private Stage stage2= new Stage();
     private RecuperacionController recuperacionController;
 
@@ -62,6 +66,11 @@ public class LoginController implements Initializable {
     }
     private Stage stage;
 
+    /**
+     * se encarga de abrir el concesionario, la cual es la ventana principal en donde se podran abrir las demas
+     * @param event
+     * @throws EmpleadoException
+     */
     @FXML
     void login(ActionEvent event) throws EmpleadoException {
         String identificacion = userLogin.getText();
@@ -97,6 +106,9 @@ public class LoginController implements Initializable {
     }
 
 
+    /**
+     * Abre la ventana de recuperacion junto con la funcion siguiente
+     */
     void abrirVentanaConcesionario(){
         LgzConcessionaireApplication.getPrimaryStage().close();
         try {
@@ -116,6 +128,10 @@ public class LoginController implements Initializable {
         }
     }
 
+    /**
+     * Metodo encargado de abrir la ventana para la recuperacion de la conrtaseña
+     * @param event
+     */
     @FXML
     void abrirVentanaRecuperarContrasena(ActionEvent event) {
         LgzConcessionaireApplication.getPrimaryStage().close();

@@ -501,7 +501,7 @@ public class RegistroVehiculosController implements Initializable {
     @FXML
     void volverEvent(ActionEvent event) {
         concesionarioController.show();
-        this.stage.hide();
+        this.stage.close();
     }
 
     private ConcesionarioController concesionarioController;

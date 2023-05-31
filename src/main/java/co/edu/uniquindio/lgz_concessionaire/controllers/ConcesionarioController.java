@@ -59,12 +59,20 @@ public class ConcesionarioController implements Initializable {
     @FXML
     private Hyperlink vehiculos;
 
+    /**
+     * Metodo que se encarga de volver al login inicial
+     *
+     * @param event
+     */
     @FXML
     void volverALogin(ActionEvent event) {
         LgzConcessionaireApplication.getPrimaryStage().show();
         buttomBack.getScene().getWindow().hide();
     }
 
+    /**
+     * parametro para crear la ventana y poder mostrarla
+     */
     private Stage stage;
 
     /**
@@ -117,6 +125,12 @@ public class ConcesionarioController implements Initializable {
     }
 
 
+    /**
+     * metodo encargado de abrir la ventana de registro de vehiculos
+     * este metodo se vera en diferentes ventanas para asegurar la navegabilidad correcta entre ventanas
+     * No se Puede hacer static debido a los parametros
+     * @param event
+     */
     @FXML
     void abrirRegistroVehiculos(ActionEvent event) {
         try {
@@ -134,6 +148,13 @@ public class ConcesionarioController implements Initializable {
         }
     }
 
+
+    /**
+     * metodo que abre la ventana de registro de clientes, empleados y administradores
+     * este metodo se vera en diferentes ventanas para asegurar la navegabilidad correcta entre ventanas
+     * No se Puede hacer static debido a los parametros
+     * @param event
+     */
     @FXML
     void abrirRegistroPersonas(ActionEvent event) {
         try {
@@ -166,7 +187,11 @@ public class ConcesionarioController implements Initializable {
     private LoginController loginController;
 
 
-
+    /**
+     * metodo que es llamado desde el LoginController para poder mostrarse en pantalla
+     * @param stage
+     * @param loginController
+     */
     public void init(Stage stage, LoginController loginController) {
         this.loginController = loginController;
         this.stage = stage;

@@ -13,6 +13,11 @@ import java.util.List;
 @Table(name = "concesionario")
 public class Concesionario implements Serializable {
 
+    /**
+     * Datos y atributos utilizados a lo largo de esta clase "concesionario"
+     * Incluye listas
+     * Incluye instancia Administrador
+     */
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Long id;
@@ -110,6 +115,16 @@ public class Concesionario implements Serializable {
     ////////////////////////////////////////////////////////////////////////
     //Metodo CRUD empleado
 
+    /**
+     * Crea una empleado y lo retorna
+     * @param nombre
+     * @param identificacion
+     * @param direccion
+     * @param numeroTelefonico
+     * @param contrasenia
+     * @return
+     * @throws EmpleadoException
+     */
     public Empleado crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico, String contrasenia) throws EmpleadoException{
         Empleado empleado = (Empleado) new Empleado.EmpleadoBuilder()
                 .contraEmpleado(contrasenia)
@@ -125,6 +140,14 @@ public class Concesionario implements Serializable {
         return empleado;
     }
 
+    /**
+     * Busca a un empleado y lo retorna
+     * internamente se verifica que el usuario si sea valido a traves de la contraseña
+     * @param identificacion
+     * @param contrasenia
+     * @return
+     * @throws EmpleadoException
+     */
     public Empleado buscarEmpleado(String identificacion, String contrasenia) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
             if(empleado.getIdentificacion().equals(identificacion) && empleado.getContrasenia().equals(contrasenia)){
@@ -134,6 +157,13 @@ public class Concesionario implements Serializable {
         throw new EmpleadoException("El empleado no se ha encontrado");
     }
 
+    /**
+     * Metodo que busca al empleado solo con la identificacion
+     * retorna al empleado encontrado
+     * @param identificacion
+     * @return
+     * @throws EmpleadoException
+     */
     public Empleado buscarEmpleadoIdentificacion(String identificacion) throws EmpleadoException {
         for (Empleado empleado: listaEmpleados) {
             if(empleado.equals(identificacion)){
@@ -143,6 +173,16 @@ public class Concesionario implements Serializable {
         throw new EmpleadoException("El empleado no se ha encontrado");
     }
 
+    /**
+     * Actualiza los atributos de un empleado
+     * Se busca por su identifiacion para asi poder actualizarlo
+     * @param nombre
+     * @param direccion
+     * @param numeroTelefonico
+     * @param idEmpleado
+     * @param contrasenia
+     * @throws EmpleadoException
+     */
     public void actualizarEmpleado (String nombre, String direccion, String numeroTelefonico, String idEmpleado, String contrasenia) throws EmpleadoException{
         if(buscarEmpleadoIdentificacion(idEmpleado) != null) {
             for (Empleado empleado : listaEmpleados) {
@@ -157,6 +197,11 @@ public class Concesionario implements Serializable {
         }
     }
 
+    /**
+     *
+     * @param idEmpleado
+     * @return
+     */
     public Empleado buscarEmpleadoRoyer (String idEmpleado){
         for (Empleado empleado: listaEmpleados
              ) {
@@ -168,6 +213,15 @@ public class Concesionario implements Serializable {
         return null;
     }
 
+    /**
+     * Otro metodo de actualizar empleado
+     * Lo hio royersito para poder implementarlo con su logica
+     * @param nombre
+     * @param direccion
+     * @param numeroTelefonico
+     * @param idEmpleado
+     * @throws EmpleadoException
+     */
     public void actualizarEmpleado2 (String nombre, String direccion, String numeroTelefonico, String idEmpleado) throws EmpleadoException {
         for (Empleado empleado: listaEmpleados) {
             if(buscarEmpleadoRoyer(idEmpleado) != null){
@@ -180,11 +234,22 @@ public class Concesionario implements Serializable {
 
     }
 
+    /**
+     * Verifica si un empleado ya existe para no volver a crearlo
+     * @param idEmpleado
+     * @return
+     */
     public boolean verificarEmpleado(String idEmpleado){
         return listaEmpleados.stream().anyMatch(e -> e.equals(idEmpleado));
     }
 
 
+    /**
+     * Elimina a un empleado si es que existe dadp su id
+     * @param idEmpleado
+     * @return
+     * @throws EmpleadoException
+     */
     public boolean eliminarEmpleado (String idEmpleado) throws EmpleadoException{
         for (Empleado empleado : listaEmpleados) {
             if(empleado.getIdentificacion().equals(idEmpleado) ){
@@ -197,6 +262,14 @@ public class Concesionario implements Serializable {
 
     /////////////////////////////////////////////////Métodos CRUD Cliente//////////////////////////////////////////////////////////
 
+    /**
+     * Crea a un cliente pero no lo retorna
+     * @param nombre
+     * @param identificacion
+     * @param direccion
+     * @param numeroTelefonico
+     * @throws UsuarioExcepction
+     */
     public void crearCliente(String nombre, String identificacion, String direccion, String numeroTelefonico) throws UsuarioExcepction {
         Persona cliente= new Persona.PersonaBuilder()
                 .withNombre(nombre)
@@ -210,10 +283,23 @@ public class Concesionario implements Serializable {
         listaClientes.add((Cliente) cliente);
     }
 
+    /**
+     * Verifica si un cliente ya existe
+     * @param identificacion
+     * @return
+     */
     public boolean verificarCliente(String identificacion){
         return listaClientes.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion));
     }
 
+    /**
+     * Actualiza a un cliente, solo ciertos atributos
+     * @param nombre
+     * @param identificacion
+     * @param direccion
+     * @param numTelefono
+     * @throws UsuarioExcepction
+     */
     public void actualizarCliente(String nombre, String identificacion, String direccion,
                                   String numTelefono)throws UsuarioExcepction{
         if(identificacion!=null){
@@ -230,6 +316,12 @@ public class Concesionario implements Serializable {
         throw  new UsuarioExcepction("El cliente no existe, digite la identificación de nuevo");
     }
 
+    /**
+     * Busca a un cliente dada su id
+     * @param idCliente
+     * @return
+     * @throws UsuarioExcepction
+     */
     public Cliente buscarCliente (String idCliente) throws UsuarioExcepction{
         for (Cliente cliente : listaClientes) {
             if(cliente.getIdentificacion().equals(idCliente)){
@@ -241,6 +333,12 @@ public class Concesionario implements Serializable {
         throw new UsuarioExcepction("El cliente no se ha encontrado");
     }
 
+    /**
+     * elimina a un cliente dada su id
+     * @param identificacion
+     * @return
+     * @throws UsuarioExcepction
+     */
     public boolean eliminarCliente (String identificacion) throws UsuarioExcepction {
         for (Cliente cliente: listaClientes) {
             if(buscarCliente(identificacion).equals(cliente.getIdentificacion())){
@@ -254,6 +352,14 @@ public class Concesionario implements Serializable {
     //////////////////////////////////////////////////////////////////
     //Metodos CRUD proveedor
 
+    /**
+     * Crea a un proveedor con todos sus atributos
+     * @param nombre
+     * @param identificacion
+     * @param direccion
+     * @param num
+     * @throws UsuarioExcepction
+     */
     public void crearProveedor(String nombre, String identificacion, String direccion, String num) throws UsuarioExcepction {
         Proveedor proveedor = new Proveedor (nombre, identificacion, direccion, num);
         if(verificarProveedor(proveedor.getIdentificacion())){
@@ -261,10 +367,24 @@ public class Concesionario implements Serializable {
         }
         listaProveedores.add(proveedor);
     }
+
+    /**
+     * Verifica si un proveedor ya existe para asi no volver a crearlo
+     * @param identificacion
+     * @return
+     */
     public boolean verificarProveedor(String identificacion){
         return listaProveedores.stream().anyMatch(c -> c.getIdentificacion().equals(identificacion));
     }
 
+    /**
+     * Se actualizan ciertos atributos del proveedor
+     * @param nombre
+     * @param identificacion
+     * @param direccion
+     * @param numTelefono
+     * @throws UsuarioExcepction
+     */
     public void actualizarProveedor(String nombre, String identificacion, String direccion,
                                   String numTelefono)throws UsuarioExcepction{
         if(identificacion!=null){
@@ -281,6 +401,12 @@ public class Concesionario implements Serializable {
         throw  new UsuarioExcepction("El cliente no existe, digite la identificación de nuevo");
     }
 
+    /**
+     * Se busca a un proveedor dada su id
+     * @param idProveedor
+     * @return
+     * @throws UsuarioExcepction
+     */
     public Proveedor buscarProveedor (String idProveedor) throws UsuarioExcepction{
         for (Proveedor proveedor : listaProveedores) {
             if(proveedor.getIdentificacion().equals(idProveedor)){
@@ -293,6 +419,16 @@ public class Concesionario implements Serializable {
     /////////////////////////////////////////////////////////////////////////
     //CRUD Transacciones
 
+
+    /**
+     * Encargado de crear Transaccion, asignandole un vehiculo
+     * @param empleado
+     * @param code
+     * @param valorTotal
+     * @param cliente
+     * @param listaDetalles
+     * @throws TransactionException
+     */
     public void crearTransacciones(Empleado empleado, String code, Double valorTotal, Cliente cliente,  List<DetalleTransaccion> listaDetalles) throws TransactionException {
         Transaccion transaccion = new Transaccion(empleado, code, valorTotal, cliente, listaDetalles);
         if(verificarTransacciones(transaccion.getCode())){
@@ -301,11 +437,23 @@ public class Concesionario implements Serializable {
         listaTransacciones.add(transaccion);
     }
 
+
+    /**
+     * Busca una transaccion dandole un codigo
+     * @param code
+     * @return
+     */
     public Transaccion buscarTransaccion(String code){
         return (Transaccion) listaTransacciones.stream()
                 .filter(t -> t.getCode().equals(code)).collect(Collectors.toList());
     }
 
+
+    /**
+     * elimina una transaccion dandole un codigo para buscarla y hacer el proceso de eliminacion
+     * @param code
+     * @throws TransactionException
+     */
     public void eliminarTransaccion(String code) throws TransactionException {
         Transaccion transaccion = buscarTransaccion(code);
         if(transaccion != null){
@@ -314,12 +462,24 @@ public class Concesionario implements Serializable {
         throw new TransactionException("La transacción no existe");
     }
 
+
+    /**
+     * verifica si una transaccion ya existe en la base de datos
+     * @param code
+     * @return
+     */
     public boolean verificarTransacciones(String code){
         return listaTransacciones.stream().anyMatch(t -> t.getCode().equals(code));
     }
     ////////////////////////////////////////////////////////////////////////////
     //CRUD vehiculos
 
+    /**
+     * busca un vehiculo brindandole la placa
+     * retorna el vehiculo encontrado
+     * @param placa
+     * @return
+     */
     public Vehiculo buscarVehiculo (String placa){
         for (Vehiculo vehiculo : listaVehiculos) {
             if(vehiculo.getPlaca().equals(placa)){
@@ -329,6 +489,12 @@ public class Concesionario implements Serializable {
         }
         return null;
     }
+
+    /**
+     * elimina el vehiculo dado la placa
+     * @param placa
+     * @return
+     */
     public boolean eliminarVehiculo (String placa){
         boolean eliminado = false;
         for (Vehiculo vehiculo: listaVehiculos) {
@@ -340,6 +506,31 @@ public class Concesionario implements Serializable {
         return eliminado;
     }
 
+
+    /**
+     * crea un sedan el cual hereda de otras clases, asignando asi los
+     * atributos de su clase y de las clases padre
+     * @param marca
+     * @param placa
+     * @param modelo
+     * @param cantidadCambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param estadoVehiculo
+     * @param tipoCombustible
+     * @param tipoTrasmision
+     * @param numPuertas
+     * @param numPasajeros
+     * @param numBolsasAire
+     * @param aC
+     * @param camaraReversa
+     * @param aBS
+     * @param velocidadCrucero
+     * @param sensoresColision
+     * @param sensorTraficoCruzado
+     * @param asistenteCarril
+     * @return
+     */
     public Sedan crearSedan (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                              String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                              TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
@@ -359,7 +550,24 @@ public class Concesionario implements Serializable {
     }
 
 
-
+    /**
+     * Crea un Deportivo el cual hereda atributos de otras clases
+     * @param marca
+     * @param placa
+     * @param modelo
+     * @param cantidadCambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param estadoVehiculo
+     * @param tipoCombustible
+     * @param tipoTrasmision
+     * @param numPuertas
+     * @param numPasajeros
+     * @param numBolsasAire
+     * @param tiempo100Km
+     * @param caballosFuerza
+     * @return
+     */
     public Deportivo crearDeportivo(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                                     String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                                     TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, Double tiempo100Km, Double caballosFuerza){
@@ -384,7 +592,30 @@ public class Concesionario implements Serializable {
     }
 
 
-
+    /**
+     * Crea una camioneta y la retorna
+     * @param marca
+     * @param placa
+     * @param modelo
+     * @param cantidadCambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param estadoVehiculo
+     * @param tipoCombustible
+     * @param tipoTrasmision
+     * @param numPuertas
+     * @param numPasajeros
+     * @param numBolsasAire
+     * @param aC
+     * @param camaraReversa
+     * @param aBS
+     * @param velocidadCrucero
+     * @param sensoresColision
+     * @param sensorTraficoCruzado
+     * @param asistenteCarril
+     * @param is4x4
+     * @return
+     */
     public Camioneta crearCamioneta (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                                      String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                                      TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
@@ -416,6 +647,25 @@ public class Concesionario implements Serializable {
     }
 
 
+    /**
+     * Crea un camion y se retorna
+     * @param marca
+     * @param placa
+     * @param modelo
+     * @param cantidadCambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param estadoVehiculo
+     * @param tipoCombustible
+     * @param tipoTrasmision
+     * @param capacidadCarga
+     * @param tieneFrenosAire
+     * @param numeroEjes
+     * @param tieneABS
+     * @param tipoCamion
+     * @param tieneAC
+     * @return
+     */
     public Camion crearCamion (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                                String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                                TipoTransmision tipoTrasmision, double capacidadCarga, boolean tieneFrenosAire, int numeroEjes, boolean tieneABS, String tipoCamion, boolean tieneAC){
@@ -438,8 +688,17 @@ public class Concesionario implements Serializable {
     }
 
 
-
-
+    /**
+     * Crea una moto y la retorna
+     * @param marca
+     * @param estadoVehiculo
+     * @param modelo
+     * @param cambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param placa
+     * @return
+     */
     public Moto crearMoto (String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, Double velocidadMaxima,
                            String cilindraje, String placa){
         Moto moto = (Moto) new Moto.MotoBuilder()
@@ -455,6 +714,25 @@ public class Concesionario implements Serializable {
 
     }
 
+    /**
+     * Crea un bus y lo retorna
+     * @param marca
+     * @param placa
+     * @param modelo
+     * @param cantidadCambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param estadoVehiculo
+     * @param tipoCombustible
+     * @param tipoTrasmision
+     * @param numPuertas
+     * @param numPasajeros
+     * @param numBolsasAire
+     * @param numEjes
+     * @param numSalidas
+     * @param tieneAbs
+     * @return
+     */
     public Bus crearBus (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                          String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                          TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, int numEjes, int numSalidas, boolean tieneAbs){
@@ -480,6 +758,27 @@ public class Concesionario implements Serializable {
         return  bus;
     }
 
+    /**
+     * Crea una pick up y la retorna
+     * @param marca
+     * @param placa
+     * @param modelo
+     * @param cantidadCambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param estadoVehiculo
+     * @param tipoCombustible
+     * @param tipoTrasmision
+     * @param numPuertas
+     * @param numPasajeros
+     * @param numBolsasAire
+     * @param aC
+     * @param camaraReversa
+     * @param aBS
+     * @param is4x4
+     * @param capacidadCarga
+     * @return
+     */
     public PickUp crearPick (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                              String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                              TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,
@@ -506,6 +805,25 @@ public class Concesionario implements Serializable {
         return pick;
     }
 
+    /**
+     * Crea una van y la retorna
+     * @param marca
+     * @param placa
+     * @param modelo
+     * @param cantidadCambios
+     * @param velocidadMaxima
+     * @param cilindraje
+     * @param estadoVehiculo
+     * @param tipoCombustible
+     * @param tipoTrasmision
+     * @param numPuertas
+     * @param numPasajeros
+     * @param numBolsasAire
+     * @param aC
+     * @param camaraReversa
+     * @param aBS
+     * @return
+     */
     public Van crearVan (String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
                          String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
                          TipoTransmision tipoTrasmision, int numPuertas, int numPasajeros, int numBolsasAire, boolean aC,

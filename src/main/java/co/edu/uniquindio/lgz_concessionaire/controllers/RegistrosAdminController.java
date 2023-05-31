@@ -215,6 +215,12 @@ public class RegistrosAdminController implements Initializable {
 
     }
 
+    /**
+     * metodo utilizado en el boton eliminar
+     * Depende del choice box se eliminara cliente o empleado
+     * @throws EmpleadoException
+     * @throws UsuarioExcepction
+     */
     private void eliminarAction () throws EmpleadoException, UsuarioExcepction {
         if(opciones.getOnAction().equals("empleado")) {
             mfm.eliminarEmpleado(idEliminar.getText());
@@ -224,6 +230,11 @@ public class RegistrosAdminController implements Initializable {
             mfm.eliminarCliente(idEliminar.getText());
         }
     }
+
+    /**
+     * registra a cliente capturando los datos de la interfaz
+     * @param event
+     */
 
     @FXML
     void registrarCliente(ActionEvent event) {
@@ -238,11 +249,19 @@ public class RegistrosAdminController implements Initializable {
         }
     }
 
+    /**
+     *
+     * @param event
+     */
     @FXML
     void registrarNuevoAdmin(ActionEvent event) {
 
     }
 
+    /**
+     * registra a un empleado llamando a metodos del mfm
+     * @param event
+     */
     @FXML
     void registrarNuevoEmpleado(ActionEvent event) {
         String nombre = nuevoNombreEmpleado.getText();
@@ -259,6 +278,15 @@ public class RegistrosAdminController implements Initializable {
         }
     }
 
+    /**
+     * valida los datos pasa saber si los textField estan en blanco o no
+     *
+     * @param nombre
+     * @param idEmpleado
+     * @param direccion
+     * @param telefono
+     * @return
+     */
     public boolean validarDatos(String nombre, String idEmpleado, String direccion, String telefono){
         if(nombre=="" || idEmpleado=="" || direccion=="" || telefono==""){
             JOptionPane.showMessageDialog(null, "Error, llene todos los campos");
@@ -267,6 +295,10 @@ public class RegistrosAdminController implements Initializable {
         return true;
     }
 
+    /**
+     * Vuelve a la ventana principal "concesionario"
+     * @param event
+     */
     @FXML
     void volver_a_principal(ActionEvent event) {
         concesionarioController.show();
@@ -276,6 +308,11 @@ public class RegistrosAdminController implements Initializable {
     private ConcesionarioController concesionarioController;
     private Stage stage;
 
+    /**
+     *
+     * @param stage
+     * @param concesionarioController
+     */
     public void init(Stage stage, ConcesionarioController concesionarioController) {
         this.concesionarioController = concesionarioController;
         this.stage = stage;
