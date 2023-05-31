@@ -52,8 +52,7 @@
                         <ChoiceBox fx:id="estadoVehiculo" layoutX="312.0" layoutY="296.0" prefWidth="150.0" />
                         <ChoiceBox fx:id="tipoTransimicion" layoutX="537.0" layoutY="297.0" prefWidth="150.0" />
                         <Label layoutX="563.0" layoutY="343.0" text="Precio:" />
-                        <ChoiceBox fx:id="tipoCombustible" layoutX="64.0" layoutY="368.0" prefWidth="150.0" />
-                        <TextField fx:id="urlImage" layoutX="61.0" layoutY="296.0" />
+                        <ChoiceBox fx:id="tipoCombustible" layoutX="59.0" layoutY="367.0" prefWidth="150.0" />
                         <Hyperlink layoutX="60.0" layoutY="262.0" prefHeight="24.0" prefWidth="92.0" text="URL imagen:" textFill="WHITE">
                            <font>
                               <Font name="Cooper Black" size="13.0" />
@@ -70,6 +69,7 @@
                         <Label layoutX="452.0" layoutY="40.0" text="ID Proveedor:" />
                         <TextField fx:id="idProveedor" layoutX="546.0" layoutY="33.0" />
                         <Button fx:id="botonRegistrarMoto" layoutX="77.0" layoutY="406.0" mnemonicParsing="false" onAction="#registrarMoto" text="Registrar Moto" />
+                        <Button fx:id="urlImage" layoutX="57.0" layoutY="295.0" mnemonicParsing="false" onAction="#seleccionarImagen" prefHeight="28.0" prefWidth="153.0" text="Seleccionar Imagen" />
                      </children></AnchorPane>
             </content>
           </Tab>

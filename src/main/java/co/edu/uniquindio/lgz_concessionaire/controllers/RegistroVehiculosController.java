@@ -1,16 +1,23 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
+import co.edu.uniquindio.lgz_concessionaire.models.Bus;
+import co.edu.uniquindio.lgz_concessionaire.models.Moto;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import org.springframework.stereotype.Component;
+
+import java.io.File;
 
 @Component
 public class RegistroVehiculosController {
 
+    private ModelFactoryController modelFactoryController = ModelFactoryController.getInstance();
     @FXML
     private Button botonRegistrarBus;
 
@@ -159,10 +166,15 @@ public class RegistroVehiculosController {
     private ChoiceBox<?> tiposSw;
 
     @FXML
-    private TextField urlImage;
+    private Button urlImage;
 
     @FXML
     private TextField velMaxima;
+
+    @FXML
+    void seleccionarImagen(ActionEvent event) {
+
+    }
 
     @FXML
     void irSiguienteSedaneta(ActionEvent event) {
@@ -186,7 +198,19 @@ public class RegistroVehiculosController {
 
     @FXML
     void registrarBus(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(null);
 
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+
+            // Asignar la imagen al atributo del objeto
+            Bus bus;
+            /*if (bus == null) {
+
+            }*/
+            //bus.setImage(image);
+        }
     }
 
     @FXML
@@ -222,6 +246,22 @@ public class RegistroVehiculosController {
     @FXML
     void registrarṔickUp(ActionEvent event) {
 
+    }
+
+    private void selectImage() {
+        FileChooser fileChooser = new FileChooser();
+        File selectedFile = fileChooser.showOpenDialog(null);
+
+        if (selectedFile != null) {
+            Image image = new Image(selectedFile.toURI().toString());
+            //imageView.setImage(image);
+
+            // Asignar la imagen al atributo del objeto
+            /*if (myObject == null) {
+                (Moto)myObject = new Moto();
+            }
+            myObject.setImage(image);*/
+        }
     }
 
 }

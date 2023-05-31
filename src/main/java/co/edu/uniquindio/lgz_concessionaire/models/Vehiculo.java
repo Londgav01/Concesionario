@@ -1,7 +1,7 @@
 package co.edu.uniquindio.lgz_concessionaire.models;
 
 import jakarta.persistence.*;
-
+import javafx.scene.image.*;
 import java.io.Serializable;
 
 
@@ -21,6 +21,7 @@ public class Vehiculo implements Serializable {
     private EstadoVehiculo estadoVehiculo;
     private TipoCombustible tipoCombustible;
     private TipoTransmision tipoTrasmision;
+    private Image imagenCargar;
 
     @ManyToOne
     @JoinColumn(name = "concesionario_id")
@@ -71,6 +72,14 @@ public class Vehiculo implements Serializable {
 
     public String getCilindraje() {
         return cilindraje;
+    }
+
+    public Image getImagenCargar() {
+        return imagenCargar;
+    }
+
+    public void setImagenCargar(Image imagenCargar) {
+        this.imagenCargar = imagenCargar;
     }
 
     public EstadoVehiculo getEstadoVehiculo(){return estadoVehiculo; }
