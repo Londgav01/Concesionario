@@ -151,8 +151,6 @@ public class RegistrosAdminController {
         }
     }
 
-
-
     @FXML
     void actualizarEmpleado(ActionEvent event) throws EmpleadoException {
         actualizarEmpleadoAction();
@@ -186,7 +184,15 @@ public class RegistrosAdminController {
 
     @FXML
     void registrarCliente(ActionEvent event) {
-
+        String nombre = nombreNuevoCliente.getText();
+        String idCliente = idNuevoCliente.getText();
+        String direccion = direccionNuevoCliente.getText();
+        String telefonoCliente = telefonoNuevoCliente.getText();
+        try {
+            mfm.crearCliente(nombre, idCliente, direccion, telefonoCliente);
+        } catch (UsuarioExcepction e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
@@ -196,7 +202,16 @@ public class RegistrosAdminController {
 
     @FXML
     void registrarNuevoEmpleado(ActionEvent event) {
-
+        String nombre = nuevoNombreEmpleado.getText();
+        String idEmpleado = nuevoIdEmpleado.getText();
+        String direccion = nuevoDireccionEmpleado.getText();
+        String telefonoEmpleado = nuevoTelefonoEmpleado.getText();
+        int numContrasenia = (int) (Math.random() * 6);
+        try {
+            mfm.crearEmpleado(nombre, idEmpleado, direccion, telefonoEmpleado, String.valueOf(numContrasenia));
+        } catch (EmpleadoException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @FXML
