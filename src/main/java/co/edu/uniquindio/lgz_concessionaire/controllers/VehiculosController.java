@@ -3,6 +3,7 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 import co.edu.uniquindio.lgz_concessionaire.models.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
 
@@ -53,7 +54,7 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
@@ -67,7 +68,7 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
@@ -81,7 +82,7 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
@@ -95,12 +96,12 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
     void mostrarInfoLindo(ActionEvent event) {
-        JOptionPane.showMessageDialog(null, "No hay stock," +
+        mostrarAlertaError("No hay stock," +
                 "vulva la semana siguiente");
     }
 
@@ -115,7 +116,7 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
@@ -129,7 +130,7 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
@@ -143,7 +144,7 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
@@ -157,7 +158,7 @@ public class VehiculosController {
         if(texto == ""){
             texto = "No hay vehículos disponibles";
         }
-        JOptionPane.showMessageDialog(null, texto);
+        mostrarAlertaError(texto);
     }
 
     @FXML
@@ -179,5 +180,14 @@ public class VehiculosController {
         this.transaccionesController = transaccionesController;
         this.stage = stage;
     }
+    private void mostrarAlertaError(String mensaje) {
+        // Crear la alerta de error
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
 
+        // Mostrar la alerta y esperar a que el usuario la cierre
+        alert.showAndWait();
+    }
 }
