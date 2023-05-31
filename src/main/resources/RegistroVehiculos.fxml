@@ -403,6 +403,6 @@
             </Tab>
         </tabs>
       </TabPane>
-      <Button layoutX="10.0" layoutY="531.0" mnemonicParsing="false" text="Salir" />
+      <Button fx:id="btnVolver" layoutX="10.0" layoutY="531.0" mnemonicParsing="false" onAction="#volverEvent" text="Salir" />
    </children>
 </AnchorPane>

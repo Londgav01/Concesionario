@@ -5,11 +5,16 @@ import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
+import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 @Component
 public class RegistrosAdminController {
 
+
+    /**
+     * Atributos y variables utilizadas a lo largo de la interfaz para poder capturar los datos de la interfaz
+     */
     @FXML
     private Hyperlink backToPrincipal;
 
@@ -137,10 +142,24 @@ public class RegistrosAdminController {
 
     }
 
+    /**
+     * evento del boton para actualizar al cliente
+     * @param event
+     * @throws EmpleadoException
+     * @throws UsuarioExcepction
+     */
     @FXML
     void actualizarCliente(ActionEvent event) throws EmpleadoException, UsuarioExcepction {
          actualizarClienteAction();
     }
+
+    /**
+     * esta es la funcionalidad que se da en el boton anterior
+     * se encarga de actualizar al cliente
+     * se llama al mfm el cual tiene los metodos de actualizar
+     * @throws EmpleadoException
+     * @throws UsuarioExcepction
+     */
     private void actualizarClienteAction() throws EmpleadoException, UsuarioExcepction {
         String nombreCliente = nombreNuevoCliente.getText();
         String idCliente = idNuevoCliente.getText();
@@ -150,11 +169,21 @@ public class RegistrosAdminController {
             mfm.actualizarCliente(nombreCliente, idCliente, direccionCliente, telefonoCliente);
         }
     }
-
+    /**
+     * evento de actualizar empleado
+     * @param event
+     * @throws EmpleadoException
+     */
     @FXML
     void actualizarEmpleado(ActionEvent event) throws EmpleadoException {
         actualizarEmpleadoAction();
     }
+
+    /**
+     * metodo implementado en el boton anterior
+     * actualiza a un empleado ingresand osu id
+     * @throws EmpleadoException
+     */
     private void actualizarEmpleadoAction() throws EmpleadoException {
         String nombreEmpleado = nuevoNombreEmpleado.getText();
         String idEmpleado = nuevoIdEmpleado.getText();
@@ -166,6 +195,13 @@ public class RegistrosAdminController {
     }
 
 
+    /**
+     * elimina lo que sea, segun su decision en la choice box
+     * se hace ingresando por parametro id
+     * @param event
+     * @throws EmpleadoException
+     * @throws UsuarioExcepction
+     */
     @FXML
     void eliminar(ActionEvent event) throws EmpleadoException, UsuarioExcepction {
         eliminarAction();
@@ -216,7 +252,16 @@ public class RegistrosAdminController {
 
     @FXML
     void volver_a_principal(ActionEvent event) {
+        concesionarioController.show();
+        this.stage.close();
+    }
 
+    private ConcesionarioController concesionarioController;
+    private Stage stage;
+
+    public void init(Stage stage, ConcesionarioController concesionarioController) {
+        this.concesionarioController = concesionarioController;
+        this.stage = stage;
     }
 
 }
