@@ -22,9 +22,25 @@ import javafx.util.*;
 
 public class ConcesionarioController implements Initializable {
 
+    /**
+     *
+     El código proporcionado es una clase de controlador de JavaFX que
+     contiene anotaciones @FXML y métodos para manejar eventos y la inicialización de la interfaz de usuario
+     */
+
+
+    /**
+     * Este campo representa un botón llamado
+     * buttomBack que se puede acceder a través de un archivo de interfaz de usuario FXML.
+     */
     @FXML
     private Button buttomBack;
 
+
+    /**
+     * Este campo representa un hipervínculo llamado
+     * empleados que se puede acceder a través de un archivo de interfaz de usuario FXML.
+     */
     @FXML
     private Hyperlink empleados;
 
@@ -51,6 +67,12 @@ public class ConcesionarioController implements Initializable {
 
     private Stage stage;
 
+    /**
+     * Metodo encargado de dirigir a otra pagina la cual es la interfaz de vehiculo
+     * este metodo se vera en diferentes ventanas para asegurar la navegabilidad correcta entre ventanas
+     * No se Puede hacer static debido a los parametros
+     * @param event
+     */
     @FXML
     void abrirVehiculos(ActionEvent event) {
         try {
@@ -69,6 +91,12 @@ public class ConcesionarioController implements Initializable {
     }
 
 
+    /**
+     * Metodo encargado de dirigir a la ventana de transacciones
+     *  este metodo se vera en diferentes ventanas para asegurar la navegabilidad correcta entre ventanas
+     *  No se Puede hacer static debido a los parametros
+     * @param event
+     */
     @FXML
     void abrirTransacciones(ActionEvent event) {
         try {
@@ -88,9 +116,53 @@ public class ConcesionarioController implements Initializable {
 
     }
 
+
+    @FXML
+    void abrirRegistroVehiculos(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/RegistroVehiculos.fxml"));
+            Parent root = loader.load();
+            RegistroVehiculosController registroVehiculosController = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            registroVehiculosController.init(stage, this);
+            stage.show();
+            this.stage.hide();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void abrirRegistroPersonas(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/Registro.fxml"));
+            Parent root = loader.load();
+            RegistrosAdminController registrosAdminController = loader.getController();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            registrosAdminController.init(stage, this);
+            stage.show();
+            this.stage.hide();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    /**
+     * Este metodo es llamado desde los controladores que lo necesiten el cual se encargara de
+     * mostrar esta ventana al momento de darle click en el boton correspondiente
+     */
     public void show() {
         this.stage.show();
     }
+
+    /**
+     * Parametro para poder completar el metodo init
+     * Este metodo es llamado desde los controladores que lo necesiten el cual se encargara de
+     * mostrar esta ventana al momento de darle click en el boton correspondiente
+     */
     private LoginController loginController;
 
 
@@ -101,6 +173,13 @@ public class ConcesionarioController implements Initializable {
 
     }
 
+
+    /**
+     * Metodo encargado de inicializar datos en la interfaz, haciendo asi que en todo momento se tengan los datos
+     * ingresados en la interfaz, evitando altercados con la carga de imagenes o datos
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         List<Image> images = new ArrayList<>();

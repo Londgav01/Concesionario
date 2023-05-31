@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.springframework.stereotype.Component;
 
 import javax.swing.*;
@@ -44,6 +45,9 @@ public class RegistroVehiculosController implements Initializable {
 
     @FXML
     private Button botonRegistrarVan;
+
+    @FXML
+    private Button btnVolver;
 
     @FXML
     private TextField caballosFuerzaDepor;
@@ -488,6 +492,20 @@ public class RegistroVehiculosController implements Initializable {
             }
             myObject.setImage(image);*/
         }
+    }
+
+    @FXML
+    void volverEvent(ActionEvent event) {
+        concesionarioController.show();
+        this.stage.hide();
+    }
+
+    private ConcesionarioController concesionarioController;
+    private Stage stage;
+
+    public void init(Stage stage, ConcesionarioController concesionarioController) {
+        this.concesionarioController = concesionarioController;
+        this.stage = stage;
     }
 
     @Override

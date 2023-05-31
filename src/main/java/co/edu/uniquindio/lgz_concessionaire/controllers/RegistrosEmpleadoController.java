@@ -9,6 +9,8 @@ import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
 import org.springframework.stereotype.Component;
 
+import javax.swing.*;
+
 @Component
 public class RegistrosEmpleadoController {
 
@@ -72,6 +74,7 @@ public class RegistrosEmpleadoController {
     public boolean validarDatos(){
         if(nuevoNombreCliente.getText() == "" || nuevoIdCliente.getText() == "" ||
                 nuevoDireccionCliente.getText() == "" || nuevoTelefonoCliente.getText() == ""){
+            JOptionPane.showMessageDialog(null, "Error, campos vacios");
             return false;
         }
         return true;

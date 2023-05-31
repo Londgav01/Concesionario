@@ -25,7 +25,7 @@
                         <Font name="Cooper Black" size="21.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="registros" layoutX="394.0" layoutY="48.0" text="Registros" textFill="#e7b12b">
+                  <Hyperlink fx:id="registros" layoutX="394.0" layoutY="48.0" onAction="#abrirRegistroVehiculos" text="Registros" textFill="#e7b12b">
                      <font>
                         <Font name="Cooper Black" size="21.0" />
                      </font>
@@ -35,7 +35,10 @@
                         <Font name="Cooper Black" size="21.0" />
                      </font>
                   </Hyperlink>
-                  <Hyperlink fx:id="empleados" layoutX="954.0" layoutY="53.0" text="Empleados" textFill="#e7b12b" />
+                  <Hyperlink fx:id="empleados" layoutX="820.0" layoutY="51.0" onAction="#abrirRegistroPersonas" prefHeight="35.0" prefWidth="200.0" text="Registro personas" textFill="#e7b12b">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font></Hyperlink>
                </children>
             </Pane>
             <Pane fx:id="imagenes" layoutX="37.0" layoutY="157.0" prefHeight="358.0" prefWidth="1016.0" style="-fx-border-color: #E7B12B;">

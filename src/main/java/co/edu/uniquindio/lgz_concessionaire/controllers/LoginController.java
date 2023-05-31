@@ -139,6 +139,11 @@ public class LoginController implements Initializable {
         }
     }
 
+
+    /**
+     * Metodo encargado de abrir la ventana de registros
+     * @param event
+     */
     @FXML
     void registrar(ActionEvent event) {
         LgzConcessionaireApplication.getPrimaryStage().close();
@@ -163,6 +168,13 @@ public class LoginController implements Initializable {
         this.administradorService = administradorService;
     }
 
+    /**
+     *
+     * Metodo encargado de inicializar datos en la interfaz, haciendo asi que en todo momento se tengan los datos
+     * ingresados en la interfaz, evitando altercados con la carga de imagenes o datos
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

@@ -23,6 +23,10 @@ import java.util.ResourceBundle;
 @Component
 public class RecuperacionController implements Initializable {
 
+
+    /**
+     * Atributos usados en la calse, incluyen las variables de la interfaz conectada a este controlador la cual es VentanaRecuperacion
+     */
     private String codigo = "";
     private LoginController loginController=new LoginController();
 
@@ -68,12 +72,22 @@ public class RecuperacionController implements Initializable {
     Stage stage= new Stage();
 
 
+    /**
+     * funcion que vuleve a la ventana de login
+     * @param event
+     */
     @FXML
     void backToLogin(ActionEvent event){
         LgzConcessionaireApplication.getPrimaryStage().show();
         buttomBack.getScene().getWindow().hide();
     }
 
+    /**
+     * funcion encargada de cambiar contraseña, verificando si el codigo enviado al correo del usiario es el mismo al que se ingresa
+     * en el textField
+     * @param event
+     * @throws EmpleadoException
+     */
     @FXML
     void cambiarContrasena(ActionEvent event) throws EmpleadoException {
         if(code.getText().equals(codigo)) {//aquí va la condicion de si el codifo introducido es el mismo enviado
@@ -94,11 +108,22 @@ public class RecuperacionController implements Initializable {
 
     }
 
+    /**
+     * codigo encargado de enviar el mail para la recuperacion de contraseña
+     * @param event
+     * @throws Exception
+     */
+
     @FXML
     void enviarMail(ActionEvent event) throws Exception {
         codigo = mandarCodigoMail();
     }
 
+    /**
+     * Este metodo es llamado en el metodo anteiror, su funcionalidad es crear el mensaje que llegara al correo
+     * @return
+     * @throws Exception
+     */
     public String mandarCodigoMail() throws Exception {
         if (ModelFactoryController.getInstance().verificarEmpleado(id.getText())) {
             String introCuerpo = "<h2>Estimado Usuario,</h2>"
@@ -119,6 +144,11 @@ public class RecuperacionController implements Initializable {
     /*
 
      */
+
+    /**
+     * metodo que verifica si la contraseña coincide con la de la base de datos del usuario
+     * @return
+     */
     public boolean verificarContrasenia(){
         if(newPassword.getText().equals(newPassword2.getText())){
             return true;
@@ -126,6 +156,11 @@ public class RecuperacionController implements Initializable {
         return false;
     }
 
+    /**
+     * inicializa datos en primer momento
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
