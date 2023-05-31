@@ -1,5 +1,7 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
+import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
+import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -33,20 +35,47 @@ public class RegistrosEmpleadoController {
 
     @FXML
     void registrarActualizarCliente(ActionEvent event) {
-
+        String nombreCliente = nuevoNombreCliente.getText();
+        String idCliente = nuevoIdCliente.getText();
+        String direccionCliente = nuevoDireccionCliente.getText();
+        String telefonoCliente = nuevoTelefonoCliente.getText();
+        if(validarDatos()) {
+            try {
+                ModelFactoryController.getInstance().crearCliente(nombreCliente, idCliente, direccionCliente, telefonoCliente);
+            } catch (UsuarioExcepction e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @FXML
     void registrarNuevoCliente(ActionEvent event) {
-
+        String nombreCliente = nuevoNombreCliente.getText();
+        String idCliente = nuevoIdCliente.getText();
+        String direccionCliente = nuevoDireccionCliente.getText();
+        String telefonoCliente = nuevoTelefonoCliente.getText();
+        if(validarDatos()) {
+            try {
+                ModelFactoryController.getInstance().actualizarCliente(nombreCliente, idCliente, direccionCliente, telefonoCliente);
+            } catch (UsuarioExcepction e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
     @FXML
     void volver_a_principal(ActionEvent event) {
-
+        LgzConcessionaireApplication.getPrimaryStage().show();
+        backToPrincipal.getScene().getWindow().hide();
     }
 
-
+    public boolean validarDatos(){
+        if(nuevoNombreCliente.getText() == "" || nuevoIdCliente.getText() == "" ||
+                nuevoDireccionCliente.getText() == "" || nuevoTelefonoCliente.getText() == ""){
+            return false;
+        }
+        return true;
+    }
     /*
     private MenuPrincipalController menuPrincipalController;
     private Stage stage;
