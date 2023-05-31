@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 
 @Entity
-@Table(name = "Administrador")
 public class Administrador extends Empleado implements Serializable {
 
     private String idAdministrador;

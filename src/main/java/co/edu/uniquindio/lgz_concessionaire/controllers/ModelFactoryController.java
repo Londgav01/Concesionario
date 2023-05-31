@@ -7,16 +7,36 @@ import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.TransactionException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
 import co.edu.uniquindio.lgz_concessionaire.models.*;
+import co.edu.uniquindio.lgz_concessionaire.repository.*;
+import javafx.collections.FXCollections;
 import javafx.scene.control.Alert;
 import javafx.stage.Modality;
 import javafx.stage.Window;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import static co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication.primaryStage;
 
-
+@Component
 public class ModelFactoryController {
 
-
+	@Autowired
+	public PersonasRepository personasRepository;
+	@Autowired
+	public ConcesionarioRepository concesionarioRepository;
+	@Autowired
+	public AdministradorRepository administradorRepository;
+	@Autowired
+	public ClienteRepository clienteRepository;
+	@Autowired
+	public EmpleadoRepository empleadoRepository;
+	@Autowired
+	public VehiculoRepository vehiculoRepository;
+	@Autowired
+	public DetalleTransaccionRepository detalleTransaccionRepository;
+	@Autowired
+	public TransaccionRepository transaccionRepository;
 	public Concesionario concesionario = null;
 
 	public void mostrarAlerta(String titulo, String mensaje, Alert.AlertType tipo) {
@@ -73,6 +93,7 @@ public class ModelFactoryController {
 	public Empleado crearEmpleado(String nombre, String identificacion, String direccion, String numeroTelefonico,
 								  String idEmpleado) throws EmpleadoException {
 		Empleado empleado = (concesionario.crearEmpleado(nombre, identificacion, direccion, numeroTelefonico, idEmpleado));
+		empleadoRepository.save(empleado);
 		return empleado;
 	}
 
@@ -95,12 +116,17 @@ public class ModelFactoryController {
 	}
 
 	public List<Empleado> obtenerEmpleados() {
+		List<Empleado> empleados= empleadoRepository.findAll();
+		for (Empleado empleado : empleados) {
+			concesionario.getListaEmpleados().add(empleado);
+		}
 		return concesionario.getListaEmpleados();
 	}
 
 	////////////////////////
 	public boolean eliminarCliente(String idCliente) throws UsuarioExcepction {
 		boolean eliminado = concesionario.eliminarCliente(idCliente);
+		clienteRepository.delete(buscarCliente(idCliente));
 		return eliminado;
 	}
 

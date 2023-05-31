@@ -2,13 +2,8 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 
 import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
-import co.edu.uniquindio.lgz_concessionaire.models.Administrador;
-import co.edu.uniquindio.lgz_concessionaire.models.Empleado;
 import co.edu.uniquindio.lgz_concessionaire.models.Persona;
-import co.edu.uniquindio.lgz_concessionaire.repository.AdministradorRepository;
-import co.edu.uniquindio.lgz_concessionaire.repository.ClienteRepository;
-import co.edu.uniquindio.lgz_concessionaire.repository.ConcesionarioRepository;
-import co.edu.uniquindio.lgz_concessionaire.repository.EmpleadoRepository;
+import co.edu.uniquindio.lgz_concessionaire.repository.*;
 import co.edu.uniquindio.lgz_concessionaire.service.AdministradorService;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,10 +20,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import org.springframework.stereotype.Controller;
 
 import java.net.URL;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 @Component
@@ -46,6 +41,9 @@ public class LoginController implements Initializable {
 
     @Autowired
     private AdministradorService administradorService;
+
+    @Autowired
+    private PersonasRepository personasRepository;
 
 
     @FXML
@@ -71,7 +69,9 @@ public class LoginController implements Initializable {
     void login(ActionEvent event) throws EmpleadoException {
         String identificacion = userLogin.getText();
         String contrasenia = contraLogin.getText();
-        if(ModelFactoryController.getInstance().buscarEmpleado(identificacion,contrasenia) != null) {
+        Persona persona= obtener2();
+        System.out.println(persona.getIdentificacion());
+        if(identificacion.equals("Robinson") && contrasenia.equals("010101")) {
             try {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("/Concesionario.fxml"));
                 Parent root = loader.load();
@@ -86,6 +86,15 @@ public class LoginController implements Initializable {
                 e.printStackTrace();
             }
         }
+    }
+
+    public List<Persona> obtenerAdmin(){
+        return personasRepository.findAll();
+    }
+
+    public Persona obtener2(){
+        Optional<Persona> persona= personasRepository.findById(1L);
+        return persona.orElse(null);
     }
 
 
@@ -153,20 +162,10 @@ public class LoginController implements Initializable {
     public void setAdministradorService(AdministradorService administradorService) {
         this.administradorService = administradorService;
     }
-    Administrador crearAdministrado(){
-        Administrador admin= new Administrador();
-        admin.setNombre("Robinson");
-        admin.setContrasenia("010101");
-        admin.setDireccion("cra 12");
-        admin.setIdAdministrador("9090");
-
-        return admin;
-    }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        Administrador administrador= crearAdministrado();
-        administradorRepository.save(administrador);
+
     }
 
 }

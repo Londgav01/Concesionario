@@ -2,13 +2,18 @@ package co.edu.uniquindio.lgz_concessionaire.controllers;
 
 import co.edu.uniquindio.lgz_concessionaire.exceptions.EmpleadoException;
 import co.edu.uniquindio.lgz_concessionaire.exceptions.UsuarioExcepction;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.springframework.stereotype.Component;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 @Component
-public class RegistrosAdminController {
+public class RegistrosAdminController implements Initializable {
 
     @FXML
     private Hyperlink backToPrincipal;
@@ -68,7 +73,7 @@ public class RegistrosAdminController {
     private TextField nuevoTelefonoEmpleado;
 
     @FXML
-    private ChoiceBox<?> opciones;
+    private ChoiceBox<String> opciones;
 
     @FXML
     private TextField telefonoNuevoAdmin;
@@ -204,4 +209,10 @@ public class RegistrosAdminController {
 
     }
 
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        String[] options= {"Cliente","Empleado"};
+        opciones.setItems(FXCollections.observableArrayList(options));
+    }
 }

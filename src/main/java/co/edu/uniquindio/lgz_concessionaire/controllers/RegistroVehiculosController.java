@@ -379,6 +379,13 @@ public class RegistroVehiculosController implements Initializable {
         }
     }
 
+    private boolean determinarBooleano(String value) {
+        if (value.equals("SI")){
+            return true;
+        }
+        return false;
+    }
+
 
     @FXML
     void registrarCamion(ActionEvent event) {
@@ -386,11 +393,15 @@ public class RegistroVehiculosController implements Initializable {
         TipoTransmision tipoTransmision = determinarTipoTransmision(this.tipoTransimicion.getValue());
         TipoCombustible tipoCombustible= determinarTipoCombustible(this.tipoCombustible.getValue());
         Double precio = Double.valueOf(this.precio.getText());
-        boolean aireAcondicionado = determinarBooleano(choiceBoxAireAcondicionadoCamion.getValue());
-        boolean frenoABS = determinarBooleano(choiceBoxFrenoABSCamion.getValue());
-        int numeroEjes = Integer.parseInt(txtNumeroEjesCamion.getText());
-        boolean frenoAire = determinarBooleano(choiceBoxFrenoAireCamion.getValue());
-        String tipoCamion = txtTipoCamion.getText();
+        boolean frenoABS = determinarBooleano(tieneABSCamion.getValue());
+        int numeroEjes = Integer.parseInt(numEjesCamion.getText());
+        boolean frenoAire = determinarBooleano(tieneFrenosCamion.getValue());
+        boolean frenoAc= determinarBooleano(tieneACCamion.getValue());
+        String tipoCamion = this.tipoCamion.getText();
+        double capacidadCarga= Double.parseDouble(this.cargaCamion.getText());
+        if(validarDatosGeneralidades()&& validarDatosCamion() ){
+            modelFactoryController.crearCamion(vehiculo1.getMarca(), vehiculo1.getPlaca(), vehiculo1.getModelo(), vehiculo1.getCantidadCambios(), vehiculo1.getVelocidadMaxima(), vehiculo1.getCilindraje(), vehiculo1.getEstadoVehiculo(), tipoCombustible, tipoTransmision, capacidadCarga, frenoAire, numeroEjes, frenoABS, tipoCamion, frenoAc);
+        }
 
     }
 
@@ -411,6 +422,26 @@ public class RegistroVehiculosController implements Initializable {
         }else{
             return TipoCombustible.ELECTRICO;
         }
+    }
+
+    private boolean validarDatosCamion() {
+        String x = "";
+        if (tieneFrenosCamion.getValue()==null){
+            x = "campo Vacio";
+        }
+        if(numEjesCamion.getText().equals("") || numEjesCamion.getText()==null){
+            x = "campo Vacio";
+        }
+        if(this.tieneACCamion.getValue()==null){
+            x = "campo Vacio";
+        }
+        if(tipoCamion.getText().equals("")||tipoCamion.getText()==null){
+            x = "campo Vacio";
+        }
+        if (x.equals("")){
+            return true;
+        }
+        return false;
     }
 
     @FXML

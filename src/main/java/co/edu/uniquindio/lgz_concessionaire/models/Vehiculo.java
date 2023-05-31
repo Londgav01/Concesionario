@@ -21,7 +21,8 @@ public class Vehiculo implements Serializable {
     private EstadoVehiculo estadoVehiculo;
     private TipoCombustible tipoCombustible;
     private TipoTransmision tipoTrasmision;
-    private Image imagenCargar;
+    //private Image imagenCargar;
+    Double precio;
 
     @ManyToOne
     @JoinColumn(name = "concesionario_id")
@@ -46,6 +47,20 @@ public class Vehiculo implements Serializable {
         this.velocidadMaxima= builder.velocidadMaxima;
         this.cilindraje= builder.cilindraje;
         this.tipoTrasmision= builder.tipoTransmision;
+    }
+
+    public Vehiculo(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima, String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible, TipoTransmision tipoTrasmision, Image imagenCargar, Double precio) {
+        this.marca = marca;
+        this.placa = placa;
+        this.modelo = modelo;
+        this.cantidadCambios = cantidadCambios;
+        this.velocidadMaxima = velocidadMaxima;
+        this.cilindraje = cilindraje;
+        this.estadoVehiculo = estadoVehiculo;
+        this.tipoCombustible = tipoCombustible;
+        this.tipoTrasmision = tipoTrasmision;
+        //this.imagenCargar = imagenCargar;
+        this.precio = precio;
     }
 
     public Vehiculo() {}
@@ -74,13 +89,13 @@ public class Vehiculo implements Serializable {
         return cilindraje;
     }
 
-    public Image getImagenCargar() {
+    /*public Image getImagenCargar() {
         return imagenCargar;
     }
 
     public void setImagenCargar(Image imagenCargar) {
         this.imagenCargar = imagenCargar;
-    }
+    }*/
 
     public EstadoVehiculo getEstadoVehiculo(){return estadoVehiculo; }
 

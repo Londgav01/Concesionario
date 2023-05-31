@@ -7,14 +7,14 @@ public class Automovil extends Vehiculo {
     private Integer numBolsasAire;
 
     public Automovil(AutomovilBuilder automovilBuilder) {
-        super(precio);
+        super();
         this.numPuertas= automovilBuilder.numPuertas;
         this.numBolsasAire= automovilBuilder.numBolsasAire;
         this.numPasajeros= automovilBuilder.numPasajeros;
     }
 
     public Automovil() {
-        super(precio);
+        super();
     }
 
     public Integer getNumPuertas() {
