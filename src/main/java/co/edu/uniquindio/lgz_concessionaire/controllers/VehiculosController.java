@@ -171,6 +171,7 @@ public class VehiculosController {
                     "Gracias por su comprensión y por considerar mis disculpas. Valoraría mucho cualquier orientación o consejo que pueda brindarme para aprender de esta experiencia y crecer tanto académica como personalmente.";
         }
         mostrarAlertaError(texto);
+
     }
 
     @FXML

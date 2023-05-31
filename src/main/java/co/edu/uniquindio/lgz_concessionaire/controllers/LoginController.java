@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +17,6 @@ import org.springframework.stereotype.Component;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.Hyperlink;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 
 import java.net.URL;
 import java.util.List;
@@ -71,19 +68,21 @@ public class LoginController implements Initializable {
         String contrasenia = contraLogin.getText();
         Persona persona= obtener2();
         System.out.println(persona.getIdentificacion());
-        if(identificacion.equals("Robinson") && contrasenia.equals("010101")) {
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/Concesionario.fxml"));
-                Parent root = loader.load();
-                ConcesionarioController concesionarioController = loader.getController();
-                Scene scene = new Scene(root);
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                concesionarioController.init(stage, this);
-                stage.show();
-                this.stage.close();
-            } catch (Exception e) {
-                e.printStackTrace();
+        if(verificarDatos(identificacion, contrasenia)) {
+            if (identificacion.equals("Robinson") && contrasenia.equals("010101")) {
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/Concesionario.fxml"));
+                    Parent root = loader.load();
+                    ConcesionarioController concesionarioController = loader.getController();
+                    Scene scene = new Scene(root);
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    concesionarioController.init(stage, this);
+                    stage.show();
+                    this.stage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         }
     }
@@ -178,6 +177,24 @@ public class LoginController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
+    }
+
+    public boolean verificarDatos(String identificacion, String contrasenia){
+        if(identificacion == "" || contrasenia == ""){
+            mostrarAlertaError("Error: llene los campos vacios");
+            return false;
+        }
+        return true;
+    }
+    private void mostrarAlertaError(String mensaje) {
+        // Crear la alerta de error
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText(null);
+        alert.setContentText(mensaje);
+
+        // Mostrar la alerta y esperar a que el usuario la cierre
+        alert.showAndWait();
     }
 
 }
