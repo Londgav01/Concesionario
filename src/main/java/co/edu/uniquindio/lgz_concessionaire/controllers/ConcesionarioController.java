@@ -1,5 +1,6 @@
 package co.edu.uniquindio.lgz_concessionaire.controllers;
 
+import co.edu.uniquindio.lgz_concessionaire.LgzConcessionaireApplication;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -44,7 +45,8 @@ public class ConcesionarioController implements Initializable {
 
     @FXML
     void volverALogin(ActionEvent event) {
-
+        LgzConcessionaireApplication.getPrimaryStage().show();
+        buttomBack.getScene().getWindow().hide();
     }
 
     private Stage stage;
