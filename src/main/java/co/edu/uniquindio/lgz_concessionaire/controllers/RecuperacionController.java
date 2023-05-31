@@ -28,7 +28,7 @@ public class RecuperacionController implements Initializable {
      * Atributos usados en la calse, incluyen las variables de la interfaz conectada a este controlador la cual es VentanaRecuperacion
      */
     private String codigo = "";
-    private LoginController loginController=new LoginController();
+    private LoginController loginController = new LoginController();
 
     @FXML
     private Button botonCambiar;
@@ -68,6 +68,8 @@ public class RecuperacionController implements Initializable {
 
     @FXML
     private Tab registro;
+
+    String contra= "9090";
     
     Stage stage= new Stage();
 
@@ -125,7 +127,7 @@ public class RecuperacionController implements Initializable {
      * @throws Exception
      */
     public String mandarCodigoMail() throws Exception {
-        if (ModelFactoryController.getInstance().verificarEmpleado(id.getText())) {
+        if (ModelFactoryController.getInstance().verificarEmpleado(contra)) {
             String introCuerpo = "<h2>Estimado Usuario,</h2>"
                     + "<p>Hemos recibido una solicitud de recuperaci&oacuten de contrase&ntildea para su cuenta en LGZ Concessionaire. "
                     + "Para asegurarnos de que sea usted quien realiza esta solicitud, hemos generado un c&oacutedigo de verificaci&oacuten &uacutenico.</p>"

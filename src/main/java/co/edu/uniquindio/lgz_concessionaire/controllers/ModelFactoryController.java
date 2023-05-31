@@ -439,7 +439,9 @@ public class ModelFactoryController {
 	public Camion crearCamion(String marca, String placa, String modelo, int cantidadCambios, double velocidadMaxima,
 							  String cilindraje, EstadoVehiculo estadoVehiculo, TipoCombustible tipoCombustible,
 							  TipoTransmision tipoTrasmision, double capacidadCarga, boolean tieneFrenosAire, int numeroEjes, boolean tieneABS, String tipoCamion, boolean tieneAC) {
-		return concesionario.crearCamion(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, capacidadCarga, tieneFrenosAire, numeroEjes, tieneABS, tipoCamion, tieneAC);
+		Camion camion=  concesionario.crearCamion(marca, placa, modelo, cantidadCambios, velocidadMaxima, cilindraje, estadoVehiculo, tipoCombustible, tipoTrasmision, capacidadCarga, tieneFrenosAire, numeroEjes, tieneABS, tipoCamion, tieneAC);
+		vehiculoRepository.save(camion);
+		return camion;
 	}
 
 
@@ -456,7 +458,9 @@ public class ModelFactoryController {
 	 */
 	public Moto crearMoto(String marca, EstadoVehiculo estadoVehiculo, String modelo, int cambios, Double velocidadMaxima,
 						  String cilindraje, String placa) {
-		return concesionario.crearMoto(marca, estadoVehiculo, modelo, cambios, velocidadMaxima, cilindraje, placa);
+		Moto moto= concesionario.crearMoto(marca, estadoVehiculo, modelo, cambios, velocidadMaxima, cilindraje, placa);
+		vehiculoRepository.save(moto);
+		return moto;
 	}
 
 	/**
